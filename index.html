@@ -478,6 +478,16 @@
       font-weight: 700;
     }
 
+    .mini-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      text-decoration: none;
+      background: color-mix(in srgb, var(--color-blue) 12%, var(--color-surface));
+      color: var(--color-blue);
+      border: 1px solid color-mix(in srgb, var(--color-blue) 16%, transparent);
+    }
+
     .notes-panel {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -586,8 +596,8 @@
     <section class="hero">
       <div class="hero-main panel">
         <div class="eyebrow">Road to Thai</div>
-        <h2>Scheda aggiornata per non distruggere le gambe prima del giorno C</h2>
-        <p>A resta push + core + tecnica. B diventa pull puro + braccia + fiato tecnico. C è il giorno vero per gambe, mobilità e lavoro utile ai calci. Tutto è ottimizzato per consultazione rapida da mobile.</p>
+        <h2>Ricomposizione: più petto, più gambe, collo e mobilità per i calci</h2>
+        <p>A è push + core + sacco. B è pull completo + braccia + fiato tecnico. C è gambe pesanti + mobilità, collo e calci Thai. Attrezzi Domyos + manubri/bilanciere corto, tutto ottimizzato per consultazione rapida da mobile. Ogni esercizio ha un link 📷 per vedere l'esecuzione.</p>
         <div class="summary-grid">
           <div class="summary-card">
             <strong>3</strong>
@@ -639,14 +649,14 @@
         <div class="day-head">
           <div class="day-title-wrap">
             <span class="day-kicker">Giorno A</span>
-            <h3>Push + Core + Sacco / Double-End</h3>
-            <p>Spinta, spalle, addome e tecnica finale. Qui il sacco serve per ritmo, coordinazione e fiato, non per massacrarti.</p>
+            <h3>Push + Core + Sacco</h3>
+            <p>Petto, spalle, tricipiti, core e tecnica al sacco. La spinta è protagonista, il sacco chiude col fiato senza massacrarti.</p>
           </div>
           <div class="day-tags">
             <span class="tag">Petto</span>
             <span class="tag">Spalle</span>
             <span class="tag">Core</span>
-            <span class="tag">Tecnica</span>
+            <span class="tag">Sacco</span>
           </div>
         </div>
 
@@ -655,41 +665,47 @@
             <div class="block">
               <h4><span class="block-dot"></span> Riscaldamento</h4>
               <ul>
-                <li class="exercise">
-                  <div class="exercise-top">
-                    <div class="exercise-name">Cyclette + mobilità spalle + push-ups leggeri</div>
-                    <div class="exercise-meta">5–7 min</div>
-                  </div>
-                  <div class="exercise-notes">3 min cyclette moderata, rotazioni spalle x20, 10 push-ups leggeri.</div>
-                  <div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button></div>
-                </li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Cyclette + mobilità spalle + push-ups leggeri</div><div class="exercise-meta">5–7 min</div></div><div class="exercise-notes">3 min cyclette moderata, rotazioni spalle x20, 10–15 push-ups leggeri.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button></div></li>
               </ul>
             </div>
 
             <div class="block">
-              <h4><span class="block-dot"></span> Blocco push</h4>
+              <h4><span class="block-dot"></span> Blocco petto</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Archer Push-ups</div><div class="exercise-meta">3×8–10 · 90 sec</div></div><div class="exercise-notes">Focus petto, deltoidi, core.</div><div class="mini-actions"><button class="mini-btn" data-rest="90">Avvia 90 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Floor Press con Manubri Pesanti</div><div class="exercise-meta">4×6–10 · 90 sec</div></div><div class="exercise-notes">Manubri pesanti, 1–2 ripetizioni di margine. 2 sec spinta, 3 sec discesa controllata, stop leggero a terra senza rimbalzare.</div><div class="mini-actions"><button class="mini-btn" data-rest="90">Avvia 90 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Pike Push-ups</div><div class="exercise-meta">4×6–8 · 60 sec</div></div><div class="exercise-notes">Deltoidi anteriori, tronco stabile.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Alzate Laterali con Manubri</div><div class="exercise-meta">3×12–15 · 60 sec</div></div><div class="exercise-notes">Tempo 2-0-3: 2 sec salita, nessuna pausa in alto, 3 sec discesa lenta. Fermati poco sotto la linea delle spalle, gomiti morbidi.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Dips alle parallele</div><div class="exercise-meta">4×6–10 · 90 sec</div></div><div class="exercise-notes">A cedimento con forma pulita, niente rimbalzi.</div><div class="mini-actions"><button class="mini-btn" data-rest="90">Avvia 90 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Curl Hammer con Manubri (extra braccia)</div><div class="exercise-meta">3×10–12 · 60 sec</div></div><div class="exercise-notes">Presa neutra, gomiti fermi vicino al corpo. 1–2 ripetizioni di margine, niente slanci di schiena.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Chest Press Domyos</div><div class="exercise-meta">4×8–12 · 90 sec</div></div><div class="exercise-notes">Scapole strette, petto alto, 3 sec di discesa controllata.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Chest+Press+Domyos+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Floor Press con Manubri BCBIG</div><div class="exercise-meta">4×6–10 · 90 sec</div></div><div class="exercise-notes">Pesante, 1–2 ripetizioni di margine. 2 sec spinta / 3 sec discesa, stop leggero a terra senza rimbalzare.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Floor+Press+con+Manubri+BCBIG+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Archer Push-ups</div><div class="exercise-meta">3×8–10 · 90 sec</div></div><div class="exercise-notes">Mantieni tensione su petto e core, scendi controllato sul lato attivo.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Archer+Push-ups+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Dips / Push-ups declinati</div><div class="exercise-meta">3×6–10 · 90 sec</div></div><div class="exercise-notes">Inclinato leggermente in avanti per caricare petto basso e tricipiti. Forma pulita, niente rimbalzi.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Dips+%2F+Push-ups+declinati+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <h4><span class="block-dot"></span> Blocco spalle</h4>
+              <ul>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Pike Push-ups</div><div class="exercise-meta">3×6–8 · 60 sec</div></div><div class="exercise-notes">Deltoidi anteriori, tronco stabile, testa che sfiora il pavimento.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Pike+Push-ups+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Alzate Laterali con Manubri</div><div class="exercise-meta">3×12–15 · 60 sec</div></div><div class="exercise-notes">Deltoidi laterali. Peso controllato, fermati poco sotto la linea delle spalle, gomiti morbidi.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Alzate+Laterali+con+Manubri+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <h4><span class="block-dot"></span> Braccia extra</h4>
+              <ul>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Curl Hammer con Manubri</div><div class="exercise-meta">3×10–12 · 60 sec</div></div><div class="exercise-notes">Presa neutra, gomiti fermi vicino al corpo. Niente slanci di schiena.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Curl+Hammer+con+Manubri+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Pushdown Tricipiti Domyos</div><div class="exercise-meta">3×8–12 · 60 sec</div></div><div class="exercise-notes">Chiudi bene il gomito in basso, senza slanciare col corpo.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Pushdown+Tricipiti+Domyos+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
 
             <div class="block">
               <h4><span class="block-dot"></span> Core</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Core Superset</div><div class="exercise-meta">3 giri · 60 sec</div></div><div class="exercise-notes"><strong>Plank knee tucks</strong> x12 per lato, <strong>Pallof Press al cavo singolo</strong> x12–15 per lato, <strong>russian twist</strong> x30 totali.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Core Circuit</div><div class="exercise-meta">3 giri · 60 sec</div></div><div class="exercise-notes"><strong>Plank</strong> 30–40 sec, <strong>Leg raises alla sbarra</strong> x10–15 (o crunch su tappetino se sei cotto), <strong>russian twist</strong> x30 totali.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Core+Circuit+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
 
             <div class="block">
               <h4><span class="block-dot"></span> Sacco / double-end</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Round tecnici</div><div class="exercise-meta">3×3 min · 1 min</div></div><div class="exercise-notes">80% pugni leggeri, 20% colpo finale più carico. Footwork a triangolo, schiena dritta, mani alte.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 1 min</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Respirazione ritmo</div><div class="exercise-meta">Durante i round</div></div><div class="exercise-notes">Piccolo sibilo “tss” su ogni pugno leggero per non andare in apnea.</div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Round tecnici</div><div class="exercise-meta">3×3 min · 1 min</div></div><div class="exercise-notes">80% ritmo con pugni leggeri, 20% colpi più carichi. Guardia alta, footwork, respirazione “tss” per non andare in apnea.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 1 min</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Round+tecnici+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
           </div>
@@ -700,8 +716,8 @@
         <div class="day-head">
           <div class="day-title-wrap">
             <span class="day-kicker">Giorno B</span>
-            <h3>Pull + Braccia + Fiato Tecnico</h3>
-            <p>Qui le gambe spariscono dal carico vero. L’obiettivo è arrivare al C con schiena forte ma gambe ancora fresche.</p>
+            <h3>Pull + Braccia + Fiato</h3>
+            <p>Schiena completa, braccia e spalle posteriori. Le gambe restano fuori dal carico vero, così arrivi al C ancora fresco. Chiusura col fiato tecnico.</p>
           </div>
           <div class="day-tags">
             <span class="tag">Schiena</span>
@@ -716,40 +732,41 @@
             <div class="block">
               <h4><span class="block-dot"></span> Riscaldamento</h4>
               <ul>
-                <li class="exercise">
-                  <div class="exercise-top">
-                    <div class="exercise-name">Cyclette + dead hang + scapular pulls</div>
-                    <div class="exercise-meta">5–7 min</div>
-                  </div>
-                  <div class="exercise-notes">3 min cyclette, dead hang 20–30 sec, scapular pulls x10.</div>
-                  <div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div>
-                </li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Cyclette + dead hang + scapular pulls</div><div class="exercise-meta">5–7 min</div></div><div class="exercise-notes">3 min cyclette, dead hang 20–30 sec, scapular pulls x10.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button></div></li>
               </ul>
             </div>
 
             <div class="block">
-              <h4><span class="block-dot"></span> Blocco pull</h4>
+              <h4><span class="block-dot"></span> Blocco schiena</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Pull-ups / trazioni</div><div class="exercise-meta">4 serie · 2 min</div></div><div class="exercise-notes">Serie 1–2 prona larga, 3 supina stretta, 4 neutra. Cedimento controllato 6–12.</div><div class="mini-actions"><button class="mini-btn" data-rest="120">Avvia 2 min</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Lat Machine Domyos</div><div class="exercise-meta">4×10–12 · 90 sec</div></div><div class="exercise-notes">35–45 kg, presa larga pronata, eccentrica 3 sec.</div><div class="mini-actions"><button class="mini-btn" data-rest="90">Avvia 90 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Rematore con Manubrio Singolo</div><div class="exercise-meta">4×6–8/lato · 90 sec</div></div><div class="exercise-notes">Carico alto ma forma solida: schiena neutra, tira il manubrio verso l’anca. 1–2 ripetizioni di margine, bicipite molto coinvolto.</div><div class="mini-actions"><button class="mini-btn" data-rest="90">Avvia 90 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Face Pulls</div><div class="exercise-meta">3×15–20 · 60 sec</div></div><div class="exercise-notes">Salute spalle, deltoidi posteriori, cuffia.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Trazioni alla sbarra</div><div class="exercise-meta">4 serie · 2 min</div></div><div class="exercise-notes">Alterna prona, supina e neutra. Cedimento controllato in fascia 6–12.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="120">Avvia 2 min</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Trazioni+alla+sbarra+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Pulley Alto Domyos</div><div class="exercise-meta">4×10–12 · 90 sec</div></div><div class="exercise-notes">Presa larga pronata, eccentrica 3 sec, tira verso il petto alto.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Pulley+Alto+Domyos+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Rematore Basso Domyos</div><div class="exercise-meta">4×8–10 · 90 sec</div></div><div class="exercise-notes">Tira verso l&#x27;addome basso, squeeze scapole, busto fermo.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Rematore+Basso+Domyos+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Rematore con Bilanciere Corto BCBIG</div><div class="exercise-meta">3×8–10 · 90 sec</div></div><div class="exercise-notes">Schiena neutra, bilanciere verso l&#x27;ombelico. Carico solido ma senza strappi.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Rematore+con+Bilanciere+Corto+BCBIG+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Pullover Domyos</div><div class="exercise-meta">3×10–12 · 60–90 sec</div></div><div class="exercise-notes">Dorsali + un filo di petto, utile anche per aprire il torace. Braccia quasi tese, controllo pieno.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Pullover+Domyos+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
 
             <div class="block">
-              <h4><span class="block-dot"></span> Upper extra</h4>
+              <h4><span class="block-dot"></span> Spalle posteriori / cuffia</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Curl ai cavi o manubri</div><div class="exercise-meta">4×8–12 · 60 sec</div></div><div class="exercise-notes">Controllato, niente cheating inutile.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Pushdown tricipiti o French Press</div><div class="exercise-meta">4×8–12 · 60 sec</div></div><div class="exercise-notes">Chiudi bene il gomito, senza slanciare.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Alzate Posteriori con Manubri (busto flesso)</div><div class="exercise-meta">3×12–15 · 60 sec</div></div><div class="exercise-notes">Busto inclinato ~45–70°, schiena neutra. Braccia leggermente piegate, apri verso fuori, pensa a “tirare coi deltoidi dietro”, non coi trapezi.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Face Pull al Cavo</div><div class="exercise-meta">3×15–20 · 60 sec</div></div><div class="exercise-notes">Salute spalle, deltoidi posteriori e cuffia. Gomiti alti, tira verso la faccia.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Face+Pull+al+Cavo+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Alzate Posteriori con Manubri (busto flesso)</div><div class="exercise-meta">3×12–15 · 60 sec</div></div><div class="exercise-notes">Busto inclinato ~45–70°, schiena neutra. Apri verso fuori pensando ai deltoidi dietro, non ai trapezi.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Alzate+Posteriori+con+Manubri+busto+flesso+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <h4><span class="block-dot"></span> Braccia</h4>
+              <ul>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Curl Bicipiti (cavo o manubri)</div><div class="exercise-meta">4×8–12 · 60 sec</div></div><div class="exercise-notes">Controllato, niente cheating inutile. Gomiti fermi.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Curl+Bicipiti+cavo+o+manubri+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">French Press manubrio singolo / Pushdown</div><div class="exercise-meta">3×8–12 · 60 sec</div></div><div class="exercise-notes">Chiudi bene il gomito, senza slanciare. Estensione completa in alto.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=French+Press+manubrio+singolo+%2F+Pushdown+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
 
             <div class="block">
               <h4><span class="block-dot"></span> Fiato tecnico</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Double-end / sacco tecnico</div><div class="exercise-meta">3×3 min · 1 min</div></div><div class="exercise-notes">Jab–cross–hook leggeri, triangolo maschio/femmina, mani alte. Niente low kick pesanti qui.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 1 min</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Double-end / sacco tecnico</div><div class="exercise-meta">3×3 min · 1 min</div></div><div class="exercise-notes">Jab–cross–hook, triangolo, guardia alta. Solo pugni, niente low kick pesanti qui.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 1 min</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Double-end+%2F+sacco+tecnico+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
           </div>
@@ -760,14 +777,14 @@
         <div class="day-head">
           <div class="day-title-wrap">
             <span class="day-kicker">Giorno C</span>
-            <h3>Gambe + Mobilità Calci</h3>
-            <p>Questo è il giorno dedicato alle gambe. Costruisci cosce, polpacci, stabilità e mobilità utile per alzare e allungare meglio i calci.</p>
+            <h3>Gambe + Mobilità + Collo + Calci</h3>
+            <p>Il giorno vero delle gambe: quadricipiti, femorali, glutei e polpacci con volume serio. Più mobilità per i calci alti, collo e round tecnici di calci.</p>
           </div>
           <div class="day-tags">
             <span class="tag">Gambe</span>
             <span class="tag">Mobilità</span>
+            <span class="tag">Collo</span>
             <span class="tag">Calci</span>
-            <span class="tag">Range</span>
           </div>
         </div>
 
@@ -776,34 +793,51 @@
             <div class="block">
               <h4><span class="block-dot"></span> Riscaldamento</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Cyclette o camminata veloce</div><div class="exercise-meta">3–4 min</div></div><div class="exercise-notes">Attiva senza bruciarti. Solo per portare sangue alle gambe.</div><div class="mini-actions"><button class="mini-btn" data-rest="45">Avvia 45 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Hip circles + side skates controllati</div><div class="exercise-meta">2 giri</div></div><div class="exercise-notes">Hip circles x10 per lato, side skates x10 per lato.</div><div class="mini-actions"><button class="mini-btn" data-rest="45">Avvia 45 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Tapis/cyclette + hip circles + side skates</div><div class="exercise-meta">6–8 min</div></div><div class="exercise-notes">3–4 min tapis o cyclette, hip circles x10 per lato, side skates x10 per lato.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button></div></li>
               </ul>
             </div>
 
             <div class="block">
               <h4><span class="block-dot"></span> Mobilità dinamica</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Swing frontali</div><div class="exercise-meta">2×10–12/lato</div></div><div class="exercise-notes">Slanci controllati, niente strappi.</div><div class="mini-actions"><button class="mini-btn" data-rest="45">Avvia 45 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Swing laterali</div><div class="exercise-meta">2×10–12/lato</div></div><div class="exercise-notes">Apri l’anca ma senza perdere assetto.</div><div class="mini-actions"><button class="mini-btn" data-rest="45">Avvia 45 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Lateral Lunges</div><div class="exercise-meta">2×10/lato</div></div><div class="exercise-notes">Profondità gestibile, ginocchio allineato.</div><div class="mini-actions"><button class="mini-btn" data-rest="45">Avvia 45 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Ankle Rocks</div><div class="exercise-meta">2×15/lato</div></div><div class="exercise-notes">Mobilità caviglia avanti/indietro utile anche per appoggio e spinta.</div><div class="mini-actions"><button class="mini-btn" data-rest="45">Avvia 45 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Swing frontali</div><div class="exercise-meta">2×10–12/lato</div></div><div class="exercise-notes">Slanci controllati della gamba avanti/indietro, niente strappi.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Swing+frontali+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Swing laterali</div><div class="exercise-meta">2×10–12/lato</div></div><div class="exercise-notes">Apri l&#x27;anca lateralmente mantenendo l&#x27;assetto del busto.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Swing+laterali+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Lateral Lunges</div><div class="exercise-meta">2×10/lato</div></div><div class="exercise-notes">Profondità gestibile, ginocchio allineato alla punta del piede.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Lateral+Lunges+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Ankle Rocks</div><div class="exercise-meta">2×15/lato</div></div><div class="exercise-notes">Mobilità caviglia avanti/indietro, utile per appoggio e spinta nei calci.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Ankle+Rocks+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
 
             <div class="block">
               <h4><span class="block-dot"></span> Forza gambe</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Leg Extension Domyos</div><div class="exercise-meta">4×12–15 · 60 sec</div></div><div class="exercise-notes">30–40 kg, 1 sec in contrazione, cerca progressione pulita.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Affondi Bulgari</div><div class="exercise-meta">4×10/lato · 60 sec</div></div><div class="exercise-notes">Corpo libero o carico gestibile. Controllo e stabilità prima del peso.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Calf Raises</div><div class="exercise-meta">4×15–20 · 45 sec</div></div><div class="exercise-notes">Su gradino, pausa 1 sec in alto.</div><div class="mini-actions"><button class="mini-btn" data-rest="45">Avvia 45 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Leg Extension Domyos</div><div class="exercise-meta">4×12–15 · 60 sec</div></div><div class="exercise-notes">Quadricipiti. 1 sec in contrazione, cerca progressione pulita.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Leg+Extension+Domyos+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Squat Goblet con Manubrio / Bilanciere Corto</div><div class="exercise-meta">4×8–12 · 90 sec</div></div><div class="exercise-notes">Cosce, glutei e core. Schiena neutra, scendi sotto il parallelo se la mobilità lo permette.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Squat+Goblet+con+Manubrio+%2F+Bilanciere+Corto+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Affondi Bulgari con Manubri</div><div class="exercise-meta">4×10/lato · 60–75 sec</div></div><div class="exercise-notes">Controllo e stabilità prima del peso. Ginocchio posteriore verso il basso, busto leggermente avanti.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="75">Avvia 75 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Affondi+Bulgari+con+Manubri+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Romanian Deadlift con Bilanciere Corto</div><div class="exercise-meta">4×8–10 · 90 sec</div></div><div class="exercise-notes">Femorali, glutei, lombari. Schiena neutra, anche indietro, bilanciere vicino alle gambe.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="90">Avvia 90 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Romanian+Deadlift+con+Bilanciere+Corto+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Calf Raises</div><div class="exercise-meta">4×15–20 · 45 sec</div></div><div class="exercise-notes">Su gradino, pausa 1 sec in alto, allungo pieno in basso.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Calf+Raises+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
 
             <div class="block">
-              <h4><span class="block-dot"></span> Defaticamento</h4>
+              <h4><span class="block-dot"></span> Mobilità / stretching calci alti</h4>
               <ul>
-                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Stretching statico anche / femorali / quadricipiti</div><div class="exercise-meta">5–8 min</div></div><div class="exercise-notes">20–30 sec per posizione, niente molleggi, niente forzature idiote.</div><div class="mini-actions"><button class="mini-btn" data-rest="60">Avvia 60 sec</button></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Stretch quadricipiti / femorali / anca / caviglie</div><div class="exercise-meta">5–8 min</div></div><div class="exercise-notes">20–30 sec per posizione, schiena neutra. Includi la posizione del piccione per l&#x27;anca. Niente molleggi, niente forzature.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 60 sec</button></div></li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <h4><span class="block-dot"></span> Collo (rinforzo leggero)</h4>
+              <ul>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Neck flexion supino</div><div class="exercise-meta">2×15–20</div></div><div class="exercise-notes">Da sdraiato in su, solleva la testa lentamente. Senza pesi, niente strappi.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Neck+flexion+supino+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Neck extension prono</div><div class="exercise-meta">2×15–20</div></div><div class="exercise-notes">Da sdraiato a pancia in giù, estendi il collo controllato.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Neck+extension+prono+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Side neck</div><div class="exercise-meta">2×15–20/lato</div></div><div class="exercise-notes">Sdraiato su un lato, testa su/giù lenta. Fermati se senti fastidi strani.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="45">Avvia 45 sec</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Side+neck+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <h4><span class="block-dot"></span> Calci al sacco (opzionale)</h4>
+              <ul>
+                <li class="exercise"><div class="exercise-top"><div class="exercise-name">Round di calci</div><div class="exercise-meta">3×2 min · 1 min</div></div><div class="exercise-notes">R1 low kick medi alternati, R2 middle kick controllati, R3 mix low/middle + qualche front kick. Intensità medio-bassa, focus tecnica ed equilibrio.</div><div class="mini-actions"><button class="mini-btn" type="button" data-rest="60">Avvia 1 min</button><a class="mini-btn mini-link" href="https://www.google.com/search?udm=2&q=Round+di+calci+esercizio+esecuzione" target="_blank" rel="noopener">📷 Esempio</a></div></li>
               </ul>
             </div>
           </div>
@@ -815,16 +849,16 @@
           <h4>Cosa fare oggi</h4>
           <ul>
             <li>Segui il giorno previsto senza aggiungere lavoro extra a caso.</li>
-            <li>Usa il timer per stare dentro i recuperi veri.</li>
-            <li>Al sacco pensa prima a ritmo, postura e respirazione.</li>
+            <li>Usa il timer per rispettare i recuperi veri.</li>
+            <li>Tocca 📷 Esempio su un esercizio per vedere l'esecuzione corretta.</li>
           </ul>
         </article>
         <article class="note-box panel">
           <h4>Questa settimana</h4>
           <ul>
             <li>Lunedì A, mercoledì B, venerdì C.</li>
-            <li>Se un giorno ti senti scarico, taglia 1 esercizio accessorio, non il blocco base.</li>
-            <li>Nel C cerca qualità su mobilità e controllo, non solo bruciore.</li>
+            <li>Collo 2–3 volte a settimana, anche dopo A o B se non lo fai nel C.</li>
+            <li>Se sei scarico, taglia 1 accessorio, non il blocco base.</li>
           </ul>
         </article>
         <article class="note-box panel">
@@ -832,7 +866,7 @@
           <ul>
             <li>Niente gambe pesanti nel B, sennò rovini il C.</li>
             <li>Niente stretching forte a freddo prima dei calci.</li>
-            <li>Niente round al sacco tutti a morte: ti serve continuità, non casino.</li>
+            <li>Collo sempre lento e controllato: fermati ai primi fastidi.</li>
           </ul>
         </article>
       </section>
