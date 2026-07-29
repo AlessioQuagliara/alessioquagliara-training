@@ -38,19 +38,24 @@ Thomas è stato spostato nella categoria Leggero a 75 kg, quindi gli accoppiamen
 ```mermaid
 flowchart LR
     subgraph Torneo_Leggero
-        LQ1A["ALAIN"] --> LQ1["Match 1"]
-        LQ1B["ALESSIO Q."] --> LQ1
+        LQ1A["GIUSEPPE VET."] --> LQ1["Match 1"]
+        LQ1B["FRATELLO SEV."] --> LQ1
         LQ1 --> LS1["Semifinale 1"]
-        LQ2A["CHRISTIAN Q."] --> LQ2["Match 2"]
-        LQ2B["FRATELLO SEV."] --> LQ2
+        
+        LQ2A["TOMMASO T."] --> LQ2["Match 2"]
+        LQ2B["ALAIN"] --> LQ2
         LQ2 --> LS1
-        LQ3A["GIUSEPPE VET."] --> LQ3["Match 3"]
-        LQ3B["MARCO BAL."] --> LQ3
+        
+        LQ3A["MARCO BAL."] --> LQ3["Match 3"]
+        LQ3B["ALESSIO Q."] --> LQ3
         LQ3 --> LS2["Semifinale 2"]
-        LQ4A["MATTEO SEV."] --> LQ4["Match 4"]
-        LQ4B["TOMMASO T."] --> LQ4
+        
+        LQ4A["CHRISTIAN Q."] --> LQ4["Match 4"]
+        LQ4B["MATTEO SEV."] --> LQ4
         LQ4 --> LS2
+        
         LWB["THOMAS (wildcard 75 kg)"] --> LQ4
+        
         LS1 --> LF["Finale Leggero"]
         LS2 --> LF
         LF --> LC["Campione Leggero"]
