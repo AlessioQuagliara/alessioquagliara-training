@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "pageTitle": "Road to Boxing — Forza, Footwork e Conditioning"
+  },
+  "hero": {
+    "eyebrow": "Road to Boxing",
+    "heading": "Ricomposizione: più petto, più gambe, collo e footwork per la boxe",
+    "description": "A è push + core + sacco. B è pull completo + braccia + fiato tecnico. C è gambe pesanti + collo, footwork e conditioning boxe. Attrezzi Domyos + manubri/bilanciere corto, tutto ottimizzato per consultazione rapida da mobile. Ogni esercizio ha un link 📷 per vedere l'esecuzione.",
+    "summary": [
+      { "value": "3", "label": "giorni principali" },
+      { "value": "1", "label": "timer recupero integrato" },
+      { "value": "A/B/C", "label": "divisione chiara a blocchi" }
+    ]
+  },
+  "days": [
+    {
+      "variant": "a",
+      "kicker": "Giorno A",
+      "title": "Push + Core + Sacco",
+      "description": "Petto, spalle, tricipiti, core e tecnica al sacco. La spinta è protagonista, il sacco chiude col fiato senza massacrarti.",
+      "tags": ["Petto", "Spalle", "Core", "Sacco"],
+      "blocks": [
+        {
+          "title": "Riscaldamento",
+          "exercises": [
+            { "name": "Cyclette + mobilità spalle + push-ups leggeri", "meta": "5–7 min", "notes": "3 min cyclette moderata, rotazioni spalle x20, 10–15 push-ups leggeri.", "rest": 60 }
+          ]
+        },
+        {
+          "title": "Blocco petto",
+          "exercises": [
+            { "name": "Chest Press Domyos", "meta": "4×8–12 · 90 sec", "notes": "Scapole strette, petto alto, 3 sec di discesa controllata.", "rest": 90, "example": true },
+            { "name": "Floor Press con Manubri BCBIG", "meta": "4×6–10 · 90 sec", "notes": "Pesante, 1–2 ripetizioni di margine. 2 sec spinta / 3 sec discesa, stop leggero a terra senza rimbalzare.", "rest": 90, "example": true },
+            { "name": "Archer Push-ups", "meta": "3×8–10 · 90 sec", "notes": "Mantieni tensione su petto e core, scendi controllato sul lato attivo.", "rest": 90, "example": true },
+            { "name": "Dips / Push-ups declinati", "meta": "3×6–10 · 90 sec", "notes": "Inclinato leggermente in avanti per caricare petto basso e tricipiti. Forma pulita, niente rimbalzi.", "rest": 90, "example": true }
+          ]
+        },
+        {
+          "title": "Blocco spalle",
+          "exercises": [
+            { "name": "Pike Push-ups", "meta": "3×6–8 · 60 sec", "notes": "Deltoidi anteriori, tronco stabile, testa che sfiora il pavimento.", "rest": 60, "example": true },
+            { "name": "Alzate Laterali con Manubri", "meta": "3×12–15 · 60 sec", "notes": "Deltoidi laterali. Peso controllato, fermati poco sotto la linea delle spalle, gomiti morbidi.", "rest": 60, "example": true }
+          ]
+        },
+        {
+          "title": "Braccia extra",
+          "exercises": [
+            { "name": "Curl Hammer con Manubri", "meta": "3×10–12 · 60 sec", "notes": "Presa neutra, gomiti fermi vicino al corpo. Niente slanci di schiena.", "rest": 60, "example": true },
+            { "name": "Pushdown Tricipiti Domyos", "meta": "3×8–12 · 60 sec", "notes": "Chiudi bene il gomito in basso, senza slanciare col corpo.", "rest": 60, "example": true }
+          ]
+        },
+        {
+          "title": "Core",
+          "exercises": [
+            { "name": "Core Circuit", "meta": "3 giri · 60 sec", "notes": "**Plank** 30–40 sec, **Leg raises alla sbarra** x10–15 (o crunch su tappetino se sei cotto), **russian twist** x30 totali.", "rest": 60, "example": true }
+          ]
+        },
+        {
+          "title": "Sacco / double-end",
+          "exercises": [
+            { "name": "Round tecnici", "meta": "3×3 min · 1 min", "notes": "80% ritmo con pugni leggeri, 20% colpi più carichi. Guardia alta, footwork, respirazione “tss” per non andare in apnea.", "rest": 60, "restLabel": "1 min", "example": true }
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "b",
+      "kicker": "Giorno B",
+      "title": "Pull + Braccia + Fiato",
+      "description": "Schiena completa, braccia e spalle posteriori. Le gambe restano fuori dal carico vero, così arrivi al C ancora fresco. Chiusura col fiato tecnico.",
+      "tags": ["Schiena", "Bicipiti", "Tricipiti", "Fiato"],
+      "blocks": [
+        {
+          "title": "Riscaldamento",
+          "exercises": [
+            { "name": "Cyclette + dead hang + scapular pulls", "meta": "5–7 min", "notes": "3 min cyclette, dead hang 20–30 sec, scapular pulls x10.", "rest": 60 }
+          ]
+        },
+        {
+          "title": "Blocco schiena",
+          "exercises": [
+            { "name": "Trazioni alla sbarra", "meta": "4 serie · 2 min", "notes": "Alterna prona, supina e neutra. Cedimento controllato in fascia 6–12.", "rest": 120, "restLabel": "2 min", "example": true },
+            { "name": "Pulley Alto Domyos", "meta": "4×10–12 · 90 sec", "notes": "Presa larga pronata, eccentrica 3 sec, tira verso il petto alto.", "rest": 90, "example": true },
+            { "name": "Rematore Basso Domyos", "meta": "4×8–10 · 90 sec", "notes": "Tira verso l'addome basso, squeeze scapole, busto fermo.", "rest": 90, "example": true },
+            { "name": "Rematore con Bilanciere Corto BCBIG", "meta": "3×8–10 · 90 sec", "notes": "Schiena neutra, bilanciere verso l'ombelico. Carico solido ma senza strappi.", "rest": 90, "example": true },
+            { "name": "Pullover Domyos", "meta": "3×10–12 · 60–90 sec", "notes": "Dorsali + un filo di petto, utile anche per aprire il torace. Braccia quasi tese, controllo pieno.", "rest": 90, "example": true }
+          ]
+        },
+        {
+          "title": "Spalle posteriori / cuffia",
+          "exercises": [
+            { "name": "Face Pull al Cavo", "meta": "3×15–20 · 60 sec", "notes": "Salute spalle, deltoidi posteriori e cuffia. Gomiti alti, tira verso la faccia.", "rest": 60, "example": true },
+            { "name": "Alzate Posteriori con Manubri (busto flesso)", "meta": "3×12–15 · 60 sec", "notes": "Busto inclinato ~45–70°, schiena neutra. Apri verso fuori pensando ai deltoidi dietro, non ai trapezi.", "rest": 60, "example": true }
+          ]
+        },
+        {
+          "title": "Braccia",
+          "exercises": [
+            { "name": "Curl Bicipiti (cavo o manubri)", "meta": "4×8–12 · 60 sec", "notes": "Controllato, niente cheating inutile. Gomiti fermi.", "rest": 60, "example": true },
+            { "name": "French Press manubrio singolo / Pushdown", "meta": "3×8–12 · 60 sec", "notes": "Chiudi bene il gomito, senza slanciare. Estensione completa in alto.", "rest": 60, "example": true }
+          ]
+        },
+        {
+          "title": "Fiato tecnico",
+          "exercises": [
+            { "name": "Double-end / sacco tecnico", "meta": "3×3 min · 1 min", "notes": "Jab–cross–hook, triangolo, guardia alta. Solo pugni puliti, ritmo tecnico.", "rest": 60, "restLabel": "1 min", "example": true }
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "c",
+      "kicker": "Giorno C",
+      "title": "Gambe + Collo + Footwork + Conditioning Boxe",
+      "description": "Il giorno vero delle gambe: quadricipiti, femorali, glutei e polpacci con volume serio. Collo con isometrie controllate, footwork da pugile e conditioning al sacco.",
+      "tags": ["Gambe", "Collo", "Footwork", "Boxe"],
+      "blocks": [
+        {
+          "title": "Riscaldamento",
+          "exercises": [
+            { "name": "Tapis/cyclette + hip circles + side skates", "meta": "6–8 min", "notes": "3–4 min tapis o cyclette, hip circles x10 per lato, side skates x10 per lato.", "rest": 45 }
+          ]
+        },
+        {
+          "title": "Mobilità dinamica",
+          "exercises": [
+            { "name": "Swing frontali", "meta": "2×10–12/lato", "notes": "Slanci controllati della gamba avanti/indietro, niente strappi.", "rest": 45, "example": true },
+            { "name": "Swing laterali", "meta": "2×10–12/lato", "notes": "Apri l'anca lateralmente mantenendo l'assetto del busto.", "rest": 45, "example": true },
+            { "name": "Lateral Lunges", "meta": "2×10/lato", "notes": "Profondità gestibile, ginocchio allineato alla punta del piede.", "rest": 45, "example": true },
+            { "name": "Ankle Rocks", "meta": "2×15/lato", "notes": "Mobilità caviglia avanti/indietro, utile per appoggio e spinta a terra.", "rest": 45, "example": true }
+          ]
+        },
+        {
+          "title": "Forza gambe",
+          "exercises": [
+            { "name": "Leg Extension Domyos", "meta": "4×12–15 · 60 sec", "notes": "Quadricipiti. 1 sec in contrazione, cerca progressione pulita.", "rest": 60, "example": true },
+            { "name": "Squat Goblet con Manubrio / Bilanciere Corto", "meta": "4×8–12 · 90 sec", "notes": "Cosce, glutei e core. Schiena neutra, scendi sotto il parallelo se la mobilità lo permette.", "rest": 90, "example": true },
+            { "name": "Affondi Bulgari con Manubri", "meta": "4×10/lato · 60–75 sec", "notes": "Controllo e stabilità prima del peso. Ginocchio posteriore verso il basso, busto leggermente avanti.", "rest": 75, "example": true },
+            { "name": "Romanian Deadlift con Bilanciere Corto", "meta": "4×8–10 · 90 sec", "notes": "Femorali, glutei, lombari. Schiena neutra, anche indietro, bilanciere vicino alle gambe.", "rest": 90, "example": true },
+            { "name": "Calf Raises", "meta": "4×15–20 · 45 sec", "notes": "Su gradino, pausa 1 sec in alto, allungo pieno in basso.", "rest": 45, "example": true }
+          ]
+        },
+        {
+          "title": "Footwork Boxe",
+          "exercises": [
+            { "name": "Avanti/indietro con jab", "meta": "3×2 min · 45–60 sec", "notes": "Passi avanti e indietro sempre in guardia, jab a ogni entrata. Non incrociare i piedi.", "rest": 60, "example": true },
+            { "name": "Passo laterale + jab-cross", "meta": "3×2 min · 45–60 sec", "notes": "Spostati lateralmente e chiudi con 1-2, poi riparti dall'altro lato.", "rest": 60, "example": true },
+            { "name": "Pivot dopo 1-2 oppure 1-2-3", "meta": "3×2 min · 45–60 sec", "notes": "Dopo la combinazione ruota sul piede avanti per cambiare angolo, guardia sempre alta.", "rest": 60, "example": true },
+            { "name": "Line drill / corda", "meta": "3×1 min", "notes": "Entra-esci, spostamento laterale e pivot lungo una linea o con la corda, sempre con guardia alta.", "rest": 60, "restLabel": "1 min", "example": true }
+          ]
+        },
+        {
+          "title": "Collo (isometrie)",
+          "exercises": [
+            { "name": "Isometria collo — fronte", "meta": "2×15–20 sec", "notes": "Mano sulla fronte, spingi contro una resistenza ferma. Collo immobile, respiro regolare. Niente neck bridge né movimenti rapidi.", "rest": 45, "example": true },
+            { "name": "Isometria collo — retro", "meta": "2×15–20 sec", "notes": "Mani dietro la nuca, spingi indietro contro resistenza ferma. Nessuno scatto, controllo pieno.", "rest": 45, "example": true },
+            { "name": "Isometria collo — lato destro", "meta": "2×15–20 sec", "notes": "Mano sulla tempia destra, spingi lateralmente senza muovere la testa.", "rest": 45, "example": true },
+            { "name": "Isometria collo — lato sinistro", "meta": "2×15–20 sec", "notes": "Mano sulla tempia sinistra, spingi lateralmente senza muovere la testa.", "rest": 45, "example": true }
+          ]
+        },
+        {
+          "title": "Sacco Pugilato",
+          "exercises": [
+            { "name": "Round al sacco", "meta": "4 round · 1 min rec", "notes": "**R1** 3 min: jab, movimento e uscita laterale. **R2** 3 min: 1-2, pivot e reset della distanza. **R3** 3 min: 1-2-3, schivata controllata e uscita. **R4** 2 min: volume al 60–70%, solo pugni puliti e guardia alta. Recupero 1 min in piedi tra i round.", "rest": 60, "restLabel": "1 min", "example": true }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "title": "Cosa fare oggi",
+      "items": [
+        "Segui il giorno previsto senza aggiungere lavoro extra a caso.",
+        "Usa il timer per rispettare i recuperi veri.",
+        "Tocca 📷 Esempio su un esercizio per vedere l'esecuzione corretta."
+      ]
+    },
+    {
+      "title": "Questa settimana",
+      "items": [
+        "Lunedì A, mercoledì B, venerdì C.",
+        "Collo 2–3 volte a settimana, anche dopo A o B se non lo fai nel C.",
+        "Se sei scarico, taglia 1 accessorio, non il blocco base."
+      ]
+    },
+    {
+      "title": "Cosa evitare",
+      "items": [
+        "Niente gambe pesanti nel B, sennò rovini il C.",
+        "Niente stretching forte a freddo prima del footwork.",
+        "Collo sempre lento e controllato: fermati ai primi fastidi."
+      ]
+    }
+  ],
+  "footerNote": "Versione mobile responsive con timer integrato, preset rapidi e pulsanti recupero dentro ogni esercizio."
+}
