@@ -86,6 +86,9 @@
     if (currentView === 'dashboard' || currentView === 'training') renderView(currentView);
   });
 
+  const versionBadge = document.getElementById('versionBadge');
+  if (versionBadge) versionBadge.textContent = `v${window.APP_DATA.APP_VERSION}`;
+
   syncBoxingToggle();
   goToView('dashboard');
 })();

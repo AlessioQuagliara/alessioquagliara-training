@@ -94,22 +94,33 @@
 
   /* ================= Store (localStorage) ================= */
 
+  // La chiave fisica resta invariata dalla v1: cambiarla wiperebbe i dati
+  // di chi ha gia' usato l'app. La compatibilita' tra versioni dei dati e'
+  // gestita da schemaVersion + migrate(), non dal nome della chiave.
   const STORAGE_KEY = 'rtb_state_v1';
   const D = window.APP_DATA;
 
   const defaultState = () => ({
-    version: 1,
+    schemaVersion: D.SCHEMA_VERSION,
+    version: D.SCHEMA_VERSION, // alias di compatibilita' per letture esterne
     profile: { ...D.PROFILE_DEFAULT },
     settings: {
       weekPlan: { ...D.WEEK_PLAN_DEFAULT },
       boxingToday: false,
+      soundEnabled: true,
       nutritionTargets: { ...D.NUTRITION_TARGETS_DEFAULT },
+      externalBoxing: { active: false, sessionsPerWeek: 0, days: [] },
+      lastDeloadAt: null,
+      deloadActiveWeekStart: null,
+      deloadPromptSnoozedUntil: null,
     },
     workouts: [],
     recoveryChecks: [],
     nutritionDays: {},
     customFoods: [],
+    favoriteMeals: [],
     progress: [],
+    blockNotes: [],
   });
 
   let state = null;
@@ -121,23 +132,31 @@
 
   const migrate = (parsed) => {
     // Merge superficiale con i default per tollerare versioni precedenti
-    // o campi mancanti, senza rompere l'app.
+    // o campi mancanti, senza rompere l'app e senza perdere gli storici
+    // gia' salvati (workouts, progress, nutritionDays restano quelli
+    // importati/esistenti, vengono solo validati come array/oggetti).
     const base = defaultState();
+    const incomingSettings = parsed.settings || {};
     return {
       ...base,
       ...parsed,
+      schemaVersion: D.SCHEMA_VERSION,
+      version: D.SCHEMA_VERSION,
       profile: { ...base.profile, ...(parsed.profile || {}) },
       settings: {
         ...base.settings,
-        ...(parsed.settings || {}),
-        weekPlan: { ...base.settings.weekPlan, ...((parsed.settings || {}).weekPlan || {}) },
-        nutritionTargets: { ...base.settings.nutritionTargets, ...((parsed.settings || {}).nutritionTargets || {}) },
+        ...incomingSettings,
+        weekPlan: { ...base.settings.weekPlan, ...(incomingSettings.weekPlan || {}) },
+        nutritionTargets: { ...base.settings.nutritionTargets, ...(incomingSettings.nutritionTargets || {}) },
+        externalBoxing: { ...base.settings.externalBoxing, ...(incomingSettings.externalBoxing || {}) },
       },
       workouts: Array.isArray(parsed.workouts) ? parsed.workouts : [],
       recoveryChecks: Array.isArray(parsed.recoveryChecks) ? parsed.recoveryChecks : [],
       nutritionDays: parsed.nutritionDays && typeof parsed.nutritionDays === 'object' ? parsed.nutritionDays : {},
       customFoods: Array.isArray(parsed.customFoods) ? parsed.customFoods : [],
+      favoriteMeals: Array.isArray(parsed.favoriteMeals) ? parsed.favoriteMeals : [],
       progress: Array.isArray(parsed.progress) ? parsed.progress : [],
+      blockNotes: Array.isArray(parsed.blockNotes) ? parsed.blockNotes : [],
     };
   };
 
@@ -275,16 +294,22 @@
   const exportData = () => ({
     exportedAt: new Date().toISOString(),
     app: 'road-to-boxing',
+    schemaVersion: D.SCHEMA_VERSION,
+    appVersion: D.APP_VERSION,
     state,
   });
 
+  // Ritorna true se il file importato veniva da uno schema piu' vecchio
+  // (utile per avvisare l'utente che i dati sono stati aggiornati).
   const importData = (payload) => {
     if (!payload || typeof payload !== 'object') throw new Error('File non valido.');
     const incoming = payload.state && typeof payload.state === 'object' ? payload.state : payload;
     if (!incoming || typeof incoming !== 'object') throw new Error('Struttura dati non riconosciuta.');
+    const incomingVersion = incoming.schemaVersion || incoming.version || 1;
     state = migrate(incoming);
     persist();
     notify();
+    return incomingVersion < D.SCHEMA_VERSION;
   };
 
   window.Store = {

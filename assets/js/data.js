@@ -7,6 +7,12 @@
 (() => {
   'use strict';
 
+  /* ---------------- Versione schema dati ---------------- */
+  // Usato da store.js per popolare i default e gestire l'import
+  // di backup creati con versioni precedenti dell'app senza perdere dati.
+  const SCHEMA_VERSION = 2;
+  const APP_VERSION = '2.0.0';
+
   /* ---------------- Profilo iniziale (precompilato) ---------------- */
   const PROFILE_DEFAULT = {
     heightCm: 167.5,
@@ -32,78 +38,111 @@
   /* ---------------- Regole testuali fisse ---------------- */
   const RULE_POWER = 'Fermati quando cala la velocita: non allenare potenza a cedimento.';
   const RULE_FUNDAMENTALS = 'Fondamentali a 1-3 RIR; cedimento solo occasionale sugli accessori.';
+  const RULE_QUALITY = 'Qualita prima dell\'ego: meglio una serie pulita in meno che una sporca in piu.';
 
-  /* ---------------- Schede di allenamento A / B / C / D ---------------- */
+  /* ---------------- Schede di allenamento A / B / C / D ----------------
+     Piano "Fighter + Muscolo": upper forza+ipertrofia, tecnica/aerobico,
+     gambe+richiamo upper+potenza, skill facoltativo. Gli id degli esercizi
+     gia' presenti nella versione precedente restano invariati dove
+     l'esercizio persiste concettualmente, cosi' lo storico caricato nei
+     workout salvati resta leggibile e collegato dopo l'aggiornamento.
+     equip: 'manubri' | 'bilanciere' | 'cavo-domyos' | 'corpolibero' — usato
+     per calibrare il messaggio di progressione (doppia progressione). */
   const DAYS = {
     A: {
       key: 'A',
       kicker: 'Giorno A',
-      title: 'Forza upper + boxe tecnica',
+      title: 'Upper forza + ipertrofia + sacco',
       focus: 'forza',
-      tags: ['Petto', 'Schiena', 'Spalle', 'Sacco'],
-      description: 'Spinta, tirata e sacco a round. Fondamentali pesanti, accessori a rifinire, chiusura tecnica.',
+      intensity: 'Forza + ipertrofia (moderata-alta)',
+      durationMin: { min: 75, max: 90 },
+      tags: ['Petto', 'Schiena', 'Spalle', 'Braccia', 'Sacco'],
+      description: 'Upper completo per costruire petto, schiena, spalle e braccia senza sacrificare tecnica e recupero.',
       blocks: [
         {
           id: 'a-warmup', type: 'info', title: 'Riscaldamento',
-          items: ['Cyclette 5 min ritmo moderato', 'Mobilita spalle e scapole (rotazioni, scapular pulls)'],
+          items: ['Cyclette o tapis roulant 5-7 min, ritmo moderato', 'Rotazioni spalle e mobilita scapole', '10 push-up leggeri o attivazione specifica'],
         },
         {
-          id: 'a-strength', type: 'strength', title: 'Forza upper',
+          id: 'a-strength', type: 'strength', title: 'Upper forza',
           exercises: [
-            { id: 'a-chest-press', name: 'Chest press o floor press', sets: 3, repsMin: 6, repsMax: 10, rirTarget: 2, restSec: 90, kind: 'fondamentale' },
-            { id: 'a-trazioni', name: 'Trazioni o lat machine', sets: 3, repsMin: 6, repsMax: 10, rirTarget: 2, restSec: 90, kind: 'fondamentale' },
-            { id: 'a-rematore', name: 'Rematore o cable row', sets: 3, repsMin: 8, repsMax: 12, rirTarget: 2, restSec: 75, kind: 'fondamentale' },
-            { id: 'a-pushdown', name: 'Pushdown tricipiti', sets: 2, repsMin: 10, repsMax: 15, rirTarget: 1, restSec: 60, kind: 'accessorio' },
-            { id: 'a-facepull', name: 'Face pull', sets: 2, repsMin: 15, repsMax: 20, rirTarget: 2, restSec: 60, kind: 'accessorio' },
+            { id: 'a-chest-press', name: 'Chest press Domyos', sets: 4, repsMin: 6, repsMax: 10, rirTarget: 1, rirLabel: '1-2', restSec: 90, kind: 'fondamentale', equip: 'cavo-domyos', note: 'Scapole strette, petto alto, eccentrica controllata.' },
+            { id: 'a-floor-press', name: 'Floor press manubri', sets: 3, repsMin: 8, repsMax: 10, rirTarget: 1, rirLabel: '1-2', restSec: 90, kind: 'fondamentale', equip: 'manubri', note: 'Pesante ma pulito, nessun cedimento tecnico.' },
+            { id: 'a-trazioni', name: 'Trazioni alla sbarra oppure lat machine', sets: 4, repsMin: 6, repsMax: 10, rirTarget: 1, rirLabel: '1-2', restSec: 105, kind: 'fondamentale', equip: 'corpolibero' },
+            { id: 'a-rematore', name: 'Rematore al cavo oppure rematore con bilanciere corto', sets: 3, repsMin: 8, repsMax: 12, rirTarget: 1, rirLabel: '1-2', restSec: 90, kind: 'fondamentale', equip: 'cavo-domyos' },
+            { id: 'a-shoulder', name: 'Pike push-up oppure shoulder press', sets: 3, repsMin: 6, repsMax: 10, rirTarget: 1, rirLabel: '1-2', restSec: 75, kind: 'fondamentale', equip: 'corpolibero' },
+            { id: 'a-lateral-raise', name: 'Alzate laterali', sets: 3, repsMin: 12, repsMax: 20, rirTarget: 1, rirLabel: '1-2', restSec: 60, kind: 'accessorio', equip: 'manubri', lastSetOptionalRir: true },
+            { id: 'a-pushdown', name: 'Pushdown tricipiti', sets: 3, repsMin: 10, repsMax: 15, rirTarget: 1, rirLabel: '1', restSec: 60, kind: 'accessorio', equip: 'cavo-domyos', lastSetOptionalRir: true },
+            { id: 'a-curl-hammer', name: 'Curl hammer', sets: 3, repsMin: 10, repsMax: 15, rirTarget: 1, rirLabel: '1', restSec: 60, kind: 'accessorio', equip: 'manubri', lastSetOptionalRir: true },
+            { id: 'a-facepull', name: 'Face pull', sets: 2, repsMin: 15, repsMax: 20, rirTarget: 1, rirLabel: '1-2', restSec: 60, kind: 'accessorio', equip: 'cavo-domyos' },
           ],
         },
         {
-          id: 'a-sacco', type: 'rounds', title: 'Sacco', rounds: 4, roundSec: 180, restSec: 60,
-          roundLabels: ['Jab e distanza', 'Diretto e uscita', 'Jab-diretto-hook', 'Tecnico libero'],
+          id: 'a-sacco', type: 'rounds', title: 'Sacco', rounds: 3, roundSec: 180, restSec: 60,
+          roundLabels: ['Jab, distanza e rientro in guardia', 'Diretto e uscita angolata', 'Jab-diretto-hook e tecnico libero'],
+          note: 'Intensita tecnica, non conditioning all-out.',
         },
       ],
     },
     B: {
       key: 'B',
       kicker: 'Giorno B',
-      title: 'Tecnica + aerobico',
+      title: 'Tecnica + aerobico + mobilita',
       focus: 'tecnica',
-      tags: ['Shadow', 'Palla', 'Sacco tecnico', 'Cardio'],
-      description: 'Giornata di skill e fiato: shadow, palla a doppia estremita, sacco leggero e cardio facile.',
+      intensity: 'Tecnica (bassa-moderata)',
+      durationMin: { min: 60, max: 75 },
+      tags: ['Shadow', 'Palla', 'Sacco tecnico', 'Cardio', 'Mobilita'],
+      description: 'Costruisci timing, precisione, motore aerobico e mobilita; non trasformarlo in una guerra.',
       blocks: [
-        { id: 'b-shadow', type: 'rounds', title: 'Shadow boxing', rounds: 3, roundSec: 180, restSec: 60, roundLabels: ['Guardia e passi', 'Combinazioni', 'Difesa e rientro'] },
+        { id: 'b-shadow', type: 'rounds', title: 'Shadow boxing', rounds: 3, roundSec: 180, restSec: 60, roundLabels: ['Guardia e passi', 'Combinazioni e ritmo', 'Difesa e rientro'] },
         { id: 'b-palla', type: 'rounds', title: 'Palla a doppia estremita / reflex ball', rounds: 3, roundSec: 180, restSec: 60, roundLabels: ['Ritmo lento', 'Precisione', 'Ritmo libero'] },
-        { id: 'b-sacco', type: 'rounds', title: 'Sacco tecnico (70-80%)', rounds: 3, roundSec: 180, restSec: 60, roundLabels: ['Tecnico', 'Tecnico', 'Tecnico'] },
-        { id: 'b-cardio', type: 'info', title: 'Cardio facile (25-40 min)', items: ['Tapis roulant inclinato, cyclette o corsa blanda', 'Ritmo conversazionale, niente affanno'] },
+        { id: 'b-sacco', type: 'rounds', title: 'Sacco tecnico (70-80%)', rounds: 3, roundSec: 180, restSec: 60, roundLabels: ['Tecnico 70-80%', 'Tecnico 70-80%', 'Tecnico 70-80%'] },
+        {
+          id: 'b-cardio', type: 'cardio', title: 'Cardio facile', minMinutes: 25, maxMinutes: 40,
+          modes: ['Tapis roulant inclinato', 'Cyclette', 'Corsa blanda'],
+          note: 'Ritmo conversazionale: se non riesci a parlare, rallenta.',
+        },
         { id: 'b-mobility', type: 'info', title: 'Mobilita (10 min)', items: ['Anche', 'Caviglie', 'Torace', 'Spalle'] },
       ],
     },
     C: {
       key: 'C',
       kicker: 'Giorno C',
-      title: 'Gambe + potenza + sacco',
+      title: 'Gambe + richiamo upper + potenza + sacco',
       focus: 'forza',
-      tags: ['Gambe', 'Core', 'Potenza', 'Sacco'],
-      description: 'Gambe pesanti, core anti-rotazione, potenza esplosiva e sacco potenza/tecnico.',
+      intensity: 'Forza gambe + potenza (alta)',
+      durationMin: { min: 85, max: 100 },
+      tags: ['Gambe', 'Richiamo upper', 'Core', 'Potenza', 'Sacco'],
+      description: 'Costruisci gambe forti e massa utile, mantieni un secondo stimolo upper, poi fai potenza quando sei ancora fresco.',
       blocks: [
         {
           id: 'c-warmup', type: 'info', title: 'Riscaldamento',
-          items: ['Cyclette 5 min', 'Mobilita anche e caviglie'],
+          items: ['Cyclette 5-7 min', 'Mobilita anche e caviglie', '1-2 serie leggere di squat a corpo libero'],
         },
         {
           id: 'c-strength', type: 'strength', title: 'Forza gambe',
           exercises: [
-            { id: 'c-squat', name: 'Goblet squat o squat', sets: 3, repsMin: 6, repsMax: 10, rirTarget: 2, restSec: 90, kind: 'fondamentale' },
-            { id: 'c-rdl', name: 'Romanian deadlift', sets: 3, repsMin: 6, repsMax: 10, rirTarget: 2, restSec: 90, kind: 'fondamentale' },
-            { id: 'c-bulgaro', name: 'Bulgarian split squat', sets: 3, repsMin: 8, repsMax: 12, rirTarget: 2, restSec: 75, kind: 'fondamentale', unilateral: true },
-            { id: 'c-legcurl', name: 'Leg curl', sets: 3, repsMin: 10, repsMax: 15, rirTarget: 1, restSec: 60, kind: 'accessorio' },
-            { id: 'c-calf', name: 'Calf raise', sets: 3, repsMin: 12, repsMax: 20, rirTarget: 1, restSec: 45, kind: 'accessorio' },
+            { id: 'c-squat', name: 'Goblet squat oppure squat', sets: 4, repsMin: 6, repsMax: 10, rirTarget: 1, rirLabel: '1-2', restSec: 90, kind: 'fondamentale', equip: 'manubri' },
+            { id: 'c-rdl', name: 'Romanian deadlift', sets: 3, repsMin: 6, repsMax: 10, rirTarget: 1, rirLabel: '1-2', restSec: 90, kind: 'fondamentale', equip: 'bilanciere' },
+            { id: 'c-bulgaro', name: 'Bulgarian split squat', sets: 3, repsMin: 8, repsMax: 12, rirTarget: 1, rirLabel: '1-2', restSec: 90, kind: 'fondamentale', equip: 'manubri', unilateral: true },
+            { id: 'c-legext', name: 'Leg extension', sets: 2, repsMin: 12, repsMax: 15, rirTarget: 1, rirLabel: '1', restSec: 60, kind: 'accessorio', equip: 'cavo-domyos', lastSetOptionalRir: true },
+            { id: 'c-legcurl', name: 'Leg curl', sets: 3, repsMin: 10, repsMax: 15, rirTarget: 1, rirLabel: '1', restSec: 60, kind: 'accessorio', equip: 'cavo-domyos', lastSetOptionalRir: true },
+            { id: 'c-calf', name: 'Calf raise', sets: 4, repsMin: 12, repsMax: 20, rirTarget: 1, rirLabel: '1', restSec: 60, kind: 'accessorio', equip: 'manubri', lastSetOptionalRir: true },
+          ],
+        },
+        {
+          id: 'c-richiamo-upper', type: 'strength', title: 'Richiamo upper',
+          reducibleWithRecovery: true,
+          exercises: [
+            { id: 'c-richiamo-chest', name: 'Chest press leggera oppure push-up declinati', sets: 2, repsMin: 10, repsMax: 15, rirTarget: 2, rirLabel: '2', restSec: 75, kind: 'accessorio', equip: 'cavo-domyos' },
+            { id: 'c-richiamo-lat', name: 'Lat machine oppure trazioni', sets: 2, repsMin: 8, repsMax: 12, rirTarget: 2, rirLabel: '2', restSec: 75, kind: 'accessorio', equip: 'corpolibero' },
+            { id: 'c-richiamo-alzate', name: 'Alzate laterali oppure alzate posteriori', sets: 2, repsMin: 12, repsMax: 20, rirTarget: 1, rirLabel: '1', restSec: 60, kind: 'accessorio', equip: 'manubri' },
           ],
         },
         {
           id: 'c-core', type: 'strength', title: 'Core',
           exercises: [
-            { id: 'c-pallof', name: 'Pallof press', sets: 2, repsMin: 10, repsMax: 12, rirTarget: 2, restSec: 45, kind: 'accessorio', unilateral: true },
+            { id: 'c-pallof', name: 'Pallof press', sets: 2, repsMin: 10, repsMax: 12, rirTarget: 2, restSec: 45, kind: 'accessorio', unilateral: true, equip: 'cavo-domyos' },
             { id: 'c-plank', name: 'Plank', sets: 2, repsMin: 30, repsMax: 45, rirTarget: 1, restSec: 45, kind: 'accessorio', isTime: true },
           ],
         },
@@ -111,15 +150,16 @@
           id: 'c-power', type: 'power', title: 'Potenza (qualita, non cedimento)',
           note: RULE_POWER,
           exercises: [
-            { id: 'c-pushup-ex', name: 'Push-up esplosivi', sets: 4, repsMin: 4, repsMax: 6, restSec: 90 },
-            { id: 'c-squatjump', name: 'Squat jump', sets: 4, repsMin: 3, repsMax: 5, restSec: 90 },
+            { id: 'c-pushup-ex', name: 'Push-up esplosivi', sets: 3, repsMin: 4, repsMax: 6, restSec: 90 },
+            { id: 'c-squatjump', name: 'Squat jump', sets: 3, repsMin: 3, repsMax: 5, restSec: 90 },
           ],
         },
         {
           id: 'c-sacco-potenza', type: 'power', title: 'Sacco potenza',
-          note: 'Colpi singoli puliti, massima qualita e velocita, non volume.',
+          halvableWithRecovery: true,
+          note: 'Qualita, allineamento del polso, trasferimento del peso e ritorno pulito in guardia: non volume.',
           exercises: [
-            { id: 'c-sacco-potenza-ex', name: 'Colpi singoli puliti per lato', sets: 6, repsMin: 3, repsMax: 3, restSec: 60 },
+            { id: 'c-sacco-potenza-ex', name: 'Colpi singoli puliti per lato', sets: 4, repsMin: 3, repsMax: 3, restSec: 60 },
           ],
         },
         { id: 'c-sacco-tecnico', type: 'rounds', title: 'Sacco tecnico', rounds: 2, roundSec: 180, restSec: 60, roundLabels: ['Tecnico', 'Tecnico'] },
@@ -128,23 +168,39 @@
     D: {
       key: 'D',
       kicker: 'Giorno D',
-      title: 'Skill facoltativo',
+      title: 'Skill puro facoltativo',
       focus: 'tecnica',
+      intensity: 'Skill (bassa, facoltativa)',
+      durationMin: { min: 45, max: 60 },
       tags: ['Palla', 'Shadow', 'Sacco', 'Facoltativo'],
-      description: 'Sessione leggera di skill puro, da aggiungere solo se il recupero e buono.',
+      description: 'Skill leggero/moderato. Usalo solo quando recupero, sonno e articolazioni sono buoni.',
       blocks: [
         { id: 'd-palla', type: 'rounds', title: 'Palla a doppia estremita', rounds: 3, roundSec: 180, restSec: 60, roundLabels: ['Ritmo lento', 'Precisione', 'Ritmo libero'] },
         { id: 'd-shadow', type: 'rounds', title: 'Shadow', rounds: 3, roundSec: 180, restSec: 60, roundLabels: ['Guardia e passi', 'Combinazioni', 'Difesa e rientro'] },
         { id: 'd-sacco', type: 'rounds', title: 'Sacco tecnico e ritmo', rounds: 5, roundSec: 180, restSec: 60, roundLabels: ['Tecnico', 'Tecnico', 'Ritmo', 'Ritmo', 'Libero'] },
         {
-          id: 'd-hard', type: 'info', title: 'Round duro (opzionale)',
-          items: ['Solo se il recupero e buono (sonno, energia, nessun dolore).', 'In caso di dubbio, salta e resta tecnico.'],
+          id: 'd-hard', type: 'hardround', title: 'Round duro (opzionale)',
+          conditions: { sleepMin: 4, energyMin: 4, painMax: 1 },
+          roundSec: 180, restSec: 60,
+          note: 'Un round extra a ritmo alto, solo se il corpo e davvero pronto.',
         },
       ],
     },
   };
 
   const DAY_ORDER = ['A', 'B', 'C', 'D'];
+
+  /* ---------------- Collo (card opzionale, non conteggiata nel volume) ---------------- */
+  const NECK_ROUTINE = {
+    id: 'neck-routine',
+    title: 'Collo (opzionale)',
+    fixedNote: 'Movimento lento, niente pesi all\'inizio; fermati ai primi fastidi strani. Non serve il collo da wrestler: costruisci una base.',
+    exercises: [
+      { id: 'neck-flexion', name: 'Neck flexion supino', sets: 2, repsMin: 15, repsMax: 20, restSec: 45 },
+      { id: 'neck-extension', name: 'Neck extension prono', sets: 2, repsMin: 15, repsMax: 20, restSec: 45 },
+      { id: 'neck-side', name: 'Side neck', sets: 2, repsMin: 15, repsMax: 20, restSec: 45, unilateral: true },
+    ],
+  };
 
   /* ---------------- Database alimenti (stime per 100 g) ---------------- */
   // Valori indicativi da fonti nutrizionali generiche: usali come stima,
@@ -185,7 +241,18 @@
     { id: 'creatina', name: 'Creatina monoidrato', cat: 'integratori', kcal: 0, p: 0, c: 0, f: 0 },
   ];
 
-  /* ---------------- Template pasti (giorno allenamento serale / riposo) ---------------- */
+  /* ---------------- Tipi di giornata nutrizionale ---------------- */
+  // Indicatore visivo non prescrittivo: aiuta a capire dove servono piu
+  // carboidrati, senza imporre un numero fisso.
+  const NUTRITION_DAY_TYPES = [
+    { key: 'riposo', label: 'Riposo', carbLevel: 'Carboidrati moderati' },
+    { key: 'tecnica', label: 'Tecnica/sacco', carbLevel: 'Carboidrati moderati' },
+    { key: 'forza', label: 'Upper forza', carbLevel: 'Carboidrati medio-alti' },
+    { key: 'gambe', label: 'Gambe + potenza', carbLevel: 'Carboidrati alti' },
+    { key: 'boxe', label: 'Boxe esterna', carbLevel: 'Carboidrati medio-alti, priorita pre/post' },
+  ];
+
+  /* ---------------- Template pasti per tipo di giornata ---------------- */
   const MEAL_TEMPLATES = {
     forza: [
       { name: 'Colazione', items: [{ id: 'yogurt-greco', qty: 250 }, { id: 'avena', qty: 60 }, { id: 'banana', qty: 100 }] },
@@ -193,6 +260,13 @@
       { name: 'Pranzo', items: [{ id: 'riso-crudo', qty: 110 }, { id: 'petto-pollo', qty: 180 }, { id: 'zucchine', qty: 150 }, { id: 'olio-evo', qty: 10 }] },
       { name: 'Pre-workout', items: [{ id: 'banana', qty: 100 }, { id: 'yogurt-greco', qty: 180 }] },
       { name: 'Cena post-workout', items: [{ id: 'tacchino-fesa', qty: 200 }, { id: 'patate', qty: 300 }, { id: 'broccoli', qty: 150 }, { id: 'olio-evo', qty: 10 }] },
+    ],
+    gambe: [
+      { name: 'Colazione', items: [{ id: 'yogurt-greco', qty: 250 }, { id: 'avena', qty: 70 }, { id: 'banana', qty: 120 }] },
+      { name: 'Spuntino lavoro', items: [{ id: 'banana', qty: 120 }, { id: 'skyr', qty: 170 }] },
+      { name: 'Pranzo', items: [{ id: 'riso-crudo', qty: 130 }, { id: 'petto-pollo', qty: 180 }, { id: 'zucchine', qty: 150 }, { id: 'olio-evo', qty: 10 }] },
+      { name: 'Pre-workout', items: [{ id: 'banana', qty: 120 }, { id: 'yogurt-greco', qty: 180 }] },
+      { name: 'Cena post-workout', items: [{ id: 'tacchino-fesa', qty: 200 }, { id: 'patate', qty: 350 }, { id: 'broccoli', qty: 150 }, { id: 'olio-evo', qty: 10 }] },
     ],
     boxe: [
       { name: 'Colazione', items: [{ id: 'yogurt-greco', qty: 250 }, { id: 'avena', qty: 60 }, { id: 'frutti-bosco', qty: 100 }] },
@@ -237,7 +311,7 @@
       content: `# Piano ricomposizione e performance
 
 ## Direzione
-Costruire in 4-5 anni un fisico da fighter: forte, rapido, mobile, resistente, con vita sotto controllo e massa utile. Non inseguire 63,5 kg esatti: usa un range di peso e indicatori di prestazione.
+Costruire in 4-5 anni un fisico da fighter: forte, rapido, mobile, resistente, con vita sotto controllo e massa muscolare utile. "Fighter + Muscolo" significa densita e forza funzionale per boxe/sacco, non volume da bodybuilding fine a se stesso. Non inseguire 63,5 kg esatti: usa un range di peso e indicatori di prestazione.
 
 ## Dati di partenza
 - Altezza: 167,5 cm
@@ -247,7 +321,7 @@ Costruire in 4-5 anni un fisico da fighter: forte, rapido, mobile, resistente, c
 - Collo: 37,5 cm
 
 ## Obiettivo
-Arrivare gradualmente a circa 10-12% di BF con piu massa magra, senza sacrificare Thai/boxe, sacco, mobilita e recupero.
+Arrivare gradualmente a circa 10-12% di BF con piu massa magra, senza sacrificare tecnica/boxe, sacco, mobilita e recupero.
 
 ## Principi
 - Usa mantenimento, crescita lenta e mini-cut: non bulk sporchi ne tagli aggressivi.
@@ -257,10 +331,11 @@ Arrivare gradualmente a circa 10-12% di BF con piu massa magra, senza sacrificar
 - Indicatori principali: vita, trazioni, press, forza delle gambe, qualita dei round, recupero e mobilita.
 
 ## Roadmap
-1. 0-6 mesi: tecnica Thai/sparring, aerobico, forza di base, regolarita.
+1. 0-6 mesi: tecnica/sparring, aerobico, forza di base, regolarita.
 2. 6-18 mesi: ricomposizione lenta; vita in calo o stabile, carichi e capacita di lavoro in aumento.
 3. 18-48 mesi: fasi di massa funzionale molto lente alternate a mini-cut da 4-8 settimane quando la vita sale troppo.
 4. Ogni 8-12 settimane: rivedi dati e modifica una variabile alla volta.
+5. Ogni 4-6 settimane di carico continuo: valuta una settimana di scarico (l'app la propone da sola quando serve).
 
 ## Regola decisionale
 - Peso stabile + vita cala + performance sale = ricomposizione riuscita.
@@ -271,56 +346,90 @@ Arrivare gradualmente a circa 10-12% di BF con piu massa magra, senza sacrificar
     {
       id: 'schede_allenamento_fighter',
       file: 'schede_allenamento_fighter.md',
-      title: 'Schede allenamento fighter',
-      content: `# Schede allenamento fighter: forza + tecnica insieme
+      title: 'Schede allenamento fighter + muscolo',
+      content: `# Schede allenamento "Fighter + Muscolo"
 
 ## Regola centrale
-Non alternare una settimana solo pesi e una solo tecnica. Per un fighter, forza e skill vanno mantenute ogni settimana: la tecnica richiede frequenza, la forza richiede esposizione regolare.
+Costruire nel lungo periodo un fisico muscoloso, denso, forte, rapido e funzionale per boxe/sacco. Niente volume ridondante da vecchia split push/pull/gambe: ogni sessione tiene insieme forza, ipertrofia e tecnica senza rubare recupero al lavoro fisico.
 
 ## Cedimento o controllo
 - Fondamentali: 1-3 RIR. RIR = ripetizioni che avresti ancora potuto fare con tecnica pulita.
-- Accessori: puoi arrivare a 0-1 RIR nell'ultima serie, se articolazioni e tecnica restano pulite.
-- Salti, push-up esplosivi, sprint e colpi potenti: mai a cedimento. Interrompi quando la velocita cala.
+- Accessori: ultima serie opzionalmente 0-1 RIR, solo se forma e articolazioni restano pulite.
+- Salti, push-up esplosivi, sprint e colpi potenti: mai a cedimento. Fermati quando cala la velocita.
 - Sacco: 80% tecnico/decontratto, 20% forte e mirato.
+- Qualita prima dell'ego: meglio una serie pulita in meno che una sporca in piu.
 
 ## Settimana base
-### Giorno A - Forza upper + boxe tecnica
-- Riscaldamento: cyclette 5 min + mobilita spalle/scapole.
-- Chest press o floor press: 3x6-10, 2 RIR.
-- Trazioni o lat machine: 3x6-10, 1-2 RIR.
-- Rematore/cable row: 3x8-12, 1-2 RIR.
-- Pushdown: 2x10-15, 1 RIR.
-- Face pull: 2x15-20, 1-2 RIR.
-- Sacco: 4x3 min, 1 min recupero. R1 jab e distanza; R2 diretto e uscita; R3 jab-diretto-hook; R4 tecnico libero.
 
-### Giorno B - Thai/tecnica + aerobico
-- Shadow: 3x3 min, guardia, passi, difesa e rientro.
-- Palla a doppia estremita/reflex ball: 3x3 min, precisione e rilassamento.
-- Sacco: 3x3 min tecnici, massimo 70-80%.
-- Cardio facile: 25-40 min tapis roulant inclinato, cyclette o corsa molto blanda; ritmo conversazionale.
-- Mobilita: anche, caviglie, torace, spalle, 10 min.
+### Giorno A - Upper forza + ipertrofia + sacco (75-90 min)
+Riscaldamento: cyclette/tapis 5-7 min, rotazioni spalle, 10 push-up leggeri.
+- Chest press Domyos: 4x6-10, RIR 1-2, rec 90s.
+- Floor press manubri: 3x8-10, RIR 1-2, rec 90s.
+- Trazioni o lat machine: 4x6-10, RIR 1-2, rec 90-120s.
+- Rematore al cavo o bilanciere corto: 3x8-12, RIR 1-2, rec 75-90s.
+- Pike push-up o shoulder press: 3x6-10, RIR 1-2, rec 75s.
+- Alzate laterali: 3x12-20, RIR 1-2 (ultima serie 0-1 RIR ok), rec 60s.
+- Pushdown tricipiti: 3x10-15, RIR 1 (ultima 0-1 RIR ok), rec 60s.
+- Curl hammer: 3x10-15, RIR 1 (ultima 0-1 RIR ok), rec 60s.
+- Face pull: 2x15-20, RIR 1-2, rec 60s.
+- Sacco: 3x3 min, rec 1 min. R1 jab/distanza/rientro; R2 diretto e uscita angolata; R3 jab-diretto-hook e tecnico libero.
 
-### Giorno C - Forza gambe + potenza + sacco
-- Riscaldamento: cyclette 5 min + mobilita anche/caviglie.
-- Goblet squat o squat: 3x6-10, 2 RIR.
-- Romanian deadlift: 3x6-10, 2 RIR.
-- Bulgarian split squat: 2-3x8-12/lato, 1-2 RIR.
-- Leg curl: 2-3x10-15, 1 RIR.
-- Calf raise: 3x12-20, 1 RIR.
-- Core: Pallof press 2x10-12/lato + plank 2x30-45 sec.
-- Potenza: push-up esplosivi 4x4-6 + squat jump 4x3-5, recupero 60-90 sec; fermati se perdi esplosivita.
-- Sacco potenza: 6x3 colpi singoli puliti per lato, recupero 45-60 sec; poi 2x3 min tecnici.
+### Giorno B - Tecnica + aerobico + mobilita (60-75 min)
+- Shadow boxing: 3x3 min, rec 1 min (guardia/passi, combinazioni, difesa/rientro).
+- Palla a doppia estremita/reflex ball: 3x3 min, rec 1 min.
+- Sacco tecnico: 3x3 min, rec 1 min, intensita 70-80%.
+- Cardio facile: 25-40 min, tapis inclinato/cyclette/corsa blanda, ritmo conversazionale.
+- Mobilita: 10 min, anche/caviglie/torace/spalle.
 
-### Giorno D facoltativo - Solo skill
-- Palla a doppia estremita: 3x3 min.
-- Shadow: 3x3 min.
-- Sacco: 5x3 min, tecnica e ritmo.
-- Un solo round finale duro se recuperato bene; non all-out se fai Thai/sparring il giorno successivo.
+### Giorno C - Gambe + richiamo upper + potenza + sacco (85-100 min)
+Riscaldamento: cyclette 5-7 min, mobilita anche/caviglie, 1-2 serie leggere di squat a corpo libero.
 
-## Progressione
-- Quando completi il massimo del range in tutte le serie con RIR prescritto, aumenta poco il carico o aggiungi una ripetizione per serie.
-- Ogni 4-6 settimane: settimana di scarico, -30-40% serie, niente cedimenti e niente conditioning all-out.
-- Se fai 2-3 lezioni Thai a settimana, riduci a 2 sedute pesi: Giorno A e Giorno C.
+Forza gambe:
+- Goblet squat o squat: 4x6-10, RIR 1-2, rec 90s.
+- Romanian deadlift: 3x6-10, RIR 1-2, rec 90s.
+- Bulgarian split squat: 3x8-12/lato, RIR 1-2, rec 90s.
+- Leg extension: 2x12-15, RIR 1 (ultima 0-1 ok), rec 60s.
+- Leg curl: 3x10-15, RIR 1 (ultima 0-1 ok), rec 60s.
+- Calf raise: 4x12-20, RIR 1 (ultima 0-1 ok), rec 45-60s.
+
+Richiamo upper (si riduce da solo se il recupero e medio/basso):
+- Chest press leggera o push-up declinati: 2x10-15, RIR 2, rec 60-75s.
+- Lat machine o trazioni: 2x8-12, RIR 2, rec 60-75s.
+- Alzate laterali o posteriori: 2x12-20, RIR 1, rec 60s.
+
+Core: Pallof press 2x10-12/lato + plank 2x30-45 sec.
+
+Potenza (mai a cedimento, fermati se cala la velocita):
+- Push-up esplosivi: 3x4-6, rec 90s.
+- Squat jump: 3x3-5, rec 90s.
+
+Sacco potenza: 4x3 colpi singoli puliti per lato, rec 60s (qualita, allineamento polso, trasferimento peso, ritorno in guardia). Poi sacco tecnico 2x3 min.
+
+Nota: se il recupero segnato in dashboard e medio o basso, l'app toglie il richiamo upper e dimezza il sacco potenza in automatico.
+
+### Giorno D facoltativo - Skill puro (45-60 min)
+- Palla a doppia estremita: 3x3 min, rec 1 min.
+- Shadow: 3x3 min, rec 1 min.
+- Sacco: 4-5x3 min, rec 1 min, tecnica e ritmo.
+- Round duro opzionale solo se sonno >= 4/5, energia >= 4/5, dolore/fastidi <= 1/5 e non hai boxe/sparring il giorno dopo.
+
+### Collo (opzionale, dopo A o C)
+- Neck flexion supino: 2x15-20.
+- Neck extension prono: 2x15-20.
+- Side neck: 2x15-20 per lato.
+Movimento lento, niente pesi all'inizio, fermati ai primi fastidi strani. Non e conteggiata nel volume totale della seduta.
+
+## Doppia progressione
+- Se tutte le serie chiudono al limite alto del range con RIR uguale o superiore al target e tecnica segnata "buona": manubri/bilanciere +1-2 kg, cavi/Domyos il piu piccolo incremento disponibile, corpo libero +1 ripetizione o piccola zavorra.
+- Se il range e chiuso basso o il RIR e piu basso del target: ripeti lo stesso carico la prossima volta.
+- Se un esercizio peggiora per 2 sedute consecutive: mantieni o riduci 5-10% e verifica sonno, calorie e recupero.
+- Tutti i suggerimenti sono proposte, non prescrizioni.
+
+## Settimana di scarico
+Ogni 4-6 settimane di carico continuo, l'app propone una settimana di scarico non vincolante: -30/40% delle serie, RIR 3-4, niente round all-out. Puoi accettarla, rimandarla o ignorarla; il piano base non viene mai cancellato.
+
+## Boxe esterna
+Se fai 2 o piu lezioni di boxe a settimana, l'app suggerisce A e C come unici giorni pesi, riduce o disattiva D e propone per B di sostituire con boxe o recupero. Se hai boxe il giorno dopo il Giorno C, riduci i finisher di sacco e potenza. Sono sempre consigli, mai vincoli.
 
 ## Segnali per regredire
 - Calo netto di prestazione per 2 sedute consecutive.
@@ -336,18 +445,26 @@ Non alternare una settimana solo pesi e una solo tecnica. Per un fighter, forza 
       content: `# Schede pasti per ricomposizione e performance
 
 ## Obiettivo
-Restare circa a mantenimento nelle prime 4 settimane, con proteine alte e carboidrati messi dove servono per lavoro fisico, pesi e Thai. Non inseguire una dieta perfetta: usa porzioni ripetibili e correggi dai dati.
+Restare circa a mantenimento, con proteine alte e carboidrati messi dove servono per lavoro fisico e tecnica. Non inseguire una dieta perfetta: usa porzioni ripetibili e correggi dai dati.
 
 ## Target giornalieri
 - Proteine: 125-145 g
 - Grassi: 50-65 g
-- Carboidrati: il resto delle calorie, piu alti nei giorni Thai/pesi e piu bassi nei giorni di riposo
+- Carboidrati: il resto delle calorie, variabili per tipo di giornata
 - Verdura: almeno 2 porzioni
 - Frutta: 1-2 porzioni
 - Acqua: bevi regolarmente, aumentando quando sudi molto
 
-## Schema giorno con allenamento serale
-### Colazione
+## Le 5 giornate tipo
+1. Riposo: carboidrati moderati.
+2. Tecnica/sacco: carboidrati moderati.
+3. Upper forza: carboidrati medio-alti.
+4. Gambe + potenza: carboidrati alti.
+5. Boxe esterna: carboidrati medio-alti, con priorita pre e post sessione.
+
+Sono indicatori, non regole rigide: l'app genera un template di partenza per ciascuna e resta modificabile pasto per pasto.
+
+### Colazione (tutte le giornate)
 Scegli una:
 - 250 g yogurt greco/skyr + 50-70 g avena/corn flakes + banana o frutti rossi.
 - 3 uova + 80-100 g pane + frutta.
@@ -357,8 +474,8 @@ Scegli una:
 - Oppure panino piccolo con bresaola/tacchino.
 
 ### Pranzo
-Scegli una:
-- 100-120 g riso pesato a crudo + 150-200 g pollo + zucchine/verdure + 10 g olio EVO.
+Scegli una in base al tipo di giornata (piu riso nei giorni gambe, piu contenuto nei giorni di riposo):
+- 80-130 g riso pesato a crudo + 150-200 g pollo + zucchine/verdure + 10 g olio EVO.
 - 100-120 g riso + 180-220 g merluzzo/gamberi + verdure + 10 g olio EVO.
 - 100-120 g pasta + 150-180 g tonno al naturale/pollo + verdure.
 
@@ -367,29 +484,29 @@ Scegli una:
 - Oppure 60-80 g pane + 80-100 g fesa/bresaola.
 
 ### Cena post-allenamento
-Scegli una:
+Scegli una, piu abbondante nei giorni gambe/potenza:
 - 180-220 g pollo/tacchino + 250-350 g patate + verdure + 10 g olio EVO.
 - 180-220 g pesce bianco + 80-100 g pane o 70-90 g riso + verdure.
 - 3 uova + 150-200 g albumi + pane/patate + verdure.
 
-## Giorno senza allenamento
+## Giorno di riposo
 - Mantieni identiche le proteine.
 - Togli una porzione di carboidrati: per esempio 30-40 g di riso/pasta crudi, oppure 80-100 g pane, oppure 200-250 g patate.
 - Non tagliare insieme carboidrati, grassi e proteine.
 
-## Alimentazione attorno a Thai/sacco intenso
-- Prima: carboidrati digeribili e un po' di proteine; pochi grassi e poche fibre se ti appesantiscono.
-- Dopo: 30-40 g proteine e una porzione di carboidrati entro le ore successive. Non serve mangiare al minuto, ma non arrivare a letto svuotato.
+## Piano settimanale e lista della spesa
+L'app permette di salvare pasti preferiti, duplicare un giorno sugli altri e generare una lista della spesa aggregata per 7 giorni, raggruppata per categoria (proteine, carboidrati, verdure/frutta, latticini, grassi/condimenti, extra). Le quantita sono sempre stime.
 
 ## Controllo e correzione dopo 4 settimane
 - Se media peso stabile, vita cala e prestazione sale: continua.
 - Se peso/vita salgono per 3-4 settimane: togli 100-150 kcal al giorno, preferibilmente da extra e carboidrati lontani dall'allenamento.
-- Se peso cala e recupero o prestazioni scendono: aggiungi 100-200 kcal, soprattutto carboidrati vicino a pesi/Thai.
+- Se peso cala e recupero o prestazioni scendono: aggiungi 100-200 kcal, soprattutto carboidrati vicino agli allenamenti.
 
 ## Cosa limitare
 - Olio, salse, snack e alcol non conteggiati.
 - Saltare pasti e arrivare affamato alla sera.
-- Tagli estremi di carboidrati nei giorni di Thai, sacco duro o gambe.
+- Tagli estremi di carboidrati nei giorni gambe, boxe o sacco duro.
+- Se le proteine di giornata scendono sotto i 100 g, aggiungi subito una fonte proteica in uno dei pasti.
 `,
     },
     {
@@ -490,71 +607,114 @@ Vedi tabellone_fight_club_v2.
       title: 'Tabellone Torneo Fight Club',
       content: `# Tabellone Torneo Fight Club (aggiornato)
 
-Thomas e stato spostato nella categoria Leggero a 75 kg, quindi gli accoppiamenti sono stati aggiornati di conseguenza.
+Thomas è stato spostato nella categoria Leggero a 75 kg, quindi gli accoppiamenti sono stati aggiornati di conseguenza.
 
 ## Partecipanti
 
-| Chi | Peso | Categoria |
-| :--- | :---: | :---: |
-| ALAIN | 69 | Leggero |
-| ALESSIO Q. | 63 | Leggero |
-| CHRISTIAN Q. | 72 | Leggero |
-| FRATELLO SEV. | 74 | Leggero |
-| GIUSEPPE VET. | 68 | Leggero |
-| MARCO BAL. | 73 | Leggero |
-| MATTEO SEV. | 74 | Leggero |
-| TOMMASO T. | 60 | Leggero |
-| THOMAS | 75 | Leggero |
-| CHICCO | 79 | Medio |
-| DIMAX | 78 | Medio |
-| HERNAN | 80 | Medio |
-| DANIELE C. | 84 | Medio |
-| IL RAGA | 85 | Medio |
-| MATTEO VIS. | 110 | Pesante |
-| MATTIA LEO. | 100 | Pesante |
+| Chi | Stile | Entrata | Soprannome | Peso | Quota | Categoria |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| ALAIN | | | | 69 | x | Leggero |
+| ALESSIO Q. | | | | 63 | x | Leggero |
+| CHRISTIAN Q. | | | | 72 | x | Leggero |
+| FRATELLO SEV. | | | | 74 | x | Leggero |
+| GIUSEPPE VET. | | | | 68 | x | Leggero |
+| MARCO BAL. | | | | 73 | x | Leggero |
+| MATTEO SEV. | | | | 74 | x | Leggero |
+| TOMMASO T. | | | | 60 | x | Leggero |
+| THOMAS | | | | 75 | x | Leggero |
+| CHICCO | | | | 79 | x | Medio |
+| DIMAX | | | | 78 | x | Medio |
+| HERNAN | | | | 80 | x | Medio |
+| DANIELE C. | | | | 84 | x | Medio |
+| IL RAGA | | | | 85 | x | Medio |
+| MATTEO VIS. | | | | 110 | x | Pesante |
+| MATTIA LEO. | | | | 100 | x | Pesante |
 
-### Dettagli scommesse
-- Premio in palio: 266,67 EUR
-- Puntata minima: 10,00 EUR
-- Quantita scommettitori: 15
+### Dettagli Scommesse
+* **Premio in palio:** 266,67 €
+* **Puntata minima:** 10,00 €
+* **Quantità scommettitori:** 15
 
-### Categorie di peso
-- Leggero: 0-75 kg
-- Medio: 76-85 kg
-- Pesante: 85-120 kg
+### Categorie di Peso
+* **Leggero:** 0-75 kg
+* **Medio:** 76-85 kg
+* **Pesante:** 85-120 kg
 
 ## Categoria Leggero
-Match 1: Giuseppe Vet. vs Fratello Sev. -> Semifinale 1
-Match 2: Tommaso T. vs Alain -> Semifinale 1
-Match 3: Marco Bal. vs Alessio Q. -> Semifinale 2
-Match 4: Christian Q. vs Matteo Sev. (+ wildcard Thomas 75 kg) -> Semifinale 2
-Semifinale 1 + Semifinale 2 -> Finale Leggero -> Campione Leggero
+
+\`\`\`mermaid
+flowchart LR
+    subgraph Torneo_Leggero
+        LQ1A["GIUSEPPE VET."] --> LQ1["Match 1"]
+        LQ1B["FRATELLO SEV."] --> LQ1
+        LQ1 --> LS1["Semifinale 1"]
+
+        LQ2A["TOMMASO T."] --> LQ2["Match 2"]
+        LQ2B["ALAIN"] --> LQ2
+        LQ2 --> LS1
+
+        LQ3A["MARCO BAL."] --> LQ3["Match 3"]
+        LQ3B["ALESSIO Q."] --> LQ3
+        LQ3 --> LS2["Semifinale 2"]
+
+        LQ4A["CHRISTIAN Q."] --> LQ4["Match 4"]
+        LQ4B["MATTEO SEV."] --> LQ4
+        LQ4 --> LS2
+
+        LWB["THOMAS (wildcard 75 kg)"] --> LQ4
+
+        LS1 --> LF["Finale Leggero"]
+        LS2 --> LF
+        LF --> LC["Campione Leggero"]
+    end
+\`\`\`
 
 ## Categoria Medio
-Match 1: Chicco vs Dimax -> Finale Medio
-Match 2: Hernan vs Daniele C. -> Finale Medio
-Il Raga: attende o match extra -> Finale Medio
-Finale Medio -> Campione Medio
+
+\`\`\`mermaid
+flowchart LR
+    subgraph Torneo_Medio
+        MQ1A["CHICCO"] --> MQ1["Match 1"]
+        MQ1B["DIMAX"] --> MQ1
+        MQ1 --> MS1["Finale Medio"]
+        MQ2A["HERNAN"] --> MQ2["Match 2"]
+        MQ2B["DANIELE C."] --> MQ2
+        MQ2 --> MS1
+        MQ3["IL RAGA (attende o match extra)"] --> MS1
+        MS1 --> MC["Campione Medio"]
+    end
+\`\`\`
 
 ## Categoria Pesante
-Match 1: Matteo Vis. vs Mattia Leo. -> Campione Pesante
 
-Il diagramma completo (mermaid) e disponibile nel file sorgente su GitHub.
+\`\`\`mermaid
+flowchart LR
+    subgraph Torneo_Pesante
+        PQ1A["MATTEO VIS."] --> PQ1["Match 1"]
+        PQ1B["MATTIA LEO."] --> PQ1
+        PQ1 --> PF["Campione Pesante"]
+    end
+\`\`\`
 `,
     },
   ];
 
   /* ---------------- Export globale ---------------- */
   window.APP_DATA = {
+    SCHEMA_VERSION,
+    APP_VERSION,
     PROFILE_DEFAULT,
     WEEK_PLAN_DEFAULT,
     WEEKDAY_KEYS,
     WEEKDAY_LABELS,
     RULE_POWER,
     RULE_FUNDAMENTALS,
+    RULE_QUALITY,
     DAYS,
     DAY_ORDER,
+    NECK_ROUTINE,
     FOODS,
+    NUTRITION_DAY_TYPES,
     MEAL_TEMPLATES,
     NUTRITION_TARGETS_DEFAULT,
     LIBRARY_DOCS,

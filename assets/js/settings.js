@@ -7,12 +7,14 @@
   'use strict';
 
   const U = window.Utils;
+  const D = window.APP_DATA;
   const { escapeHtml } = U;
 
   const render = (container) => {
     const state = window.Store.getState();
     const p = state.profile;
     const t = state.settings.nutritionTargets;
+    const eb = state.settings.externalBoxing;
 
     container.innerHTML = `
       <div class="view-header"><h2>Impostazioni e backup</h2><p>Profilo, preferenze e gestione dei dati salvati su questo browser.</p></div>
@@ -44,6 +46,27 @@
       </section>
 
       <section class="panel card" style="margin-top:var(--space-4)">
+        <div class="card-title">Boxe esterna</div>
+        <label class="switch" style="margin-bottom:var(--space-3)">
+          <input type="checkbox" id="externalBoxingActive" ${eb.active ? 'checked' : ''} />
+          <span>Sto facendo boxe esterna questa settimana</span>
+        </label>
+        <div class="field" style="max-width:280px;margin-bottom:var(--space-3)">
+          <label>Lezioni a settimana</label>
+          <div class="chip-group" role="group" aria-label="Numero di lezioni">
+            ${[1, 2, 3].map((n) => `<button class="chip" type="button" data-eb-sessions="${n}" data-active="${eb.sessionsPerWeek === n}">${n}</button>`).join('')}
+          </div>
+        </div>
+        <div class="field">
+          <label>Giorni delle lezioni</label>
+          <div class="chip-group" role="group" aria-label="Giorni boxe esterna">
+            ${D.WEEKDAY_KEYS.filter((k) => k !== 'dom').concat('dom').map((wd) => `<button class="chip" type="button" data-eb-day="${wd}" data-active="${eb.days.includes(wd)}">${D.WEEKDAY_LABELS[wd].slice(0, 3)}</button>`).join('')}
+          </div>
+        </div>
+        <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:.6rem">Questi dati servono solo per mostrare consigli non vincolanti in Allenamento: la scelta finale resta sempre tua.</p>
+      </section>
+
+      <section class="panel card" style="margin-top:var(--space-4)">
         <div class="card-title">Target nutrizionali</div>
         <form id="targetsForm" class="grid-cards cols-3">
           <div class="field"><label for="t_pMin">Proteine min (g)</label><input id="t_pMin" type="number" value="${t.proteinMin}" /></div>
@@ -65,6 +88,7 @@
 
       <section class="panel card" style="margin-top:var(--space-4)">
         <div class="card-title">Backup</div>
+        <button class="btn btn-primary btn-block" type="button" id="exportBeforeUpdateBtn" style="margin-bottom:var(--space-3)">📤 Esporta dati prima di aggiornare</button>
         <div class="settings-actions">
           <button class="btn" type="button" id="exportBtn">⬇️ Esporta dati (JSON)</button>
           <label class="btn" for="importInput" style="cursor:pointer">⬆️ Importa dati
@@ -77,6 +101,18 @@
       <section class="panel card danger-zone" style="margin-top:var(--space-4)">
         <div class="card-title">Zona pericolosa</div>
         <button class="btn btn-danger btn-block" type="button" id="wipeBtn">🗑️ Cancella tutti i dati locali</button>
+      </section>
+
+      <section class="panel card" style="margin-top:var(--space-4)">
+        <div class="card-title">Info app</div>
+        <p style="font-size:var(--text-sm)">Road to Boxing — versione <strong>${escapeHtml(D.APP_VERSION)}</strong> (schema dati v${D.SCHEMA_VERSION}).</p>
+        <details style="margin-top:.5rem">
+          <summary style="cursor:pointer;font-size:var(--text-sm);color:var(--color-text-muted)">Changelog</summary>
+          <ul style="margin-top:.5rem;display:grid;gap:.3rem;font-size:var(--text-sm);color:var(--color-text-muted)">
+            <li><strong>2.0.0</strong> — Piano "Fighter + Muscolo" (A/B/C/D aggiornati), doppia progressione, deload automatico suggerito, collo opzionale, boxe esterna, piano pasti settimanale con lista della spesa, PR tracker, review guidata, export prima di aggiornare.</li>
+            <li><strong>1.0.0</strong> — Prima versione dell'app: dashboard, allenamento, nutrizione, progressi, libreria, backup.</li>
+          </ul>
+        </details>
       </section>
     `;
 
@@ -106,6 +142,27 @@
       window.App.syncBoxingToggle();
     });
 
+    container.querySelector('#externalBoxingActive').addEventListener('change', (e) => {
+      window.Store.update((s) => { s.settings.externalBoxing.active = e.target.checked; });
+    });
+    container.querySelectorAll('[data-eb-sessions]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        window.Store.update((s) => { s.settings.externalBoxing.sessionsPerWeek = Number(btn.dataset.ebSessions); });
+        render(container);
+      });
+    });
+    container.querySelectorAll('[data-eb-day]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        window.Store.update((s) => {
+          const wd = btn.dataset.ebDay;
+          const days = s.settings.externalBoxing.days;
+          const idx = days.indexOf(wd);
+          if (idx >= 0) days.splice(idx, 1); else days.push(wd);
+        });
+        render(container);
+      });
+    });
+
     container.querySelector('#targetsForm').addEventListener('submit', (e) => {
       e.preventDefault();
       window.Store.update((s) => {
@@ -122,12 +179,14 @@
       window.UI.toast('Target nutrizionali aggiornati.', 'success');
     });
 
-    container.querySelector('#exportBtn').addEventListener('click', () => {
+    const doExport = (label) => {
       const data = window.Store.exportData();
       const stamp = U.todayISO();
       U.downloadJSON(`road-to-boxing-backup-${stamp}.json`, data);
-      window.UI.toast('Backup scaricato.', 'success');
-    });
+      window.UI.toast(label, 'success');
+    };
+    container.querySelector('#exportBtn').addEventListener('click', () => doExport('Backup scaricato.'));
+    container.querySelector('#exportBeforeUpdateBtn').addEventListener('click', () => doExport('Backup scaricato: ora puoi aggiornare o importare in sicurezza.'));
 
     container.querySelector('#importInput').addEventListener('change', async (e) => {
       const file = e.target.files && e.target.files[0];
@@ -143,8 +202,8 @@
           danger: true,
         });
         if (!ok) return;
-        window.Store.importData(parsed);
-        window.UI.toast('Dati importati correttamente.', 'success');
+        const migrated = window.Store.importData(parsed);
+        window.UI.toast(migrated ? 'Dati importati e aggiornati alla versione più recente.' : 'Dati importati correttamente.', 'success');
         window.App.refreshAll();
       } catch (err) {
         window.UI.toast('File non valido: impossibile importare.', 'warning');

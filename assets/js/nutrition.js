@@ -1,7 +1,9 @@
 /* ============================================================
    MODULO NUTRIZIONE
    Pasti spuntabili, macro stimate da database alimenti italiani,
-   template generabili, tracker acqua/creatina/frutta/verdura.
+   template per 5 tipi di giornata, piano settimanale con
+   duplicazione, lista della spesa aggregata, pasti preferiti,
+   tracker acqua/creatina/frutta/verdura.
    ============================================================ */
 (() => {
   'use strict';
@@ -11,8 +13,7 @@
   const { escapeHtml } = U;
 
   let selectedDate = U.todayISO();
-
-  const DAY_TYPE_LABELS = { riposo: 'Riposo', forza: 'Forza', boxe: 'Boxe', tecnica: 'Tecnica + sacco' };
+  let shoppingList = null; // ultima lista della spesa generata, null finche' non richiesta
 
   const getAllFoods = (state) => [...D.FOODS, ...state.customFoods];
   const getFoodById = (state, id) => getAllFoods(state).find((f) => f.id === id);
@@ -47,6 +48,20 @@
 
   const isPeriWorkout = (name) => /pre-workout|post-workout/i.test(name);
 
+  // Baseline di carboidrati del template originale (solo alimenti base, non
+  // dipende dallo stato utente): serve solo per stimare se la giornata reale
+  // e' molto piu' scarica del previsto, non come bersaglio esatto.
+  const templateCarbBaseline = (dayType) => {
+    const template = D.MEAL_TEMPLATES[dayType];
+    if (!template) return null;
+    let carbs = 0;
+    template.forEach((meal) => meal.items.forEach((it) => {
+      const food = D.FOODS.find((f) => f.id === it.id);
+      if (food) carbs += food.c * (it.qty / 100);
+    }));
+    return carbs;
+  };
+
   const foodOptionsHtml = (state, selected) => {
     const cats = {};
     getAllFoods(state).forEach((f) => { (cats[f.cat] = cats[f.cat] || []).push(f); });
@@ -58,7 +73,7 @@
 
   const renderMeal = (state, meal, mealIdx, dayType) => {
     const macros = macrosForMeal(state, meal);
-    const highlight = (dayType === 'forza' || dayType === 'boxe') && isPeriWorkout(meal.name);
+    const highlight = (dayType === 'forza' || dayType === 'boxe' || dayType === 'gambe') && isPeriWorkout(meal.name);
     return `
       <div class="panel meal-card" data-meal-idx="${mealIdx}" style="${highlight ? 'border-color:var(--color-accent)' : ''}">
         <div class="meal-card-head">
@@ -66,8 +81,9 @@
             <input type="checkbox" data-meal-checked ${meal.checked ? 'checked' : ''} aria-label="Pasto completato" />
             <input type="text" class="exercise-note-input" data-meal-name value="${escapeHtml(meal.name)}" style="font-weight:800;min-width:140px" aria-label="Nome pasto" />
           </label>
-          <div style="display:flex;gap:.4rem;align-items:center">
+          <div style="display:flex;gap:.4rem;align-items:center;flex-wrap:wrap">
             <span class="tag">${Math.round(macros.kcal)} kcal</span>
+            <button class="btn btn-sm" type="button" data-save-favorite aria-label="Salva pasto come preferito">☆ Preferito</button>
             <button class="btn btn-sm btn-danger" type="button" data-remove-meal aria-label="Rimuovi pasto">Rimuovi</button>
           </div>
         </div>
@@ -97,17 +113,135 @@
     return Math.min(100, Math.round((value / max) * 100));
   };
 
+  /* ---------------- Piano settimanale: striscia giorni ---------------- */
+
+  const renderWeekStrip = (state) => {
+    const [monday] = U.currentWeekRange(new Date(selectedDate));
+    const dates = Array.from({ length: 7 }, (_, i) => U.toISODate(new Date(new Date(monday).getTime() + i * 86400000)));
+    return `
+      <div class="week-strip" role="group" aria-label="Giorni della settimana">
+        ${dates.map((d) => {
+          const entry = state.nutritionDays[d];
+          const has = entry && entry.meals.length > 0;
+          return `<button type="button" class="week-strip-day" data-strip-date="${d}" data-active="${d === selectedDate}">
+            <span>${D.WEEKDAY_LABELS[U.weekdayKeyOf(d)].slice(0, 3)}</span>
+            <strong>${U.formatDateShortIt(d)}</strong>
+            ${has ? '<span class="week-strip-dot"></span>' : ''}
+          </button>`;
+        }).join('')}
+      </div>`;
+  };
+
+  /* ---------------- Lista della spesa aggregata ---------------- */
+
+  const CATEGORY_GROUP_LABELS = {
+    proteine: 'Proteine', carboidrati: 'Carboidrati', frutta: 'Verdure e frutta', verdura: 'Verdure e frutta',
+    latticini: 'Latticini', grassi: 'Grassi e condimenti', integratori: 'Extra', personalizzati: 'Extra',
+  };
+
+  const buildShoppingList = (state) => {
+    const [monday] = U.currentWeekRange(new Date(selectedDate));
+    const dates = Array.from({ length: 7 }, (_, i) => U.toISODate(new Date(new Date(monday).getTime() + i * 86400000)));
+    const totals = {}; // foodId -> qty grams
+    dates.forEach((d) => {
+      const entry = state.nutritionDays[d];
+      if (!entry) return;
+      entry.meals.forEach((meal) => meal.items.forEach((it) => {
+        totals[it.foodId] = (totals[it.foodId] || 0) + (Number(it.qty) || 0);
+      }));
+    });
+    const groups = {};
+    Object.entries(totals).forEach(([foodId, qty]) => {
+      const food = getFoodById(state, foodId);
+      const label = CATEGORY_GROUP_LABELS[food ? food.cat : 'personalizzati'] || 'Extra';
+      groups[label] = groups[label] || [];
+      groups[label].push({ name: food ? food.name : foodId, qty });
+    });
+    return { dates, groups };
+  };
+
+  const shoppingListToText = (list) => {
+    const lines = [`Lista della spesa (7 giorni, ${U.formatDateShortIt(list.dates[0])}-${U.formatDateShortIt(list.dates[6])}) — quantità stimate`];
+    Object.entries(list.groups).forEach(([label, items]) => {
+      lines.push('', `${label}:`);
+      items.forEach((it) => lines.push(`- ${it.name}: ${Math.round(it.qty)} g`));
+    });
+    return lines.join('\n');
+  };
+
+  const copyToClipboard = async (text) => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (e) { /* si passa al fallback sotto */ }
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+      return true;
+    } catch (e) { return false; }
+  };
+
+  const renderShoppingListPanel = () => {
+    if (!shoppingList) return '';
+    const empty = Object.keys(shoppingList.groups).length === 0;
+    return `
+      <div class="panel card shopping-list" style="margin-top:var(--space-3)">
+        <div class="card-title">Lista della spesa — ${U.formatDateShortIt(shoppingList.dates[0])} → ${U.formatDateShortIt(shoppingList.dates[6])}</div>
+        ${empty ? '<p class="empty-state">Nessun pasto pianificato in questa settimana.</p>' : Object.entries(shoppingList.groups).map(([label, items]) => `
+          <div class="shopping-group">
+            <h5>${escapeHtml(label)}</h5>
+            <ul>${items.map((it) => `<li>${escapeHtml(it.name)} — ${Math.round(it.qty)} g <span class="meal-item-macro">(stima)</span></li>`).join('')}</ul>
+          </div>`).join('')}
+        ${!empty ? '<button class="btn btn-sm" type="button" id="copyShoppingListBtn">📋 Copia lista</button>' : ''}
+      </div>`;
+  };
+
+  /* ---------------- Pasti preferiti ---------------- */
+
+  const renderFavorites = (state) => `
+    <section class="panel card" style="margin-top:var(--space-4)">
+      <div class="card-title">Pasti preferiti</div>
+      ${state.favoriteMeals.length ? `
+        <div class="favorites-list">
+          ${state.favoriteMeals.map((f) => `
+            <div class="favorite-meal-row" data-fav-id="${f.id}">
+              <span>${escapeHtml(f.name)}</span>
+              <div style="display:flex;gap:.4rem">
+                <button class="btn btn-sm" type="button" data-add-fav>+ Aggiungi a oggi</button>
+                <button class="btn btn-sm btn-danger" type="button" data-remove-fav>✕</button>
+              </div>
+            </div>`).join('')}
+        </div>` : '<p class="empty-state">Salva un pasto come preferito dal pulsante ☆ su ogni pasto.</p>'}
+    </section>`;
+
   const render = (container) => {
     const state = window.Store.getState();
     const entry = getDayEntry(state, selectedDate) || emptyDay();
     const totals = macrosForDay(state, entry);
     const targets = state.settings.nutritionTargets;
+    const dayTypeInfo = D.NUTRITION_DAY_TYPES.find((t) => t.key === entry.dayType);
 
-    const proteinMsg = totals.p >= targets.proteinMin
-      ? { type: 'success', text: 'Hai raggiunto le proteine.' }
-      : { type: 'warning', text: 'Ti manca una fonte proteica.' };
-    const tips = [proteinMsg];
-    if (entry.dayType === 'boxe' || entry.dayType === 'forza') tips.push({ type: 'info', text: 'Giorno boxe/forza: non tagliare troppo i carboidrati, servono attorno all\'allenamento.' });
+    const tips = [];
+    if (totals.p < 100) tips.push({ type: 'warning', text: 'Aggiungi una fonte proteica in uno dei pasti.' });
+    else if (totals.p < targets.proteinMin) tips.push({ type: 'warning', text: 'Ti manca una fonte proteica.' });
+    else tips.push({ type: 'success', text: 'Hai raggiunto le proteine.' });
+
+    if (['forza', 'gambe', 'boxe'].includes(entry.dayType)) {
+      const baseline = templateCarbBaseline(entry.dayType);
+      if (baseline && totals.c > 0 && totals.c < baseline * 0.6) {
+        tips.push({ type: 'info', text: 'Sessione impegnativa: valuta una porzione di carboidrati pre o post allenamento.' });
+      } else {
+        tips.push({ type: 'info', text: 'Giorno impegnativo: non tagliare troppo i carboidrati, servono attorno all\'allenamento.' });
+      }
+    }
     if (entry.dayType === 'riposo') tips.push({ type: 'info', text: 'Giorno di riposo: mantieni le proteine, riduci una sola porzione di carboidrati. Non compensare con digiuni inutili.' });
 
     const last7 = [];
@@ -124,10 +258,11 @@
       <div class="nutrition-toolbar">
         <div class="field" style="max-width:220px"><label for="nutritionDate">Giorno</label><input type="date" id="nutritionDate" value="${selectedDate}" /></div>
         <div class="day-type-select" role="group" aria-label="Tipo di giorno">
-          ${Object.entries(DAY_TYPE_LABELS).map(([k, label]) => `<button class="chip" type="button" data-day-type="${k}" data-active="${entry.dayType === k}">${label}</button>`).join('')}
+          ${D.NUTRITION_DAY_TYPES.map((t) => `<button class="chip" type="button" data-day-type="${t.key}" data-active="${entry.dayType === t.key}">${escapeHtml(t.label)}</button>`).join('')}
         </div>
         <button class="btn" type="button" id="generateDayBtn">🔄 Genera giornata da template</button>
       </div>
+      ${dayTypeInfo ? `<p style="font-size:var(--text-xs);color:var(--color-text-faint);margin:-.5rem 0 var(--space-3)">${escapeHtml(dayTypeInfo.carbLevel)} — indicativo, non prescrittivo.</p>` : ''}
 
       <div class="macro-summary">
         <div class="panel macro-tile"><span class="num">${Math.round(totals.kcal)}</span><span class="unit">kcal stimate</span></div>
@@ -150,6 +285,19 @@
         ${entry.meals.length ? entry.meals.map((m, i) => renderMeal(state, m, i, entry.dayType)).join('') : '<p class="empty-state">Nessun pasto per questo giorno. Genera dal template o aggiungine uno.</p>'}
       </section>
       <button class="btn" type="button" id="addMealBtn" style="margin-top:var(--space-3)">+ Aggiungi pasto</button>
+
+      ${renderFavorites(state)}
+
+      <section class="panel card" style="margin-top:var(--space-4)">
+        <div class="card-title">Piano settimanale pasti</div>
+        ${renderWeekStrip(state)}
+        <div class="chip-group" style="margin-top:var(--space-3)">
+          <button class="btn btn-sm" type="button" id="duplicateBtn">📋 Duplica pasti di oggi sugli altri giorni selezionati</button>
+          <button class="btn btn-sm" type="button" id="shoppingListBtn">🛒 Genera lista della spesa (7 giorni)</button>
+        </div>
+        <div class="duplicate-targets" id="duplicateTargets" hidden></div>
+        ${renderShoppingListPanel()}
+      </section>
 
       <section class="panel card" style="margin-top:var(--space-5)">
         <div class="card-title">Tracker giornalieri</div>
@@ -203,7 +351,11 @@
   };
 
   function wire(container, state, entry) {
-    container.querySelector('#nutritionDate').addEventListener('change', (e) => { selectedDate = e.target.value || U.todayISO(); render(container); });
+    container.querySelector('#nutritionDate').addEventListener('change', (e) => { selectedDate = e.target.value || U.todayISO(); shoppingList = null; render(container); });
+
+    container.querySelectorAll('[data-strip-date]').forEach((btn) => {
+      btn.addEventListener('click', () => { selectedDate = btn.dataset.stripDate; render(container); });
+    });
 
     container.querySelectorAll('[data-day-type]').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -268,6 +420,70 @@
       render(container);
     });
 
+    /* ---- Preferiti ---- */
+    container.querySelectorAll('[data-fav-id]').forEach((row) => {
+      const favId = row.dataset.favId;
+      row.querySelector('[data-add-fav]').addEventListener('click', () => {
+        const fav = state.favoriteMeals.find((f) => f.id === favId);
+        if (!fav) return;
+        window.Store.update((s) => {
+          const d = withDayEntry(s, selectedDate);
+          d.meals.push({ id: U.uid('meal'), name: fav.name, checked: false, items: fav.items.map((it) => ({ ...it })) });
+        });
+        window.UI.toast('Pasto preferito aggiunto.', 'success');
+        render(container);
+      });
+      row.querySelector('[data-remove-fav]').addEventListener('click', () => {
+        window.Store.update((s) => { s.favoriteMeals = s.favoriteMeals.filter((f) => f.id !== favId); });
+        render(container);
+      });
+    });
+
+    /* ---- Duplica su altri giorni ---- */
+    const duplicateBtn = container.querySelector('#duplicateBtn');
+    const targetsBox = container.querySelector('#duplicateTargets');
+    duplicateBtn.addEventListener('click', () => {
+      if (!entry.meals.length) { window.UI.toast('Genera o aggiungi almeno un pasto prima di duplicare.', 'warning'); return; }
+      if (!targetsBox.hidden) { targetsBox.hidden = true; return; }
+      const [monday] = U.currentWeekRange(new Date(selectedDate));
+      const dates = Array.from({ length: 7 }, (_, i) => U.toISODate(new Date(new Date(monday).getTime() + i * 86400000))).filter((d) => d !== selectedDate);
+      targetsBox.hidden = false;
+      targetsBox.innerHTML = `
+        <div class="chip-group" style="margin-top:var(--space-2)">
+          ${dates.map((d) => `<label class="chip" style="cursor:pointer"><input type="checkbox" data-dup-target="${d}" style="margin-right:.35rem" />${U.formatDateShortIt(d)}</label>`).join('')}
+        </div>
+        <button class="btn btn-sm btn-primary" type="button" id="confirmDuplicateBtn" style="margin-top:var(--space-2)">Duplica sui giorni selezionati</button>`;
+      targetsBox.querySelector('#confirmDuplicateBtn').addEventListener('click', () => {
+        const targets = [...targetsBox.querySelectorAll('[data-dup-target]:checked')].map((el) => el.dataset.dupTarget);
+        if (!targets.length) { window.UI.toast('Seleziona almeno un giorno.', 'warning'); return; }
+        window.Store.update((s) => {
+          targets.forEach((d) => {
+            const dest = withDayEntry(s, d);
+            dest.dayType = entry.dayType;
+            dest.meals = entry.meals.map((m) => ({ id: U.uid('meal'), name: m.name, checked: false, items: m.items.map((it) => ({ ...it })) }));
+          });
+        });
+        window.UI.toast(`Pasti duplicati su ${targets.length} giorno/i.`, 'success');
+        targetsBox.hidden = true;
+        render(container);
+      });
+    });
+
+    /* ---- Lista della spesa ---- */
+    const shoppingBtn = container.querySelector('#shoppingListBtn');
+    shoppingBtn.addEventListener('click', () => {
+      shoppingList = buildShoppingList(state);
+      render(container);
+    });
+    const copyBtn = container.querySelector('#copyShoppingListBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        const ok = await copyToClipboard(shoppingListToText(shoppingList));
+        window.UI.toast(ok ? 'Lista copiata negli appunti.' : 'Impossibile copiare: seleziona e copia manualmente.', ok ? 'success' : 'warning');
+      });
+    }
+
+    /* ---- Pasti del giorno ---- */
     container.querySelectorAll('.meal-card').forEach((mealEl) => {
       const mealIdx = Number(mealEl.dataset.mealIdx);
 
@@ -279,6 +495,14 @@
       });
       mealEl.querySelector('[data-remove-meal]').addEventListener('click', () => {
         window.Store.update((s) => { withDayEntry(s, selectedDate).meals.splice(mealIdx, 1); });
+        render(container);
+      });
+      mealEl.querySelector('[data-save-favorite]').addEventListener('click', () => {
+        const meal = entry.meals[mealIdx];
+        window.Store.update((s) => {
+          s.favoriteMeals.push({ id: U.uid('fav'), name: meal.name, items: meal.items.map((it) => ({ ...it })) });
+        });
+        window.UI.toast('Pasto salvato tra i preferiti.', 'success');
         render(container);
       });
 
