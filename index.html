@@ -2,79 +2,91 @@
 <html lang="it" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Road to Boxing — Forza, Footwork e Conditioning</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/js/app.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Road to Boxing — Cockpit del fighter</title>
+  <meta name="description" content="Web app personale per allenamento da fighter, ricomposizione corporea e nutrizione. Funziona offline, dati solo su questo dispositivo." />
+  <meta name="color-scheme" content="dark" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <div class="app">
-    <header class="topbar panel" aria-label="Barra principale">
+  <a class="skip-link" href="#mainView">Vai al contenuto principale</a>
+
+  <div class="app-shell">
+    <header class="topbar" aria-label="Barra principale">
       <div class="brand">
         <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 34L24 12L37 34" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M18 34H30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <svg viewBox="0 0 48 48" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 34L24 12L37 34" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M18 34H30" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
           </svg>
         </div>
-        <div>
-          <h1>Programma A / B / C</h1>
-          <p>Push, pull, gambe, sacco e timer recupero da telefono</p>
+        <div class="brand-text">
+          <strong>Road to Boxing</strong>
+          <span>Cockpit del fighter</span>
         </div>
       </div>
 
       <div class="topbar-actions">
-        <button class="chip-btn" type="button" id="expandAllBtn">Apri tutto</button>
-        <button class="chip-btn" type="button" id="collapseAllBtn">Chiudi blocchi</button>
-        <button class="icon-btn" type="button" data-theme-toggle aria-label="Passa alla modalità chiara">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        <label class="boxing-toggle" for="boxingTodayToggle">
+          <input type="checkbox" id="boxingTodayToggle" />
+          <span>Ho boxe oggi</span>
+        </label>
+        <button class="icon-btn" type="button" id="openSettingsBtn" aria-label="Vai a Impostazioni e backup">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 4.29l.06.06A1.65 1.65 0 0 0 8.92 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
         </button>
       </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-main panel" id="heroMain"></div>
+    <nav class="tabbar" aria-label="Sezioni dell'app" role="tablist" id="mainTabs">
+      <button class="tab-btn" type="button" role="tab" data-view="dashboard" aria-selected="true" aria-controls="view-dashboard" id="tab-dashboard">
+        <span class="tab-icon" aria-hidden="true">🏠</span><span>Dashboard</span>
+      </button>
+      <button class="tab-btn" type="button" role="tab" data-view="training" aria-selected="false" aria-controls="view-training" id="tab-training">
+        <span class="tab-icon" aria-hidden="true">🥊</span><span>Allenamento</span>
+      </button>
+      <button class="tab-btn" type="button" role="tab" data-view="nutrition" aria-selected="false" aria-controls="view-nutrition" id="tab-nutrition">
+        <span class="tab-icon" aria-hidden="true">🍽️</span><span>Nutrizione</span>
+      </button>
+      <button class="tab-btn" type="button" role="tab" data-view="progress" aria-selected="false" aria-controls="view-progress" id="tab-progress">
+        <span class="tab-icon" aria-hidden="true">📈</span><span>Progressi</span>
+      </button>
+      <button class="tab-btn" type="button" role="tab" data-view="library" aria-selected="false" aria-controls="view-library" id="tab-library">
+        <span class="tab-icon" aria-hidden="true">📚</span><span>Libreria</span>
+      </button>
+      <button class="tab-btn" type="button" role="tab" data-view="settings" aria-selected="false" aria-controls="view-settings" id="tab-settings">
+        <span class="tab-icon" aria-hidden="true">⚙️</span><span>Impostazioni</span>
+      </button>
+    </nav>
 
-      <aside class="timer-panel panel" aria-labelledby="timer-title">
-        <div class="timer-top">
-          <div>
-            <h3 id="timer-title">Timer recupero</h3>
-            <p>Usalo per 45, 60, 90 o 120 secondi. Puoi anche avviarlo da ogni esercizio.</p>
-          </div>
-          <span class="tag">Mobile ready</span>
-        </div>
+    <main class="view-container" id="mainView">
+      <section class="view" id="view-dashboard" data-view="dashboard" role="tabpanel" aria-labelledby="tab-dashboard"></section>
+      <section class="view" id="view-training" data-view="training" role="tabpanel" aria-labelledby="tab-training" hidden></section>
+      <section class="view" id="view-nutrition" data-view="nutrition" role="tabpanel" aria-labelledby="tab-nutrition" hidden></section>
+      <section class="view" id="view-progress" data-view="progress" role="tabpanel" aria-labelledby="tab-progress" hidden></section>
+      <section class="view" id="view-library" data-view="library" role="tabpanel" aria-labelledby="tab-library" hidden></section>
+      <section class="view" id="view-settings" data-view="settings" role="tabpanel" aria-labelledby="tab-settings" hidden></section>
+    </main>
 
-        <div class="timer-display" aria-live="polite">
-          <div class="time" id="timerDisplay">01:00</div>
-          <div class="hint" id="timerHint">Preset attuale: 60 secondi</div>
-        </div>
-
-        <div class="timer-presets" aria-label="Preset timer">
-          <button class="chip-btn" type="button" data-preset="45">45 sec</button>
-          <button class="chip-btn" type="button" data-preset="60" data-active="true">60 sec</button>
-          <button class="chip-btn" type="button" data-preset="90">90 sec</button>
-          <button class="chip-btn" type="button" data-preset="120">120 sec</button>
-        </div>
-
-        <div class="timer-controls">
-          <button class="timer-btn primary" type="button" id="startPauseBtn">Avvia</button>
-          <button class="timer-btn" type="button" id="resetBtn">Reset</button>
-        </div>
-
-        <div class="timer-status" id="timerStatus">Pronto al recupero.</div>
-      </aside>
-    </section>
-
-    <main class="days" id="days"></main>
-
-    <section class="notes-panel" id="notes"></section>
-
-    <p class="footer-note" id="footerNote"></p>
+    <p class="footer-note">I dati restano su questo browser finché non esporti o cancelli i dati. Nessun server, nessun account, nessuna sincronizzazione automatica.</p>
   </div>
+
+  <div class="session-overlay" id="sessionOverlay" hidden></div>
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/markdown.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/training.js"></script>
+  <script src="assets/js/nutrition.js"></script>
+  <script src="assets/js/progress.js"></script>
+  <script src="assets/js/library.js"></script>
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
