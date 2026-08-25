@@ -1,93 +1,324 @@
 <!DOCTYPE html>
-<html lang="it" data-theme="dark">
+<html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Road to Boxing — Cockpit del fighter</title>
-  <meta name="description" content="Web app personale per allenamento da fighter, ricomposizione corporea e nutrizione. Funziona offline, dati solo su questo dispositivo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boxer Engine — Forza utile. Piedi veloci. Colpi puliti.</title>
+  <meta name="description" content="Piano essenziale di calisthenics, gambe, sacco e double-end bag. Costruisci potenza senza inseguire volume inutile." />
   <meta name="color-scheme" content="dark" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#mainView">Vai al contenuto principale</a>
+  <a class="skip-link" href="#home">Vai al contenuto principale</a>
 
-  <div class="app-shell">
-    <header class="topbar" aria-label="Barra principale">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 34L24 12L37 34" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M18 34H30" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-          </svg>
+  <!-- Sticky Navigation -->
+  <nav class="navbar" aria-label="Navigazione principale" role="navigation">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <h1 class="brand-title">BOXER ENGINE</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#piano" class="nav-link">Piano</a></li>
+        <li><a href="#tecnica" class="nav-link">Tecnica</a></li>
+        <li><a href="#rientro" class="nav-link">Rientro</a></li>
+        <li><a href="#pasti" class="nav-link">Pasti</a></li>
+        <li><a href="#regole" class="nav-link">Regole</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="home" class="main-container">
+
+    <!-- Hero Section -->
+    <section class="hero" id="home-section">
+      <div class="hero-content">
+        <h2 class="hero-title">BOXER ENGINE</h2>
+        <p class="hero-subtitle">Forza utile. Piedi veloci. Colpi puliti.</p>
+        <p class="hero-copy">Un piano essenziale di calisthenics, gambe, sacco e double-end bag. Costruisci potenza senza inseguire volume inutile.</p>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric-card">
+          <div class="metric-icon">💪</div>
+          <div class="metric-label">Potenza</div>
+          <div class="metric-desc">Qualità del colpo</div>
         </div>
-        <div class="brand-text">
-          <strong>Road to Boxing</strong>
-          <span>Cockpit del fighter <span class="version-badge" id="versionBadge"></span></span>
+        <div class="metric-card">
+          <div class="metric-icon">🦶</div>
+          <div class="metric-label">Piedi</div>
+          <div class="metric-desc">Distanza, entrata, uscita</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">⚙️</div>
+          <div class="metric-label">Motore</div>
+          <div class="metric-desc">Round puliti e recupero</div>
         </div>
       </div>
+    </section>
 
-      <div class="topbar-actions">
-        <label class="boxing-toggle" for="boxingTodayToggle">
-          <input type="checkbox" id="boxingTodayToggle" />
-          <span>Ho boxe oggi</span>
-        </label>
-        <button class="icon-btn" type="button" id="openSettingsBtn" aria-label="Vai a Impostazioni e backup">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 4.29l.06.06A1.65 1.65 0 0 0 8.92 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-        </button>
+    <!-- Piano Section -->
+    <section class="section" id="piano">
+      <div class="section-container">
+        <h3 class="section-title">Piano Settimanale</h3>
+        <p class="section-intro">Una settimana chiara. La frequenza può essere modificata in base alle tue esigenze. Se c'è boxe vera in palestra, sostituisce una sessione tecnica a casa.</p>
+        
+        <div class="weekly-schedule">
+          <div class="schedule-card">
+            <span class="day-name">Lunedì</span>
+            <span class="day-content">Forza Calisthenics + Gambe</span>
+          </div>
+          <div class="schedule-card">
+            <span class="day-name">Martedì</span>
+            <span class="day-content">Tecnica Boxe + Footwork</span>
+          </div>
+          <div class="schedule-card rest">
+            <span class="day-name">Mercoledì</span>
+            <span class="day-content">Riposo o Mobilità Leggera</span>
+          </div>
+          <div class="schedule-card">
+            <span class="day-name">Giovedì</span>
+            <span class="day-content">Forza Calisthenics + Gambe</span>
+          </div>
+          <div class="schedule-card">
+            <span class="day-name">Venerdì</span>
+            <span class="day-content">Tecnica Boxe + Footwork</span>
+          </div>
+          <div class="schedule-card rest">
+            <span class="day-name">Sabato/Dom</span>
+            <span class="day-content">Recupero Attivo Opzionale</span>
+          </div>
+        </div>
+
+        <p class="schedule-note"><strong>📋 Dettagli completi:</strong> vedi <a href="#schede-link">Schede di Allenamento</a></p>
       </div>
-    </header>
+    </section>
 
-    <nav class="tabbar" aria-label="Sezioni dell'app" role="tablist" id="mainTabs">
-      <button class="tab-btn" type="button" role="tab" data-view="dashboard" aria-selected="true" aria-controls="view-dashboard" id="tab-dashboard">
-        <span class="tab-icon" aria-hidden="true">🏠</span><span>Dashboard</span>
-      </button>
-      <button class="tab-btn" type="button" role="tab" data-view="training" aria-selected="false" aria-controls="view-training" id="tab-training">
-        <span class="tab-icon" aria-hidden="true">🥊</span><span>Allenamento</span>
-      </button>
-      <button class="tab-btn" type="button" role="tab" data-view="nutrition" aria-selected="false" aria-controls="view-nutrition" id="tab-nutrition">
-        <span class="tab-icon" aria-hidden="true">🍽️</span><span>Nutrizione</span>
-      </button>
-      <button class="tab-btn" type="button" role="tab" data-view="progress" aria-selected="false" aria-controls="view-progress" id="tab-progress">
-        <span class="tab-icon" aria-hidden="true">📈</span><span>Progressi</span>
-      </button>
-      <button class="tab-btn" type="button" role="tab" data-view="library" aria-selected="false" aria-controls="view-library" id="tab-library">
-        <span class="tab-icon" aria-hidden="true">📚</span><span>Libreria</span>
-      </button>
-      <button class="tab-btn" type="button" role="tab" data-view="settings" aria-selected="false" aria-controls="view-settings" id="tab-settings">
-        <span class="tab-icon" aria-hidden="true">⚙️</span><span>Impostazioni</span>
-      </button>
-    </nav>
+    <!-- Tecnica Section -->
+    <section class="section alt-bg" id="tecnica">
+      <div class="section-container">
+        <h3 class="section-title">Tre Modalità</h3>
+        <p class="section-intro">Adatta il tuo allenamento al tuo stato di recupero.</p>
+        
+        <div class="modalities">
+          <div class="modal-card">
+            <h4 class="modal-title">RIENTRO</h4>
+            <p class="modal-desc">Recupera la tolleranza all'esercizio senza riaccendere dolore.</p>
+            <ul class="modal-points">
+              <li>48–72 ore senza dolore significativo</li>
+              <li>Push-up inclinati tollerati</li>
+              <li>Shadow leggero senza fastidio</li>
+              <li>Mobilità fluida</li>
+            </ul>
+          </div>
+          <div class="modal-card">
+            <h4 class="modal-title">BASE</h4>
+            <p class="modal-desc">Allenamento principale. Costruisci forza e tecnica.</p>
+            <ul class="modal-points">
+              <li>2 sessioni senza peggioramento</li>
+              <li>Push-up normali indolore</li>
+              <li>Nessun fastidio lombare</li>
+              <li>No dolore al gran dentato</li>
+            </ul>
+          </div>
+          <div class="modal-card">
+            <h4 class="modal-title">POTENZA</h4>
+            <p class="modal-desc">Esercizi esplosivi e colpi singoli ad alta qualità.</p>
+            <ul class="modal-points">
+              <li>BASE stabile e tollerato</li>
+              <li>Push-up/bulgarian indolore</li>
+              <li>Shadow fluido e controllato</li>
+              <li>Pronto per pliometria</li>
+            </ul>
+          </div>
+        </div>
 
-    <main class="view-container" id="mainView">
-      <section class="view" id="view-dashboard" data-view="dashboard" role="tabpanel" aria-labelledby="tab-dashboard"></section>
-      <section class="view" id="view-training" data-view="training" role="tabpanel" aria-labelledby="tab-training" hidden></section>
-      <section class="view" id="view-nutrition" data-view="nutrition" role="tabpanel" aria-labelledby="tab-nutrition" hidden></section>
-      <section class="view" id="view-progress" data-view="progress" role="tabpanel" aria-labelledby="tab-progress" hidden></section>
-      <section class="view" id="view-library" data-view="library" role="tabpanel" aria-labelledby="tab-library" hidden></section>
-      <section class="view" id="view-settings" data-view="settings" role="tabpanel" aria-labelledby="tab-settings" hidden></section>
-    </main>
+        <div class="alert alert-warning">
+          <strong>⚠️ Sicurezza</strong><br>
+          Dolore 0–2/10 e stabile: monitora.<br>
+          Dolore netto o crescente: riduci/regredisci.<br>
+          Sintomi neurologici: stop immediato e valutazione sanitaria.
+        </div>
+      </div>
+    </section>
 
-    <p class="footer-note">I dati restano su questo browser finché non esporti o cancelli i dati. Nessun server, nessun account, nessuna sincronizzazione automatica.</p>
-  </div>
+    <!-- Rientro Section -->
+    <section class="section" id="rientro">
+      <div class="section-container">
+        <h3 class="section-title">Rientro: Guarigione + Prestazione</h3>
+        <p class="section-intro">Non stai perdendo tutto. Stai ricostruendo la capacità di allenarti senza riaccendere il problema.</p>
+        
+        <div class="alert alert-info">
+          <strong>⚠️ Rientro da Gran Dentato / Lombare</strong><br>
+          Se gran dentato o lombare danno dolore netto, dolore crescente o fastidio il giorno dopo, riduci/regredisci. Per dolore irradiato, formicolio, debolezza o sintomi importanti, fermati e fatti valutare.
+        </div>
 
-  <div class="session-overlay" id="sessionOverlay" hidden></div>
-  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+        <div class="info-cards">
+          <div class="info-card">
+            <h4>Criteri Rientro → Base</h4>
+            <ul>
+              <li>✓ 48–72 ore senza dolore nella vita quotidiana</li>
+              <li>✓ Push-up inclinato/normale indolore durante e mattino dopo</li>
+              <li>✓ Shadow leggero tollerato</li>
+              <li>✓ Camminata e mobilità senza flare-up</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Criteri Base → Potenza</h4>
+            <ul>
+              <li>✓ 2 sessioni Base senza peggioramento</li>
+              <li>✓ Push-up e push-up plus indolore</li>
+              <li>✓ Nessun fastidio lombare con footwork/bulgari</li>
+              <li>✓ Nessun dolore al gran dentato</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Regole di Regressione</h4>
+            <ul>
+              <li>🔴 Dolore 0–2/10: monitora</li>
+              <li>🔴 Dolore crescente: stop movimento specifico</li>
+              <li>🔴 Sintomi nervosi: valutazione sanitaria</li>
+              <li>🔴 Dubbio? Consulta un professionista</li>
+            </ul>
+          </div>
+        </div>
 
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/store.js"></script>
-  <script src="assets/js/charts.js"></script>
-  <script src="assets/js/markdown.js"></script>
-  <script src="assets/js/ui.js"></script>
-  <script src="assets/js/dashboard.js"></script>
-  <script src="assets/js/training.js"></script>
-  <script src="assets/js/nutrition.js"></script>
-  <script src="assets/js/progress.js"></script>
-  <script src="assets/js/library.js"></script>
-  <script src="assets/js/settings.js"></script>
-  <script src="assets/js/app.js"></script>
+        <p class="note-text"><strong>Nota:</strong> questo non è un programma medico. Indicazioni generali per allenarti nel rientro.</p>
+      </div>
+    </section>
+
+    <!-- Pasti Section -->
+    <section class="section alt-bg" id="pasti">
+      <div class="section-container">
+        <h3 class="section-title">Mangia per Allenarti, Non per Ossessionarti</h3>
+        <p class="section-intro">Proteine adeguate, carboidrati intorno all'allenamento, grassi buoni. Semplice e ripetibile.</p>
+        
+        <div class="nutrition-target">
+          <div class="target-item">
+            <span class="target-label">Proteine</span>
+            <span class="target-value">125–145 g/die</span>
+          </div>
+          <div class="target-item">
+            <span class="target-label">Grassi</span>
+            <span class="target-value">50–65 g/die</span>
+          </div>
+          <div class="target-item">
+            <span class="target-label">Verdure</span>
+            <span class="target-value">2 porzioni/die</span>
+          </div>
+          <div class="target-item">
+            <span class="target-label">Frutta</span>
+            <span class="target-value">1–2 porzioni/die</span>
+          </div>
+        </div>
+
+        <div class="meal-examples">
+          <h4 class="examples-title">Giorno Forza — Esempio</h4>
+          <div class="meal-card">
+            <span class="meal-time">Colazione</span>
+            <span class="meal-content">Yogurt greco + cornflakes + banana + miele</span>
+          </div>
+          <div class="meal-card">
+            <span class="meal-time">Pranzo</span>
+            <span class="meal-content">Riso + pollo/merluzzo + verdure + olio EVO</span>
+          </div>
+          <div class="meal-card">
+            <span class="meal-time">Pre-Allenamento</span>
+            <span class="meal-content">Banana + yogurt oppure pane + bresaola</span>
+          </div>
+          <div class="meal-card">
+            <span class="meal-time">Cena</span>
+            <span class="meal-content">Pasta/riso + pollo/pesce + verdure + olio EVO</span>
+          </div>
+        </div>
+
+        <p class="note-text"><strong>📋 Schede complete:</strong> vedi <a href="#schede-pasti-link">Schede Pasti</a></p>
+      </div>
+    </section>
+
+    <!-- Regole Section -->
+    <section class="section" id="regole">
+      <div class="section-container">
+        <h3 class="section-title">Progressione Senza Perdere Velocità</h3>
+        <p class="section-intro">Come progredire in modo intelligente e sostenibile.</p>
+        
+        <div class="progression-rules">
+          <div class="rule-card">
+            <h4>Calisthenics &amp; Gambe</h4>
+            <p>Aumenta 1 ripetizione per serie solo quando tutte le serie sono pulite e con 1–2 RIR.</p>
+          </div>
+          <div class="rule-card">
+            <h4>Trazioni</h4>
+            <p>Aumenta ripetizioni prima di aggiungere zavorra. Quando raggiungi 6 reps × 5 serie pulite, allora considera zavorra leggera (+2,5 kg).</p>
+          </div>
+          <div class="rule-card">
+            <h4>Bulgarian Split Squat</h4>
+            <p>Sequenza: prima qualità/equilibrio → poi ripetizioni → poi carico.</p>
+          </div>
+          <div class="rule-card">
+            <h4>Push-up Pliometriche</h4>
+            <p>Aumenta solo se altezza, velocità e atterraggi sono identici dalla prima all'ultima ripetizione.</p>
+          </div>
+          <div class="rule-card">
+            <h4>Sacco</h4>
+            <p>Sequenza: prima tecnica → poi velocità → poi potenza → infine volume.</p>
+          </div>
+          <div class="rule-card">
+            <h4>Generale</h4>
+            <p>Se una seduta ti lascia lento/rigido/dolorante oltre 24 ore: riduci volume 20–30% la prossima. Ogni 4a settimana: riduci serie del 30–40%, mantieni tecnica.</p>
+          </div>
+        </div>
+
+        <h4 class="rules-subtitle">Cosa Evitare</h4>
+        <ul class="avoid-list">
+          <li>❌ Russian twist con carico; torsioni esplosive</li>
+          <li>❌ Sit-up ad alto volume o crunch</li>
+          <li>❌ Cable row (rematore basso ai cavi)</li>
+          <li>❌ Full plank con torsione</li>
+          <li>❌ Flettere/estendere la lombare sotto carico</li>
+          <li>❌ Timer a schermo intero o gamification</li>
+          <li>❌ Inseguire volume inutile fuori da sacco/footwork</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Markdown Links Section -->
+    <section class="section alt-bg" id="links">
+      <div class="section-container">
+        <h3 class="section-title">Documentazione Completa</h3>
+        <p class="section-intro">Leggi le schede dettagliate per tutte le informazioni esatte.</p>
+        
+        <div class="docs-grid">
+          <a href="schede_allenamento_fighter.md" class="doc-card" id="schede-link">
+            <h4>Schede di Allenamento</h4>
+            <p>Piano completo con serie, ripetizioni, recuperi e varianti per RIENTRO, BASE e POTENZA.</p>
+          </a>
+          <a href="schede_pasti_ricomposizione.md" class="doc-card" id="schede-pasti-link">
+            <h4>Schede Pasti</h4>
+            <p>Nutrizione semplice basata su alimenti reali: pollo, merluzzo, riso, pasta, yogurt.</p>
+          </a>
+          <a href="piano_ricomposizione_e_performance.md" class="doc-card">
+            <h4>Piano 8 Settimane</h4>
+            <p>Struttura delle prime 8 settimane: RIENTRO, BASE, scarico, verifica tecnica.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p><strong>Boxer Engine</strong> — Piano essenziale di allenamento e nutrizione per fighter in rientro.</p>
+      <p>Nessun server, nessun account, nessun tracciamento. Tutto statico su GitHub Pages.</p>
+      <p><a href="https://github.com/AlessioQuagliara/alessioquagliara-training" target="_blank" rel="noopener noreferrer">Visualizza su GitHub</a></p>
+      <p class="footer-note">Questa è una guida generale, non una consulenza medica. Per dolore persistente, formicolio o debolezza, consulta un professionista.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
