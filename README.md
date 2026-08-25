@@ -2,7 +2,7 @@
 
 Piano essenziale di calisthenics, gambe, sacco e double-end bag. Niente volume ridondante da fitness da palestra normale: solo gli esercizi che costruiscono potenza e tecnica boxer.
 
-Sito statico (HTML + CSS + JavaScript vanilla, nessun framework, nessun build tool, nessuna dipendenza esterna). Funziona aprendo direttamente `index.html` da disco **e** su GitHub Pages, senza backend, database, login o API key.
+Sito statico (HTML + CSS + JavaScript vanilla, nessun framework, nessun build tool). L'unica dipendenza esterna è **Tailwind CSS + DaisyUI via CDN**, usati solo per lo stile dei componenti (tab, badge, accordion) — nessuna build, nessun npm. Funziona su GitHub Pages senza backend, database, login o API key.
 
 **Pubblicato su GitHub Pages:**  
 https://alessioquagliara.github.io/alessioquagliara-training/
@@ -14,12 +14,27 @@ https://alessioquagliara.github.io/alessioquagliara-training/
 Un sito single-page con sezioni navigate dal menu sticky:
 
 - **Home** — Boxer Engine: cos'è, tre metriche (Potenza, Piedi, Motore)
-- **Piano** — settimana standard lunedì–domenica, giorni e sessioni
+- **Piano** — settimana standard lunedì–domenica, e la **scheda dettagliata interattiva** (esercizi, serie/ripetizioni/recuperi, varianti RIENTRO/BASE/POTENZA), disegnata con componenti DaisyUI e alimentata da `assets/data/scheda.json`
 - **Tecnica** — le tre modalità di allenamento (RIENTRO, BASE, POTENZA)
 - **Rientro** — come gestire il ritorno da infortunio (gran dentato, lombare), criteri di progressione
 - **Pasti** — nutrizione semplice, target proteici/macro, esempio giorno forza
 - **Regole** — progressione senza cedere, cosa evitare, regressione intelligente
 - **Documentazione** — link alle 3 schede Markdown complete (Allenamento, Pasti, Piano 8 Settimane)
+
+---
+
+## Modificare la scheda di allenamento (JSON)
+
+Il contenuto della "Scheda Dettagliata" nella sezione **Piano** non è scritto nell'HTML: viene letto a runtime da [`assets/data/scheda.json`](assets/data/scheda.json) e disegnato con componenti DaisyUI (tab, badge, accordion) da [`assets/js/scheda.js`](assets/js/scheda.js).
+
+Per modificare esercizi, serie/ripetizioni, recuperi o varianti:
+
+1. Apri `assets/data/scheda.json` in VS Code.
+2. Modifica i campi che ti servono (es. `serie_ripetizioni`, `recupero`, `note`, `rientro`, `potenza` dentro `sessioni.forza.esercizi` o `sessioni.tecnica.blocchi`).
+3. Salva: è JSON puro, senza commenti, quindi rispetta virgole e virgolette. Un JSON non valido fa comparire un messaggio d'errore nella pagina invece della scheda.
+4. Ricarica il sito (con un server locale, vedi sotto) per vedere il risultato.
+
+Non serve toccare `index.html` o il JavaScript per aggiornare i contenuti della scheda.
 
 ---
 
@@ -48,20 +63,25 @@ I link alla documentazione sono in fondo al sito (sezione "Documentazione Comple
 ├── piano_ricomposizione_e_performance.md # Piano 8 settimane
 ├── assets/
 │   ├── css/
-│   │   └── style.css                   # Tema dark (nero/charcoal + rosso + ambra)
-│   │                                     layout responsive, animazioni leggere
+│   │   └── style.css                   # Tema dark (nero/charcoal + rosso + ambra),
+│   │                                     layout responsive, animazioni leggere,
+│   │                                     allineamento colori dei componenti DaisyUI
+│   ├── data/
+│   │   └── scheda.json                 # Dati della scheda di allenamento (editabile)
 │   └── js/
-│       └── main.js                     # Smooth scroll nav, intersection observer
+│       ├── main.js                     # Smooth scroll nav, intersection observer
+│       └── scheda.js                   # Legge scheda.json e disegna la scheda
+│                                          interattiva con componenti DaisyUI
 ```
 
-Nessun JS framework, nessun bundle tool, nessun npm. Solo file statici che funzionano come sono.
+Nessun JS framework, nessun bundle tool, nessun npm. Tailwind + DaisyUI arrivano da CDN (`<script>`/`<link>` in `index.html`), solo per lo stile — tutta la logica resta vanilla JS.
 
 ---
 
 ## Avvio in locale
 
-### Opzione 1: File diretto (sconsigliato per sviluppo)
-Doppio clic su `index.html` apre il sito nel browser. Alcuni browser moderni bloccano il caricamento di link ai file Markdown via JavaScript per motivi di sicurezza (`file://` protocol).
+### Opzione 1: File diretto (sconsigliato)
+Doppio clic su `index.html` apre il sito, ma la Scheda Dettagliata resta vuota: i browser bloccano `fetch()` di file locali (`assets/data/scheda.json`) quando la pagina è aperta con protocollo `file://`. Usa un server locale (Opzione 2) per vedere la scheda interattiva.
 
 ### Opzione 2: Server locale (consigliato)
 
@@ -118,13 +138,13 @@ Modificabile e riutilizzabile. Se lo cloni, aggiorna i file `.md` con i tuoi pia
 ## Contatti e FAQ
 
 **D: Posso modificare le schede?**  
-R: Sì. Modifica i file `.md` e le modifiche saranno visibili al reload.
+R: Sì. Per la scheda interattiva in home, modifica [`assets/data/scheda.json`](assets/data/scheda.json) (vedi sezione sopra). Per i piani completi, modifica i file `.md`. In entrambi i casi le modifiche sono visibili al reload.
 
 **D: Funziona offline?**  
-R: Una volta caricato, sì. Ma il primo caricamento e il caricamento dei file `.md` richiedono internet (se usi il server locale, no).
+R: Il caricamento iniziale richiede internet per i font e per Tailwind/DaisyUI via CDN. La scheda interattiva richiede anche che la pagina sia servita da un server locale (non aperta come file), altrimenti il browser blocca la lettura di `scheda.json`.
 
-**D: Posso aggiungere feature (timer, tracker, data visualization)?**  
-R: Sì, aggiungi codice a `main.js` o crea nuovi file `.js`. Ricorda di importarli in `index.html`.
+**D: Posso aggiungere timer, tracker o dashboard?**  
+R: Il sito è pensato apposta per restarne senza: niente storage, niente gamification, niente tracking. Se ti serve comunque qualcosa in JS puro, aggiungilo in `assets/js/`, ma valuta prima se non appesantisce lo scopo del sito.
 
 **D: Il sito è mobile-first?**  
 R: Sì. Responsive fino a 320px di larghezza. Prova su telefono.

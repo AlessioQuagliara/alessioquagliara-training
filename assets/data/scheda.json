@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "titolo": "Scheda di Allenamento — Boxer Engine",
+    "obiettivo": "Costruire forza utile, footwork preciso e capacità di produrre e ripetere colpi con controllo.",
+    "principio": "Principi boxer old-school: calisthenics, fondamentali, gambe, sacco, ritmo e condizionamento."
+  },
+
+  "modalita": [
+    {
+      "id": "rientro",
+      "nome": "RIENTRO",
+      "badge": "info",
+      "descrizione": "Recuperare la tolleranza all'esercizio senza riaccendere il problema (gran dentato/lombare).",
+      "criteri_uscita": [
+        "Almeno 48–72 ore senza dolore significativo nella vita quotidiana",
+        "Push-up inclinato/normale tollerato senza dolore durante e il mattino dopo",
+        "Shadow leggero tollerato",
+        "Camminata e mobilità senza flare-up"
+      ]
+    },
+    {
+      "id": "base",
+      "nome": "BASE",
+      "badge": "primary",
+      "descrizione": "Allenamento principale. Si sblocca quando RIENTRO è completato senza peggioramenti.",
+      "criteri_uscita": [
+        "Almeno 2 sessioni BASE completate senza peggioramento durante o il giorno dopo",
+        "Push-up normali e push-up plus senza dolore",
+        "Nessun fastidio lombare con footwork leggero, bulgari a corpo libero e shadow",
+        "Nessun dolore netto al gran dentato"
+      ]
+    },
+    {
+      "id": "potenza",
+      "nome": "POTENZA",
+      "badge": "secondary",
+      "descrizione": "Si sblocca solo quando BASE è stabile e tollerato completamente. Esercizi esplosivi e colpi singoli ad alta qualità.",
+      "criteri_uscita": []
+    }
+  ],
+
+  "settimana": [
+    { "giorno": "Lunedì", "tipo": "forza", "etichetta": "Forza Calisthenics + Gambe" },
+    { "giorno": "Martedì", "tipo": "tecnica", "etichetta": "Tecnica Boxe + Footwork" },
+    { "giorno": "Mercoledì", "tipo": "riposo", "etichetta": "Riposo o Mobilità Leggera" },
+    { "giorno": "Giovedì", "tipo": "forza", "etichetta": "Forza Calisthenics + Gambe" },
+    { "giorno": "Venerdì", "tipo": "tecnica", "etichetta": "Tecnica Boxe + Footwork" },
+    { "giorno": "Sabato/Domenica", "tipo": "recupero", "etichetta": "Recupero Attivo Opzionale" }
+  ],
+  "nota_boxe_esterna": "Se c'è boxe vera in palestra, la sessione esterna sostituisce una sessione tecnica a casa: non si somma automaticamente.",
+
+  "sessioni": {
+    "forza": {
+      "titolo": "Forza Calisthenics + Gambe",
+      "giorni": ["Lunedì", "Giovedì"],
+      "durata": "50–70 min",
+      "obiettivo": "Costruire forza relativa, stabilità scapolare, schiena e gambe per colpi e footwork.",
+      "riscaldamento": [
+        "Cyclette o camminata: 5 min",
+        "Mobilità spalle/scapole e anche/caviglie: 3–5 min",
+        "1–2 serie facili dei primi movimenti"
+      ],
+      "esercizi": [
+        {
+          "nome": "Trazioni alla Sbarra",
+          "serie_ripetizioni": "5 × 4–6",
+          "recupero": "90–120 sec",
+          "intensita": "1–2 RIR",
+          "note": [
+            "Se non arrivi alle ripetizioni: negative controllate o lat machine.",
+            "Stop prima di perdere depressione scapolare e forma."
+          ],
+          "rientro": "Riduci a 3 × 3–4 oppure lat machine 3 × 6–8.",
+          "potenza": null
+        },
+        {
+          "nome": "Push-up Bars (Presa Neutra)",
+          "serie_ripetizioni": "3 × 6–12",
+          "recupero": "60–75 sec",
+          "intensita": "2 RIR",
+          "note": [
+            "Gomiti aderenti al corpo, scapole retratte e depresse.",
+            "ROM profondo solo se spalla/gran dentato restano indolore."
+          ],
+          "rientro": "Push-up normali a profondità ridotta, 3 × 6–10.",
+          "potenza": "+1 ripetizione per serie quando tutte le serie sono pulite e con 1–2 RIR."
+        },
+        {
+          "nome": "Punch Push-up / Push-up Plus",
+          "serie_ripetizioni": "3 × 8–12",
+          "recupero": "45–60 sec",
+          "intensita": "1–2 RIR",
+          "note": [
+            "Spingi \"via il pavimento\" in alto senza piegare ancora i gomiti, scapole che protraggono.",
+            "È un esercizio di controllo scapolare e dentato, non una simulazione diretta di colpi di busto."
+          ],
+          "rientro": "Wall push-up plus: 2 × 8–10. Se dà fastidio al gran dentato, salta del tutto.",
+          "potenza": "Identico a BASE; nessuna variante pliometrica qui."
+        },
+        {
+          "nome": "Diamond Push-up",
+          "serie_ripetizioni": "3 × 6–10",
+          "recupero": "60–75 sec",
+          "intensita": "1–2 RIR",
+          "note": [
+            "Mani a rombo sotto il petto, gomiti aderenti ai fianchi.",
+            "Non è simulazione diretta di ganci/montanti."
+          ],
+          "rientro": "Push-up stretti normali oppure inclinati: 2 × 6–8.",
+          "potenza": null,
+          "attenzione": "Se senti fastidio al polso, gomito o spalla, salta e usa push-up stretti normali."
+        },
+        {
+          "nome": "Rematore con Manubrio a Un Braccio",
+          "serie_ripetizioni": "4 × 8–12 per lato",
+          "recupero": "60–75 sec tra i lati",
+          "intensita": "1–2 RIR",
+          "note": [
+            "Appoggiato a una panca/sedia stabile, schiena neutra.",
+            "Tira il gomito verso l'anca, niente torsione del busto.",
+            "Nel rematore il busto resta fermo: se la lombare si affatica prima della schiena, riduci carico e usa la variante seduta."
+          ],
+          "alternativa": "Rematore con bilanciere corto (4 × 8–12, recupero 75–90 sec) o rematore seduto alla macchina, se disponibile e senza fastidi lombari.",
+          "rientro": "Riduci a 3 × 6–8 con carico leggero, oppure salta e mantieni dead bug/mobilità.",
+          "potenza": null
+        },
+        {
+          "nome": "Bulgarian Split Squat",
+          "serie_ripetizioni": "4 × 6–10 per lato",
+          "recupero": "75–90 sec",
+          "intensita": "2 RIR",
+          "note": [
+            "Piede posteriore su panca/sedia, scendi con controllo.",
+            "Ginocchio anteriore non oltre la punta, schiena neutra."
+          ],
+          "rientro": "Riduci a 3 × 5–8 a corpo libero. Stop immediato se la lombare è dolente.",
+          "potenza": "Quando tutte le serie sono stabili con 2 RIR, aggiungi carico (manubrio)."
+        },
+        {
+          "nome": "Calf Raise",
+          "serie_ripetizioni": "3 × 12–20",
+          "recupero": "45–60 sec",
+          "intensita": "1–2 RIR",
+          "note": [
+            "Sali sulla punta dei piedi, pausa di 1–2 sec in cima, ritorna con controllo."
+          ],
+          "rientro": null,
+          "potenza": null
+        }
+      ],
+      "core": {
+        "titolo": "Blocco Core — 2 Giri (fisso, dopo le gambe)",
+        "esercizi": [
+          {
+            "nome": "Dead Bug",
+            "dettaglio": "10 ripetizioni per lato",
+            "recupero": "20–30 sec",
+            "tecnica": "Movimento lento: espira, schiena lombare neutra e costole basse."
+          },
+          {
+            "nome": "Side Plank",
+            "dettaglio": "25 secondi per lato",
+            "recupero": "20–30 sec",
+            "tecnica": "Bacino alto, corpo in linea, niente rotazione."
+          },
+          {
+            "nome": "Bird Dog",
+            "dettaglio": "10 ripetizioni per lato",
+            "recupero": "45 sec dopo ogni giro",
+            "tecnica": "Pausa di 2 secondi in massima estensione."
+          }
+        ],
+        "nota_sicurezza": "Se un esercizio provoca dolore netto o crescente alla lombare, interrompi solo quell'esercizio e sostituiscilo con camminata/mobilità leggera."
+      },
+      "potenza_extra": {
+        "titolo": "Push-up Pliometriche",
+        "posizione": "All'inizio della sessione, dopo il riscaldamento, prima del blocco forza principale.",
+        "serie_ripetizioni": "3 × 3–5",
+        "recupero": "90–120 sec",
+        "tecnica": "Spingi con forza per staccarti dal pavimento; atterra con controllo, gomiti flessi.",
+        "stop": "Se perdi altezza/velocità rispetto alla prima ripetizione, o se dentato/spalla/lombare dà dolore: stop.",
+        "alternativa_base": "Non pronto per pliometria: push-up \"fast intent\" senza stacco, 3 × 4–6."
+      }
+    },
+
+    "tecnica": {
+      "titolo": "Tecnica Boxe + Footwork",
+      "giorni": ["Martedì", "Venerdì"],
+      "durata": "45–65 min",
+      "obiettivo": "Timing, guardia, distanza, fluidità ed entrata/uscita. Tecnica prima del volume.",
+      "riscaldamento": [
+        "Cyclette o camminata: 3–5 min",
+        "Mobilità leggera spalle, anche e caviglie: 2 min",
+        "Shadow sciolto: 2 min, movimento fluido, niente potenza"
+      ],
+      "blocchi": [
+        {
+          "nome": "Footwork Drill",
+          "struttura": "3 × 2 min",
+          "recupero": "1 min tra i round",
+          "intensita": "60–70%",
+          "round": [
+            { "numero": 1, "titolo": "Step-and-slide avanti/indietro", "descrizione": "Piedi paralleli, distanza spalla-spalla, non incrociare i piedi. Postura boxing: ginocchia leggere, bacino neutro." },
+            { "numero": 2, "titolo": "Jab + passo fuori linea", "descrizione": "Getta un jab; contemporaneamente passo fuori dalla linea di attacco. Ritorna in guardia." },
+            { "numero": 3, "titolo": "1–2 + pivot e uscita", "descrizione": "Getta 1 (jab) e 2 (diretto). Pivot sul piede anteriore, uscita laterale, ritorna in guardia." }
+          ],
+          "rientro": "Solo Round 1 (avanti/indietro) a intensità bassa. No pivot aggressivi."
+        },
+        {
+          "nome": "Shadow Boxing",
+          "struttura": "3 × 3 min",
+          "recupero": "1 min tra i round",
+          "intensita": "60–70%",
+          "round": [
+            { "numero": 1, "titolo": "Guardia, rilassamento, distanza", "descrizione": "Piccoli movimenti di piedi, mani, testa. Focus su postura, distanza, equilibrio." },
+            { "numero": 2, "titolo": "Jab e difesa", "descrizione": "Getta jab controllati, ritorna in guardia, respira costantemente." },
+            { "numero": 3, "titolo": "Diretto/hook con ritorno in guardia", "descrizione": "Colpi più robusti; ritorno rapido e controllato in guardia, niente strappi." }
+          ],
+          "rientro": "Nessun colpo esplosivo. Ampiezza ridotta e solo se indolore. Focus su movimento e respiro."
+        },
+        {
+          "nome": "Double-end Bag / Reflex Ball",
+          "struttura": "3 × 3 min",
+          "recupero": "1 min tra i round",
+          "intensita": "60–75%",
+          "round": [
+            { "numero": 1, "titolo": "Precisione", "descrizione": "Colpisci il centro del bersaglio; respira, ritmo stabile." },
+            { "numero": 2, "titolo": "Ritmo e respirazione", "descrizione": "Aumenta leggermente il ritmo; respira su un pattern (es. 2 colpi = 1 espirazione)." },
+            { "numero": 3, "titolo": "Colpisci, esci dalla linea, riprendi posizione", "descrizione": "Colpisci, passo fuori dalla linea, ritorna in posizione." }
+          ],
+          "rientro": null
+        },
+        {
+          "nome": "Sacco Tecnico",
+          "struttura": "4 × 3 min",
+          "recupero": "1 min tra i round",
+          "intensita": "70–80%",
+          "round": [
+            { "numero": 1, "titolo": "Jab e distanza", "descrizione": "Getta jab, mantieni distanza corretta: gomito, polso, ritorno." },
+            { "numero": 2, "titolo": "1–2 + uscita", "descrizione": "Combinazione jab + diretto, uscita laterale fuori dalla linea, ritorno in guardia." },
+            { "numero": 3, "titolo": "Jab-cross-hook, ritorno in guardia", "descrizione": "Sequenza jab, diretto, hook; ritorno rapido e controllato. Qualità prima di velocità." },
+            { "numero": 4, "titolo": "Libero", "descrizione": "Combina i movimenti precedenti; tecnica prima del volume, no all-out." }
+          ],
+          "rientro": null,
+          "nota": "No round massimali; mantieni 70–80% per tutto. Respira costantemente, no apnea."
+        }
+      ],
+      "condizionamento_opzionale": {
+        "descrizione": "Cyclette o tapis roulant, 10–20 min facile, intensità conversazione confortevole.",
+        "nota": "No HIIT dopo sacco."
+      },
+      "potenza_extra": {
+        "titolo": "Colpi Singoli ad Alta Qualità",
+        "posizione": "Alla fine dei round tecnici, dopo il sacco, se la schiena risponde bene.",
+        "struttura": "4–6 colpi singoli per tipo (jab, diretto, hook)",
+        "recupero": "30–45 sec tra i tipi",
+        "tecnica": "Ogni colpo deve spostare il sacco senza sbilanciarti. Forma impeccabile, no fretta.",
+        "stop": "Se la schiena risponde male alla rotazione, elimina questa parte."
+      }
+    }
+  },
+
+  "recupero_attivo": {
+    "titolo": "Sabato/Domenica — Recupero Attivo Opzionale",
+    "opzioni": [
+      "Camminata: 30–45 min a passo moderato (conversazione confortevole)",
+      "Cyclette: 20–30 min facile (zona 1–2)"
+    ],
+    "extra": "+ Mobilità 10 min (spalle, anche, caviglie, schiena)",
+    "nota": "No test di forma, no \"volume di recupero\"."
+  },
+
+  "progressione": [
+    { "titolo": "Calisthenics e Gambe", "regola": "Aumenta 1 ripetizione per serie solo quando tutte le serie sono pulite e con 1–2 RIR." },
+    { "titolo": "Trazioni", "regola": "Aumenta ripetizioni prima di aggiungere zavorra. A 6 reps × 5 serie pulite, valuta zavorra leggera (+2,5 kg)." },
+    { "titolo": "Bulgarian Split Squat", "regola": "Sequenza: prima qualità/equilibrio, poi ripetizioni, poi carico." },
+    { "titolo": "Push-up Pliometriche (POTENZA)", "regola": "Aumenta solo se altezza, velocità e atterraggi sono identici dalla prima all'ultima ripetizione." },
+    { "titolo": "Sacco", "regola": "Sequenza: prima tecnica, poi velocità, poi potenza, infine volume." },
+    { "titolo": "Generale", "regola": "Seduta che lascia lento/rigido/dolorante oltre 24 ore: riduci volume 20–30% la prossima. Ogni 4a settimana: riduci serie/round 30–40%, mantieni tecnica." }
+  ],
+
+  "regressione": [
+    { "titolo": "Dolore o affaticamento persistente", "regola": "Riduci il volume del 30–50% nella sessione successiva. Mantieni la tecnica, rimuovi serie." },
+    { "titolo": "Mobilità ridotta", "regola": "Riduci ROM e carico, aumenta il recupero tra le serie." },
+    { "titolo": "Passaggio da RIENTRO a BASE", "regola": "Non aumentare bruscamente il volume: aggiungi 1 esercizio o 1 serie per settimana." }
+  ],
+
+  "cosa_evitare": [
+    "Russian twist con carico o torsioni esplosive",
+    "Sit-up ad alto volume o crunch",
+    "Rematore basso ai cavi/Domyos: usa manubrio o bilanciere",
+    "Full plank con torsione",
+    "Esercizi che flettono/estendono la lombare sotto carico",
+    "Timer a schermo intero o gamification",
+    "Inseguire volume inutile fuori da sacco/footwork"
+  ],
+
+  "sicurezza_finale": [
+    "Non è una routine medica: indicazioni generali per un fighter in rientro.",
+    "Dolore 0–2/10 e stabile: monitora, riduci se cresce.",
+    "Dolore netto, crescente o peggiore il giorno dopo: stop al movimento specifico, torna indietro.",
+    "Sintomi neurologici (formicolio, debolezza, dolore irradiato): stop immediato, valutazione sanitaria."
+  ],
+
+  "nota_rientro": "Rientro: se gran dentato o lombare danno dolore netto, dolore crescente o fastidio il giorno dopo, riduci/regredisci. Per dolore irradiato, formicolio, debolezza o sintomi importanti, fermati e fatti valutare."
+}
