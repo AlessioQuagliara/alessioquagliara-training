@@ -40,10 +40,10 @@
   ],
 
   "settimana": [
-    { "giorno": "Lunedì", "tipo": "forza", "etichetta": "Forza Calisthenics + Gambe" },
+    { "giorno": "Lunedì", "tipo": "forza", "sotto_sessione": "a", "etichetta": "Forza A — Trazione, Spinta Orizzontale e Gambe" },
     { "giorno": "Martedì", "tipo": "tecnica", "etichetta": "Tecnica Boxe + Footwork" },
     { "giorno": "Mercoledì", "tipo": "riposo", "etichetta": "Riposo o Mobilità Leggera" },
-    { "giorno": "Giovedì", "tipo": "forza", "etichetta": "Forza Calisthenics + Gambe" },
+    { "giorno": "Giovedì", "tipo": "forza", "sotto_sessione": "b", "etichetta": "Forza B — Skill Verticale, Trazione e Gambe" },
     { "giorno": "Venerdì", "tipo": "tecnica", "etichetta": "Tecnica Boxe + Footwork" },
     { "giorno": "Sabato/Domenica", "tipo": "recupero", "etichetta": "Recupero Attivo Opzionale" }
   ],
@@ -51,135 +51,243 @@
 
   "sessioni": {
     "forza": {
-      "titolo": "Forza Calisthenics + Gambe",
+      "titolo": "Forza Calisthenics + Gambe — A/B",
       "giorni": ["Lunedì", "Giovedì"],
-      "durata": "50–70 min",
-      "obiettivo": "Costruire forza relativa, stabilità scapolare, schiena e gambe per colpi e footwork.",
-      "riscaldamento": [
-        "Cyclette o camminata: 5 min",
-        "Mobilità spalle/scapole e anche/caviglie: 3–5 min",
-        "1–2 serie facili dei primi movimenti"
-      ],
-      "esercizi": [
-        {
-          "nome": "Trazioni alla Sbarra",
-          "serie_ripetizioni": "5 × 4–6",
-          "recupero": "90–120 sec",
-          "intensita": "1–2 RIR",
-          "note": [
-            "Se non arrivi alle ripetizioni: negative controllate o lat machine.",
-            "Stop prima di perdere depressione scapolare e forma."
-          ],
-          "rientro": "Riduci a 3 × 3–4 oppure lat machine 3 × 6–8.",
-          "potenza": null
-        },
-        {
-          "nome": "Push-up Bars (Presa Neutra)",
-          "serie_ripetizioni": "3 × 6–12",
-          "recupero": "60–75 sec",
-          "intensita": "2 RIR",
-          "note": [
-            "Gomiti aderenti al corpo, scapole retratte e depresse.",
-            "ROM profondo solo se spalla/gran dentato restano indolore."
-          ],
-          "rientro": "Push-up normali a profondità ridotta, 3 × 6–10.",
-          "potenza": "+1 ripetizione per serie quando tutte le serie sono pulite e con 1–2 RIR."
-        },
-        {
-          "nome": "Punch Push-up / Push-up Plus",
-          "serie_ripetizioni": "3 × 8–12",
-          "recupero": "45–60 sec",
-          "intensita": "1–2 RIR",
-          "note": [
-            "Spingi \"via il pavimento\" in alto senza piegare ancora i gomiti, scapole che protraggono.",
-            "È un esercizio di controllo scapolare e dentato, non una simulazione diretta di colpi di busto."
-          ],
-          "rientro": "Wall push-up plus: 2 × 8–10. Se dà fastidio al gran dentato, salta del tutto.",
-          "potenza": "Identico a BASE; nessuna variante pliometrica qui."
-        },
-        {
-          "nome": "Diamond Push-up",
-          "serie_ripetizioni": "3 × 6–10",
-          "recupero": "60–75 sec",
-          "intensita": "1–2 RIR",
-          "note": [
-            "Mani a rombo sotto il petto, gomiti aderenti ai fianchi.",
-            "Non è simulazione diretta di ganci/montanti."
-          ],
-          "rientro": "Push-up stretti normali oppure inclinati: 2 × 6–8.",
-          "potenza": null,
-          "attenzione": "Se senti fastidio al polso, gomito o spalla, salta e usa push-up stretti normali."
-        },
-        {
-          "nome": "Rematore con Manubrio a Un Braccio",
-          "serie_ripetizioni": "4 × 8–12 per lato",
-          "recupero": "60–75 sec tra i lati",
-          "intensita": "1–2 RIR",
-          "note": [
-            "Appoggiato a una panca/sedia stabile, schiena neutra.",
-            "Tira il gomito verso l'anca, niente torsione del busto.",
-            "Nel rematore il busto resta fermo: se la lombare si affatica prima della schiena, riduci carico e usa la variante seduta."
-          ],
-          "alternativa": "Rematore con bilanciere corto (4 × 8–12, recupero 75–90 sec) o rematore seduto alla macchina, se disponibile e senza fastidi lombari.",
-          "rientro": "Riduci a 3 × 6–8 con carico leggero, oppure salta e mantieni dead bug/mobilità.",
-          "potenza": null
-        },
-        {
-          "nome": "Bulgarian Split Squat",
-          "serie_ripetizioni": "4 × 6–10 per lato",
-          "recupero": "75–90 sec",
-          "intensita": "2 RIR",
-          "note": [
-            "Piede posteriore su panca/sedia, scendi con controllo.",
-            "Ginocchio anteriore non oltre la punta, schiena neutra."
-          ],
-          "rientro": "Riduci a 3 × 5–8 a corpo libero. Stop immediato se la lombare è dolente.",
-          "potenza": "Quando tutte le serie sono stabili con 2 RIR, aggiungi carico (manubrio)."
-        },
-        {
-          "nome": "Calf Raise",
-          "serie_ripetizioni": "3 × 12–20",
-          "recupero": "45–60 sec",
-          "intensita": "1–2 RIR",
-          "note": [
-            "Sali sulla punta dei piedi, pausa di 1–2 sec in cima, ritorna con controllo."
-          ],
-          "rientro": null,
-          "potenza": null
-        }
-      ],
-      "core": {
-        "titolo": "Blocco Core — 2 Giri (fisso, dopo le gambe)",
+      "obiettivo": "Costruire forza relativa, controllo scapolare, tirata, gambe unilaterali e core stabile per boxe, footwork e futura preparazione MMA, evitando volume inutile.",
+      "riscaldamento": {
+        "titolo": "Riscaldamento comune (Sessione A e B)",
+        "durata": "8–12 min",
+        "esercizi": [
+          "Cyclette o camminata: 5 minuti facili",
+          "Mobilità spalle/scapole, anche e caviglie: 3–5 minuti",
+          "1–2 serie di avvicinamento facili dei primi due esercizi"
+        ]
+      },
+      "sessione_a": {
+        "id": "a",
+        "titolo": "Forza A — Trazione, Spinta Orizzontale e Gambe",
+        "giorni": ["Lunedì"],
+        "durata": "55–70 min",
+        "obiettivo": "Costruire base di trazione, spinta orizzontale, forza unilaterale delle gambe e stabilità del tronco.",
         "esercizi": [
           {
-            "nome": "Dead Bug",
-            "dettaglio": "10 ripetizioni per lato",
-            "recupero": "20–30 sec",
-            "tecnica": "Movimento lento: espira, schiena lombare neutra e costole basse."
+            "nome": "Trazioni alla Sbarra",
+            "categoria": "trazione",
+            "serie_ripetizioni": "3 × 4–8",
+            "recupero": "90–120 sec",
+            "intensita": "1–2 RIR",
+            "note": [
+              "Parti da hang attivo.",
+              "Petto alto.",
+              "Evita slanci.",
+              "Interrompi la serie prima di perdere depressione scapolare."
+            ],
+            "rientro": "Negative pull-up controllate 3 × 3–5 con discesa di 3–5 secondi, oppure lat machine 3 × 6–10.",
+            "potenza": "Quando completi 3 × 8 pulite con 1–2 RIR, aggiungi zavorra leggera oppure esegui serie esplosive controllate senza perdere tecnica.",
+            "progressione": "Scapular pull → negative pull-up → pull-up completi → pull-up zavorrati."
           },
           {
-            "nome": "Side Plank",
-            "dettaglio": "25 secondi per lato",
-            "recupero": "20–30 sec",
-            "tecnica": "Bacino alto, corpo in linea, niente rotazione."
+            "nome": "Push-up Standard oppure Push-up Bars (Presa Neutra)",
+            "categoria": "spinta",
+            "serie_ripetizioni": "3 × 8–15",
+            "recupero": "60–90 sec",
+            "intensita": "2 RIR",
+            "note": [
+              "Corpo in linea.",
+              "Gomiti circa a 30–45°.",
+              "ROM controllato.",
+              "Usa le barre solo se polsi e spalle restano confortevoli."
+            ],
+            "rientro": "Push-up inclinati 2–3 × 6–10.",
+            "potenza": "Push-up fast intent 3 × 4–6, senza stacco; solo se BASE è senza dolore.",
+            "progressione": "Push-up inclinati → standard → decline → archer → negative one-arm push-up → one-arm push-up."
           },
           {
-            "nome": "Bird Dog",
-            "dettaglio": "10 ripetizioni per lato",
-            "recupero": "45 sec dopo ogni giro",
-            "tecnica": "Pausa di 2 secondi in massima estensione."
+            "nome": "Rematore Orizzontale (Manubrio a Un Braccio oppure Elastico/Multistation)",
+            "categoria": "trazione",
+            "serie_ripetizioni": "3 × 8–12 per lato",
+            "recupero": "60–75 sec tra i lati",
+            "intensita": "1–2 RIR",
+            "note": [
+              "Busto stabile e schiena neutra.",
+              "Tira il gomito verso l'anca.",
+              "Non ruotare il tronco per sollevare il peso."
+            ],
+            "rientro": "2–3 × 8 leggere per lato o rematore seduto alla multistation.",
+            "potenza": "Non rendere esplosivo: mantieni controllo e aumenta carico solo dopo tutte le serie pulite.",
+            "nota_importante": "La tirata orizzontale è obbligatoria per bilanciare spinte, postura e lavoro al sacco."
+          },
+          {
+            "nome": "Bulgarian Split Squat",
+            "categoria": "gambe",
+            "serie_ripetizioni": "3 × 6–10 per lato",
+            "recupero": "75–90 sec",
+            "intensita": "2 RIR",
+            "note": [
+              "Controllo in discesa.",
+              "Ginocchio segue la linea del piede.",
+              "Busto stabile.",
+              "Corpo libero, zaino o manubri in base al livello."
+            ],
+            "rientro": "Split squat a corpo libero 2–3 × 6–8 per lato.",
+            "potenza": "Aggiungi carico solo dopo controllo, equilibrio e ROM completi.",
+            "progressione": "Bodyweight split squat → Bulgarian → Bulgarian zavorrato."
+          },
+          {
+            "nome": "Pike Push-up",
+            "categoria": "spinta",
+            "serie_ripetizioni": "2 × 5–10",
+            "recupero": "75–90 sec",
+            "intensita": "2–3 RIR",
+            "note": [
+              "Spinta verticale controllata.",
+              "La testa si dirige avanti e in basso.",
+              "Evita di trasformarlo in un push-up orizzontale."
+            ],
+            "rientro": "Pike push-up inclinato 2 × 5–8.",
+            "potenza": "Nessuna pliometria.",
+            "progressione": "Pike → elevated pike → wall handstand hold → negative handstand push-up → handstand push-up.",
+            "attenzione": "Non aggiungere altri esercizi pesanti per deltoide/tricipite nella sessione A."
+          },
+          {
+            "nome": "Calf Raise",
+            "categoria": "gambe",
+            "serie_ripetizioni": "2 × 12–25",
+            "recupero": "45–60 sec",
+            "intensita": "1–2 RIR",
+            "note": [
+              "Pausa di 1–2 secondi in alto.",
+              "Discesa completa controllata.",
+              "Zavorra opzionale."
+            ],
+            "rientro": null,
+            "potenza": null
           }
         ],
-        "nota_sicurezza": "Se un esercizio provoca dolore netto o crescente alla lombare, interrompi solo quell'esercizio e sostituiscilo con camminata/mobilità leggera."
+        "core": {
+          "titolo": "Core A — 2 Giri",
+          "giri": 2,
+          "esercizi": [
+            { "nome": "Dead Bug", "categoria": "core", "dettaglio": "8–10 ripetizioni per lato" },
+            { "nome": "Side Plank", "categoria": "core", "dettaglio": "20–30 secondi per lato" }
+          ],
+          "recupero_esercizi": "20–30 sec tra esercizi",
+          "recupero_giri": "45–60 sec tra giri",
+          "tecnica": "Espira, mantieni costole basse e lombare neutra; nessuna torsione compensatoria.",
+          "nota_sicurezza": "Se compare dolore lombare netto o crescente, interrompi l'esercizio specifico e fai mobilità leggera."
+        }
       },
-      "potenza_extra": {
-        "titolo": "Push-up Pliometriche",
-        "posizione": "All'inizio della sessione, dopo il riscaldamento, prima del blocco forza principale.",
-        "serie_ripetizioni": "3 × 3–5",
-        "recupero": "90–120 sec",
-        "tecnica": "Spingi con forza per staccarti dal pavimento; atterra con controllo, gomiti flessi.",
-        "stop": "Se perdi altezza/velocità rispetto alla prima ripetizione, o se dentato/spalla/lombare dà dolore: stop.",
-        "alternativa_base": "Non pronto per pliometria: push-up \"fast intent\" senza stacco, 3 × 4–6."
+      "sessione_b": {
+        "id": "b",
+        "titolo": "Forza B — Skill Verticale, Trazione e Gambe",
+        "giorni": ["Giovedì"],
+        "durata": "50–65 min",
+        "obiettivo": "Sviluppare progressioni di handstand, trazione completa, gambe e catena posteriore senza sovraccaricare articolazioni.",
+        "esercizi": [
+          {
+            "nome": "Wall Handstand Hold oppure Elevated Pike Hold",
+            "categoria": "skill",
+            "serie_ripetizioni": "3 × 20–40 sec",
+            "recupero": "60–90 sec",
+            "intensita": "Tecnica; mai a cedimento",
+            "note": [
+              "Spingi attivamente il pavimento.",
+              "Scapole elevate e stabili.",
+              "Addome attivo.",
+              "Fermati se senti dolore a polsi, spalle o lombare."
+            ],
+            "rientro": "Pike hold con mani rialzate 2 × 15–20 sec.",
+            "potenza": "Nessuna progressione esplosiva.",
+            "progressione": "Elevated pike hold → wall handstand hold → eccentriche controllate → handstand push-up.",
+            "attenzione": "Handstand push-up completi solo se hai controllo al muro, ROM adeguato, assenza di dolore e capacità di fare elevated pike push-up puliti."
+          },
+          {
+            "nome": "Chin-up oppure Pull-up",
+            "categoria": "trazione",
+            "serie_ripetizioni": "3 × 4–8",
+            "recupero": "90–120 sec",
+            "intensita": "1–2 RIR",
+            "note": [
+              "Alterna la presa rispetto alla sessione A.",
+              "Esecuzione completa e controllata."
+            ],
+            "rientro": "Negative assistite 3 × 3–5 oppure lat machine 3 × 6–10.",
+            "potenza": "Zavorra leggera solo dopo 3 × 8 pulite.",
+            "progressione": "Scapular pull → negative → chin-up/pull-up completi → zavorrati."
+          },
+          {
+            "nome": "Decline Push-up oppure Diamond Push-up",
+            "categoria": "spinta",
+            "serie_ripetizioni": "3 × 6–12",
+            "recupero": "60–90 sec",
+            "intensita": "2 RIR",
+            "note": [
+              "Scegli una sola variante a sessione: decline per enfasi petto/spalle; diamond per enfasi tricipiti.",
+              "Alternale settimana per settimana, non entrambe nello stesso workout."
+            ],
+            "rientro": "Push-up standard stretti o inclinati 2 × 6–10.",
+            "potenza": "Solo fast intent senza stacco, 3 × 4–6, se spalle e polsi sono sani.",
+            "attenzione": "Chair dips non sono inclusi come esercizio fisso. Inseriscili solo come sostituzione occasionale del push-up, non aggiunta, e solo se le spalle li tollerano perfettamente."
+          },
+          {
+            "nome": "Pistol Squat Assistito oppure Walking Lunges",
+            "categoria": "gambe",
+            "serie_ripetizioni": "3 × 5–8 per lato (pistol assistito) oppure 3 × 8–12 per lato (walking lunge)",
+            "recupero": "75–90 sec",
+            "intensita": "2 RIR",
+            "note": [
+              "Il pistol squat è una skill di mobilità, equilibrio e forza: usa appoggio o banda.",
+              "Non inseguire la profondità perdendo controllo del ginocchio o del bacino."
+            ],
+            "rientro": "Walking lunge o split squat a corpo libero 2–3 × 6–8 per lato.",
+            "potenza": "Nessun salto finché caviglia, ginocchio e schiena non sono stabili.",
+            "progressione": "Bodyweight squat → walking lunge → Bulgarian → pistol assistito → pistol libero."
+          },
+          {
+            "nome": "Hip Thrust / Glute Bridge con Manubrio oppure Romanian Deadlift con Manubri",
+            "categoria": "gambe",
+            "serie_ripetizioni": "3 × 8–15",
+            "recupero": "75–90 sec",
+            "intensita": "2 RIR",
+            "note": [
+              "Scegli una sola variante.",
+              "Mantieni la lombare neutra; il movimento deve venire da anche e glutei, non dall'iperestensione della schiena."
+            ],
+            "rientro": "Glute bridge a corpo libero 2 × 10–15.",
+            "potenza": "Aumenta carico lentamente; nessuna esecuzione esplosiva se la lombare è sensibile.",
+            "nota_importante": "Questo movimento completa il lavoro delle gambe allenando glutei e femorali, poco stimolati da squat e Bulgarian."
+          },
+          {
+            "nome": "Scapular Pulls oppure Face Pull con Elastico",
+            "categoria": "trazione",
+            "serie_ripetizioni": "2 × 10–15",
+            "recupero": "45–60 sec",
+            "intensita": "2–3 RIR",
+            "note": [
+              "Movimento lento e pulito.",
+              "Pensa a controllo scapolare, non a carico."
+            ],
+            "rientro": "1–2 × 8–10 leggere.",
+            "potenza": "Non applicabile."
+          }
+        ],
+        "core": {
+          "titolo": "Core B — 2 Giri",
+          "giri": 2,
+          "esercizi": [
+            { "nome": "Hollow Body Hold", "categoria": "core", "dettaglio": "15–30 secondi" },
+            { "nome": "Hanging Knee Raise", "categoria": "core", "dettaglio": "8–12 ripetizioni" }
+          ],
+          "opzione_avanzata": {
+            "nome": "Hanging Leg Raise",
+            "dettaglio": "6–10 ripetizioni",
+            "condizione": "solo se non c'è slancio né fastidio lombare"
+          },
+          "recupero_esercizi": "20–30 sec tra esercizi",
+          "recupero_giri": "45–60 sec tra giri",
+          "tecnica": "Posterior pelvic tilt; niente slancio; fermati prima di perdere la posizione lombare.",
+          "regressione": "Se hanging knee raise irrita presa/spalle/lombare, sostituiscilo con dead bug."
+        }
       }
     },
 
@@ -271,12 +379,14 @@
   },
 
   "progressione": [
-    { "titolo": "Calisthenics e Gambe", "regola": "Aumenta 1 ripetizione per serie solo quando tutte le serie sono pulite e con 1–2 RIR." },
-    { "titolo": "Trazioni", "regola": "Aumenta ripetizioni prima di aggiungere zavorra. A 6 reps × 5 serie pulite, valuta zavorra leggera (+2,5 kg)." },
+    { "titolo": "Regola Generale", "regola": "Aumenta una sola variabile alla volta: ripetizioni, poi serie, poi carico, poi variante." },
+    { "titolo": "Criterio di Avanzamento", "regola": "Quando completi tutte le serie al limite alto del range con forma pulita e RIR previsto per due sedute consecutive, aumenta difficoltà di un solo livello." },
+    { "titolo": "Trazioni", "regola": "Aumenta ripetizioni prima di aggiungere zavorra. A 3 × 8 pulite con 1–2 RIR, valuta zavorra leggera." },
     { "titolo": "Bulgarian Split Squat", "regola": "Sequenza: prima qualità/equilibrio, poi ripetizioni, poi carico." },
-    { "titolo": "Push-up Pliometriche (POTENZA)", "regola": "Aumenta solo se altezza, velocità e atterraggi sono identici dalla prima all'ultima ripetizione." },
     { "titolo": "Sacco", "regola": "Sequenza: prima tecnica, poi velocità, poi potenza, infine volume." },
-    { "titolo": "Generale", "regola": "Seduta che lascia lento/rigido/dolorante oltre 24 ore: riduci volume 20–30% la prossima. Ogni 4a settimana: riduci serie/round 30–40%, mantieni tecnica." }
+    { "titolo": "Gestione Affaticamento/DOMS", "regola": "Se DOMS pesanti, rigidità che altera la tecnica o dolore oltre 48–72 ore: riduci il volume della sessione successiva del 25–35%." },
+    { "titolo": "Deload", "regola": "Ogni quarta settimana esegui deload: riduci le serie del 30–40%, mantieni movimento e tecnica." },
+    { "titolo": "Boxe Esterna", "regola": "Sedute di boxe ad alta intensità o palestra di boxe sostituiscono, non si sommano automaticamente, a una seduta tecnica domestica." }
   ],
 
   "regressione": [
@@ -286,11 +396,13 @@
   ],
 
   "cosa_evitare": [
-    "Russian twist con carico o torsioni esplosive",
+    "Russian twist con carico o torsioni esplosive/lombari",
     "Sit-up ad alto volume o crunch",
+    "Punch/colpi con manubri o pesi in mano",
     "Rematore basso ai cavi/Domyos: usa manubrio o bilanciere",
     "Full plank con torsione",
     "Esercizi che flettono/estendono la lombare sotto carico",
+    "Handstand push-up, pistol squat e one-arm push-up come volume principale obbligatorio: sono skill da introdurre solo a progressione solida",
     "Timer a schermo intero o gamification",
     "Inseguire volume inutile fuori da sacco/footwork"
   ],
@@ -299,6 +411,7 @@
     "Non è una routine medica: indicazioni generali per un fighter in rientro.",
     "Dolore 0–2/10 e stabile: monitora, riduci se cresce.",
     "Dolore netto, crescente o peggiore il giorno dopo: stop al movimento specifico, torna indietro.",
+    "Dolore netto o crescente a spalla, gomito, polso, gran dentato o lombare: interrompi quell'esercizio specifico e usa la regressione indicata.",
     "Sintomi neurologici (formicolio, debolezza, dolore irradiato): stop immediato, valutazione sanitaria."
   ],
 

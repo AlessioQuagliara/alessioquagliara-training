@@ -47,10 +47,10 @@ Se un esercizio provoca dolore netto o crescente alla lombare, interrompi solo q
 
 | Giorno | Sessione |
 |--------|----------|
-| **Lunedì** | Forza Calisthenics + Gambe |
+| **Lunedì** | Forza A — Trazione, Spinta Orizzontale e Gambe |
 | **Martedì** | Tecnica Boxe + Footwork |
 | **Mercoledì** | Riposo o Mobilità Leggera |
-| **Giovedì** | Forza Calisthenics + Gambe |
+| **Giovedì** | Forza B — Skill Verticale, Trazione e Gambe |
 | **Venerdì** | Tecnica Boxe + Footwork |
 | **Sabato/Domenica** | Recupero Attivo Opzionale |
 
@@ -59,212 +59,234 @@ Se c'è boxe vera in palestra, la sessione di boxe esterna **sostituisce** una s
 
 ---
 
-# LUNEDÌ / GIOVEDÌ — FORZA CALISTHENICS + GAMBE
+# LUNEDÌ / GIOVEDÌ — FORZA CALISTHENICS + GAMBE — A/B
 
-**Durata:** 50–70 min  
-**Obiettivo:** costruire forza relativa, stabilità scapolare, schiena e gambe per colpi e footwork.
+**Obiettivo generale:** costruire forza relativa, controllo scapolare, tirata, gambe unilaterali e core stabile per boxe, footwork e futura preparazione MMA, evitando volume inutile.
 
-## Riscaldamento (8–10 min)
+## Riscaldamento Comune (8–12 min, entrambe le sessioni)
 
-- Cyclette o camminata: **5 min**
-- Mobilità spalle/scapole e anche/caviglie: **3–5 min**
-- 1–2 serie facili dei primi movimenti
+- Cyclette o camminata: **5 minuti facili**
+- Mobilità spalle/scapole, anche e caviglie: **3–5 minuti**
+- 1–2 serie di avvicinamento facili dei primi due esercizi
 
-## Blocco Forza
+---
+
+## LUNEDÌ — FORZA A: Trazione, Spinta Orizzontale e Gambe
+
+**Durata:** 55–70 min  
+**Obiettivo:** costruire base di trazione, spinta orizzontale, forza unilaterale delle gambe e stabilità del tronco.
 
 ### 1. Trazioni alla Sbarra
 
-- **Serie × Ripetizioni:** 5 × 4–6
+- **Serie × Ripetizioni (BASE):** 3 × 4–8
 - **Recupero:** 90–120 sec
 - **Intensità:** 1–2 RIR
 
 **Note:**
-- Se non arrivi alle ripetizioni: esegui negative controllate o lat machine.
-- Stop prima di perdere depressione scapolare e forma.
-- La depressione scapolare è la posizione di forza: se la perdi, la serie è finita.
+- Parti da hang attivo; petto alto; evita slanci.
+- Interrompi la serie prima di perdere depressione scapolare.
 
-**In RIENTRO:**
-- Riduci a 3 × 3–4 oppure esegui lat machine 3 × 6–8.
+**In RIENTRO:** negative pull-up controllate 3 × 3–5 con discesa di 3–5 secondi, oppure lat machine 3 × 6–10.
+**In POTENZA:** quando completi 3 × 8 pulite con 1–2 RIR, aggiungi zavorra leggera oppure esegui serie esplosive controllate senza perdere tecnica.
+**Progressione:** scapular pull → negative pull-up → pull-up completi → pull-up zavorrati.
 
 ---
 
-### 2. Push-up Bars (Presa Neutra)
+### 2. Push-up Standard oppure Push-up Bars (Presa Neutra)
 
-- **Serie × Ripetizioni:** 3 × 6–12
-- **Recupero:** 60–75 sec
+- **Serie × Ripetizioni (BASE):** 3 × 8–15
+- **Recupero:** 60–90 sec
 - **Intensità:** 2 RIR
-- **ROM:** profondo ma solo se spalla/gran dentato restano indolore
 
 **Note:**
-- Gomiti aderenti al corpo, scapole retratte e depresse.
-- Se il ROM profondo causa fastidio, rimani in range comodo.
+- Corpo in linea; gomiti circa a 30–45°; ROM controllato.
+- Usa le barre solo se polsi e spalle restano confortevoli.
 
-**In RIENTRO:**
-- Usa push-up normali a profondità ridotta, 3 × 6–10.
-
-**In POTENZA:**
-- +1 ripetizione per lato quando tutte le serie sono pulite e con 1–2 RIR.
+**In RIENTRO:** push-up inclinati 2–3 × 6–10.
+**In POTENZA:** push-up fast intent 3 × 4–6, senza stacco; solo se BASE è senza dolore.
+**Progressione:** push-up inclinati → standard → decline → archer → negative one-arm push-up → one-arm push-up.
 
 ---
 
-### 3. Punch Push-up / Push-up Plus
+### 3. Rematore Orizzontale (Manubrio a Un Braccio oppure Elastico/Multistation)
 
-- **Serie × Ripetizioni (BASE):** 3 × 8–12
-- **Recupero:** 45–60 sec
-- **Intensità:** 1–2 RIR
-
-**Tecnica:**
-- Spingi "via il pavimento" in alto senza piegare ancora i gomiti.
-- Scapole che protraggono e spostano il pavimento lontano.
-- Ritorna in posizione: scapole retratte leggermente.
-- È un esercizio di controllo scapolare, non una simulazione diretta di colpi di busto.
-
-**In RIENTRO:**
-- Wall push-up plus: 2 × 8–10 contro il muro oppure piano inclinato.
-- Se dà fastidio al gran dentato, salta del tutto.
-
-**In POTENZA:**
-- Identico a BASE; no varianti pliometriche qui (quelle vanno all'inizio della sessione se programmato).
-
----
-
-### 4. Diamond Push-up
-
-- **Serie × Ripetizioni:** 3 × 6–10
-- **Recupero:** 60–75 sec
-- **Intensità:** 1–2 RIR
-
-**Note:**
-- Mani formano un rombo sotto il petto.
-- Gomiti aderenti ai fianchi.
-- Non è una simulazione diretta di ganci/montanti.
-- Se senti fastidio al polso, gomito o spalla, salta e usa push-up stretti normali.
-
-**In RIENTRO:**
-- Push-up stretti normali oppure inclinati: 2 × 6–8.
-
----
-
-### 5. Rematore con Manubrio a Un Braccio
-
-- **Serie × Ripetizioni:** 4 × 8–12 per lato
+- **Serie × Ripetizioni:** 3 × 8–12 per lato
 - **Recupero:** 60–75 sec tra i lati
 - **Intensità:** 1–2 RIR
 
 **Tecnica:**
-- Appoggiato a una panca/sedia stabile.
-- Schiena neutra; tira il gomito verso l'anca.
-- Niente torsione del busto.
-- Scapola retratta; ritorno controllato.
+- Busto stabile e schiena neutra; tira il gomito verso l'anca.
+- Non ruotare il tronco per sollevare il peso.
 
-**Note:**
-- Nel rematore, il busto resta fermo: se la lombare si affatica prima della schiena, riduci carico e usa variante seduta (vedi sotto).
-
-**Alternativa (se disponibile):**
-- Rematore con bilanciere corto: 4 × 8–12, recupero 75–90 sec, 1–2 RIR.
-  - Busto inclinato ma stabile; usa solo carico che non irriti la lombare.
-- Rematore seduto alla macchina (Domyos): 4 × 10–12, recupero 75 sec, 1–2 RIR.
-
-**In RIENTRO:**
-- Riduci a 3 × 6–8 con carico leggero, oppure salta e mantieni dead bug/mobilità.
+**In RIENTRO:** 2–3 × 8 leggere per lato o rematore seduto alla multistation.
+**In POTENZA:** non rendere esplosivo — mantieni controllo e aumenta carico solo dopo tutte le serie pulite.
+**Nota importante:** la tirata orizzontale è obbligatoria per bilanciare spinte, postura e lavoro al sacco.
 
 ---
 
-### 6. Bulgarian Split Squat
+### 4. Bulgarian Split Squat
 
-- **Serie × Ripetizioni:** 4 × 6–10 per lato
+- **Serie × Ripetizioni:** 3 × 6–10 per lato
 - **Recupero:** 75–90 sec
 - **Intensità:** 2 RIR
-- **Carico:** a corpo libero
 
 **Tecnica:**
-- Piede posteriore appoggiato su panca/sedia.
-- Scendi con controllo; il ginocchio anteriore non va oltre la punta.
-- Schiena neutra; niente inclinazione in avanti eccessiva.
+- Controllo in discesa; ginocchio segue la linea del piede; busto stabile.
+- Corpo libero, zaino o manubri in base al livello.
 
-**In RIENTRO:**
-- Riduci a 3 × 5–8 a corpo libero; stop immediato se la lombare è dolente.
-
-**In POTENZA:**
-- Quando tutte le serie sono stabili e con 2 RIR, aggiungi carico (manubrio, peso corporeo aumentato).
+**In RIENTRO:** split squat a corpo libero 2–3 × 6–8 per lato.
+**In POTENZA:** aggiungi carico solo dopo controllo, equilibrio e ROM completi.
+**Progressione:** bodyweight split squat → Bulgarian → Bulgarian zavorrato.
 
 ---
 
-### 7. Calf Raise
+### 5. Pike Push-up
 
-- **Serie × Ripetizioni:** 3 × 12–20
+- **Serie × Ripetizioni:** 2 × 5–10
+- **Recupero:** 75–90 sec
+- **Intensità:** 2–3 RIR
+
+**Note:**
+- Spinta verticale controllata; la testa si dirige avanti e in basso.
+- Evita di trasformarlo in un push-up orizzontale.
+
+**In RIENTRO:** pike push-up inclinato 2 × 5–8.
+**In POTENZA:** nessuna pliometria.
+**Progressione:** pike → elevated pike → wall handstand hold → negative handstand push-up → handstand push-up.
+**⚠️ Attenzione:** non aggiungere altri esercizi pesanti per deltoide/tricipite nella sessione A.
+
+---
+
+### 6. Calf Raise
+
+- **Serie × Ripetizioni:** 2 × 12–25
 - **Recupero:** 45–60 sec
 - **Intensità:** 1–2 RIR
 
-**Tecnica:**
-- Stai in piedi, sali sulla punta dei piedi.
-- Pausa di 1–2 sec in cima.
-- Ritorna con controllo.
+**Tecnica:** pausa di 1–2 secondi in alto e discesa completa controllata; zavorra opzionale.
 
 ---
 
-## Blocco Core (Dopo Gambe)
+## Core A — 2 Giri (dopo le gambe)
 
-**2 GIRI**
+### Dead Bug
+- 8–10 ripetizioni per lato · recupero 20–30 sec
 
-### 1. Dead Bug
+### Side Plank
+- 20–30 secondi per lato · recupero 20–30 sec
 
-- **Ripetizioni:** 10 per lato
-- **Recupero:** 20–30 sec
-
-**Tecnica:**
-- Schiena supina, braccia verso il soffitto, gambe piegate a 90°.
-- Espira; spingi la schiena lombare verso il pavimento.
-- Allunga il braccio destro e la gamba sinistra in contemporanea.
-- Ritorna con controllo; ripeti.
-- Movimento lento; schiena lombare sempre neutra e costole basse.
+**Recupero tra i giri:** 45–60 sec.
+**Tecnica:** espira, mantieni costole basse e lombare neutra; nessuna torsione compensatoria.
+**⚠️ Sicurezza:** se compare dolore lombare netto o crescente, interrompi l'esercizio specifico e fai mobilità leggera.
 
 ---
 
-### 2. Side Plank
+## GIOVEDÌ — FORZA B: Skill Verticale, Trazione e Gambe
 
-- **Tempo:** 25 secondi per lato
-- **Recupero:** 20–30 sec
+**Durata:** 50–65 min  
+**Obiettivo:** sviluppare progressioni di handstand, trazione completa, gambe e catena posteriore senza sovraccaricare articolazioni.
 
-**Tecnica:**
-- Corpo in linea dritta da spalla a caviglia.
-- Bacino alto; niente rotazione.
-- Se troppo difficile, supporta il ginocchio inferiore a terra.
+### 1. Wall Handstand Hold oppure Elevated Pike Hold
 
----
+- **Serie × Tempo (BASE):** 3 × 20–40 sec
+- **Recupero:** 60–90 sec
+- **Intensità:** tecnica; mai a cedimento
 
-### 3. Bird Dog
+**Note:**
+- Spingi attivamente il pavimento; scapole elevate e stabili; addome attivo.
+- Fermati se senti dolore a polsi, spalle o lombare.
 
-- **Ripetizioni:** 10 per lato
-- **Recupero:** 45 sec dopo ogni giro
-
-**Tecnica:**
-- In quadrupedia (mani e ginocchia).
-- Espira; estendi il braccio destro e la gamba sinistra.
-- Pausa di 2 secondi in massima estensione.
-- Ritorna con controllo; ripeti.
+**In RIENTRO:** pike hold con mani rialzate 2 × 15–20 sec.
+**In POTENZA:** nessuna progressione esplosiva.
+**Progressione:** elevated pike hold → wall handstand hold → eccentriche controllate → handstand push-up.
+**⚠️ Attenzione:** handstand push-up completi solo se hai controllo al muro, ROM adeguato, assenza di dolore e capacità di fare elevated pike push-up puliti.
 
 ---
 
-## Modalità POTENZA — Lunedì/Giovedì
+### 2. Chin-up oppure Pull-up
 
-**Esecuzione:** all'INIZIO della sessione dopo il riscaldamento, prima del blocco forza principale.
-
-### Push-up Pliometriche
-
-- **Serie × Ripetizioni:** 3 × 3–5
+- **Serie × Ripetizioni:** 3 × 4–8
 - **Recupero:** 90–120 sec
-- **Intensità:** Massima qualità
+- **Intensità:** 1–2 RIR
 
-**Tecnica:**
-- Parti da push-up normale; spingi con forza per staccarti dal pavimento.
-- Atterra con controllo; ammortizzo la caduta con i gomiti flessi.
-- Se perdi altezza o velocità rispetto alla prima ripetizione: stop.
-- Se dentato/spalla/lombare dà dolore: fermati immediatamente.
+**Note:** alterna la presa rispetto alla sessione A; esecuzione completa e controllata.
 
-**Alternativa (se non pronto per pliometria):**
-- Push-up "fast intent" senza stacco: 3 × 4–6
-  - Esegui push-up normale con velocità massima (senza pliometria).
+**In RIENTRO:** negative assistite 3 × 3–5 oppure lat machine 3 × 6–10.
+**In POTENZA:** zavorra leggera solo dopo 3 × 8 pulite.
+**Progressione:** scapular pull → negative → chin-up/pull-up completi → zavorrati.
+
+---
+
+### 3. Decline Push-up oppure Diamond Push-up
+
+- **Serie × Ripetizioni:** 3 × 6–12
+- **Recupero:** 60–90 sec
+- **Intensità:** 2 RIR
+
+**Note:** scegli una sola variante a sessione — decline per enfasi petto/spalle, diamond per enfasi tricipiti. Alternale settimana per settimana, non entrambe nello stesso workout.
+
+**In RIENTRO:** push-up standard stretti o inclinati 2 × 6–10.
+**In POTENZA:** solo fast intent senza stacco, 3 × 4–6, se spalle e polsi sono sani.
+**⚠️ Attenzione:** i chair dips non sono inclusi come esercizio fisso. Inseriscili solo come sostituzione occasionale del push-up, non aggiunta, e solo se le spalle li tollerano perfettamente.
+
+---
+
+### 4. Pistol Squat Assistito oppure Walking Lunges
+
+- **Serie × Ripetizioni:** 3 × 5–8 per lato (pistol assistito) oppure 3 × 8–12 per lato (walking lunge)
+- **Recupero:** 75–90 sec
+- **Intensità:** 2 RIR
+
+**Note:**
+- Il pistol squat è una skill di mobilità, equilibrio e forza: usa appoggio o banda.
+- Non inseguire la profondità perdendo controllo del ginocchio o del bacino.
+
+**In RIENTRO:** walking lunge o split squat a corpo libero 2–3 × 6–8 per lato.
+**In POTENZA:** nessun salto finché caviglia, ginocchio e schiena non sono stabili.
+**Progressione:** bodyweight squat → walking lunge → Bulgarian → pistol assistito → pistol libero.
+
+---
+
+### 5. Hip Thrust / Glute Bridge con Manubrio oppure Romanian Deadlift con Manubri
+
+- **Serie × Ripetizioni:** 3 × 8–15
+- **Recupero:** 75–90 sec
+- **Intensità:** 2 RIR
+
+**Note:** scegli una sola variante. Mantieni la lombare neutra; il movimento deve venire da anche e glutei, non dall'iperestensione della schiena.
+
+**In RIENTRO:** glute bridge a corpo libero 2 × 10–15.
+**In POTENZA:** aumenta carico lentamente; nessuna esecuzione esplosiva se la lombare è sensibile.
+**Nota importante:** questo movimento completa il lavoro delle gambe allenando glutei e femorali, poco stimolati da squat e Bulgarian.
+
+---
+
+### 6. Scapular Pulls oppure Face Pull con Elastico
+
+- **Serie × Ripetizioni:** 2 × 10–15
+- **Recupero:** 45–60 sec
+- **Intensità:** 2–3 RIR
+
+**Note:** movimento lento e pulito; pensa a controllo scapolare, non a carico.
+
+**In RIENTRO:** 1–2 × 8–10 leggere.
+**In POTENZA:** non applicabile.
+
+---
+
+## Core B — 2 Giri
+
+### Hollow Body Hold
+- 15–30 secondi · recupero 20–30 sec
+
+### Hanging Knee Raise
+- 8–12 ripetizioni · recupero 20–30 sec
+
+**Opzione avanzata:** Hanging Leg Raise, 6–10 ripetizioni, solo se non c'è slancio né fastidio lombare.
+
+**Recupero tra i giri:** 45–60 sec.
+**Tecnica:** posterior pelvic tilt; niente slancio; fermati prima di perdere la posizione lombare.
+**↩️ Regressione:** se hanging knee raise irrita presa/spalle/lombare, sostituiscilo con dead bug.
 
 ---
 
@@ -435,26 +457,30 @@ Scegli una sola:
 
 ## Regola di Progressione
 
-### Calisthenics e Gambe
-- Aumenta **1 ripetizione per serie** solo quando tutte le serie sono pulite e con 1–2 RIR.
-- Non aumentare il carico troppo velocemente.
+### Regola Generale
+- Aumenta **una sola variabile alla volta**: ripetizioni, poi serie, poi carico, poi variante.
+
+### Criterio di Avanzamento
+- Quando completi tutte le serie al limite alto del range con forma pulita e RIR previsto per **due sedute consecutive**, aumenta difficoltà di un solo livello.
 
 ### Trazioni
 - Aumenta ripetizioni prima di aggiungere zavorra.
-- Quando raggiungi 6 ripetizioni per 5 serie pulite, allora considera zavorra leggera (+2,5 kg).
+- A 3 × 8 pulite con 1–2 RIR, valuta zavorra leggera.
 
 ### Bulgarian Split Squat
 - Sequenza: prima qualità/equilibrio → poi ripetizioni → poi carico.
 
-### Push-up Pliometriche (POTENZA)
-- Aumenta solo se altezza, velocità e atterraggi sono **identici** dalla prima all'ultima ripetizione.
-
 ### Sacco
 - Sequenza: prima tecnica → poi velocità → poi potenza → infine volume.
 
-### Generale
-- Se una seduta ti lascia lento, rigido o dolorante per più di 24 ore: la prossima riduci volume del 20–30%.
-- Ogni 4a settimana: riduci serie e round del 30–40%, mantieni la tecnica.
+### Gestione Affaticamento/DOMS
+- Se DOMS pesanti, rigidità che altera la tecnica o dolore oltre 48–72 ore: riduci il volume della sessione successiva del 25–35%.
+
+### Deload
+- Ogni quarta settimana esegui deload: riduci le serie del 30–40%, mantieni movimento e tecnica.
+
+### Boxe Esterna
+- Sedute di boxe ad alta intensità o palestra di boxe sostituiscono, non si sommano automaticamente, a una seduta tecnica domestica.
 
 ---
 
@@ -475,11 +501,13 @@ Scegli una sola:
 
 # Cosa Evitare
 
-- **No Russian twist** con carico; niente torsioni esplosive.
+- **No Russian twist** con carico; niente torsioni esplosive/lombari.
 - **No sit-up** ad alto volume o crunch.
+- **No punch/colpi con manubri** o pesi in mano.
 - **No cable row** (rimatore basso ai cavi); usare manubrio o bilanciere.
 - **No full plank** con torsione.
 - **No esercizi che facciano flettere/estendere la lombare** sotto carico.
+- **Handstand push-up, pistol squat e one-arm push-up** non sono volume principale obbligatorio: sono skill da introdurre solo a progressione solida.
 - **No timer a schermo intero** o gamification.
 - **No inseguire volume inutile** fuori da sacco/footwork.
 
@@ -490,6 +518,7 @@ Scegli una sola:
 1. **Non questa è una routine medica.** Indicazioni generali per un fighter in rientro.
 2. **Dolore 0–2/10 e stabile:** monitora; riduci se cresce.
 3. **Dolore netto, crescente o il giorno dopo peggiore:** stop movimento specifico; torna indietro.
-4. **Sintomi neurologici (formicolio, debolezza, dolore irradiato):** stop immediato; valutazione sanitaria.
+4. **Dolore netto o crescente a spalla, gomito, polso, gran dentato o lombare:** interrompi quell'esercizio specifico e usa la regressione indicata.
+5. **Sintomi neurologici (formicolio, debolezza, dolore irradiato):** stop immediato; valutazione sanitaria.
 
 **Rientro:** se gran dentato o lombare danno dolore netto, dolore crescente o fastidio il giorno dopo, riduci/regredisci. Per dolore irradiato, formicolio, debolezza o sintomi importanti, fermati e fatti valutare.
